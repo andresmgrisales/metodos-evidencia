@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://andresmgrisales.github.io/metodos-evidencia/sitemap.xml
