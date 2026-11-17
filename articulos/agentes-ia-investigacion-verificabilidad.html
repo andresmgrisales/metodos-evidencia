@@ -16,6 +16,11 @@
 @media print{body{background:#fff}.hero{background:#fff;color:#123}.hero p,.hero .eyebrow{color:#123}.reading{box-shadow:none;break-before:page}.top nav,.private-note,.hero-links{display:none}}
 
 .publication-dateline{font-weight:700;color:#0b6d68;font-size:13px;margin:7px 0}.nav-return{text-decoration:none;font-weight:750}
+
+/* Contador publico de visitas: datos suministrados por GoatCounter. */
+.me-visit-count{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;border:1px solid #d9e9e7;border-radius:999px;padding:6px 12px;background:#f2f8f7;color:#41546c;font-size:12px;font-weight:650}
+.me-visit-count strong{color:#08716f;font-size:14px;font-variant-numeric:tabular-nums;font-weight:850}
+.bottom .me-visit-count{margin-top:11px}
 </style></head><body>
 <header class="top"><div class="container top-in"><a class="brand" href="../index.html">M<span>·</span> Métodos <em>&</em> Evidencia</a>
 <nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="#agentes">Lectura completa</a></nav></div></header>
@@ -49,5 +54,24 @@
      
   </footer></article>
 </main>
-<footer class="bottom"><div class="container"><strong>Métodos & Evidencia</strong> · Laboratorio Académico de IA · 2026. <a href="../index.html">Volver al inicio</a>. La interpretación editorial se distingue de los resultados originales.</div></footer>
+<footer class="bottom"><div class="container"><strong>Métodos & Evidencia</strong> · Laboratorio Académico de IA · 2026. <a href="../index.html">Volver al inicio</a>. La interpretación editorial se distingue de los resultados originales.<div class="me-visit-count" aria-label="Visitas registradas en Métodos y Evidencia"><span>◉ Visitas al sitio</span><strong id="me-visit-total" aria-live="polite" title="Total acumulado del sitio. Las cifras pueden tardar en actualizarse.">—</strong></div></div></footer>
+
+<!-- GoatCounter: un registro por carga de pagina; la consulta publica de TOTAL no registra visitas adicionales. -->
+<script data-goatcounter="https://metodos-evidencia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var counter=document.getElementById('me-visit-total');
+  if(!counter) return;
+  fetch('https://metodos-evidencia.goatcounter.com/counter/TOTAL.json')
+    .then(function(response){if(!response.ok) throw new Error('Conteo publico no disponible');return response.json();})
+    .then(function(data){
+      if(data && (typeof data.count==='string'||typeof data.count==='number')){
+        counter.textContent=String(data.count);
+      }
+    })
+    .catch(function(){
+      counter.title='Activa el conteo publico en Settings de GoatCounter o verifica si el navegador bloquea la consulta.';
+    });
+})();
+</script>
 </body></html>
