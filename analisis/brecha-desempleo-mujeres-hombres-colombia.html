@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://andresmgrisales.github.io/metodos-evidencia/analisis/brecha-desempleo-mujeres-hombres-colombia.html">
+<meta name="description" content="Análisis interactivo de las brechas de desempleo entre mujeres y hombres por dominio geográfico, DANE GEIH julio–septiembre de 2026."><title>Brechas de desempleo entre mujeres y hombres en Colombia · Métodos &amp; Evidencia</title>
+<style>
+:root{--navy:#123348;--dark:#102f40;--teal:#078582;--tealBg:#d9f3ef;--violet:#4055a4;--purpleBg:#e2e8ff;--orange:#b96831;--orangeBg:#fff0de;--muted:#526779;--border:#d8e4eb;--paper:#f4f8f9;--white:#fff;--ink:#192f40}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1080px;margin:0 auto;padding:30px 19px 70px}
+header{background:linear-gradient(115deg,#112e45,#174c59);color:#fff;padding:30px clamp(20px,4vw,46px);border-radius:22px;box-shadow:0 14px 32px #1534491b}
+.brand{font-size:13px;letter-spacing:.13em;font-weight:850;text-transform:uppercase;color:#bde6df}
+.badge{display:inline-block;color:#fbf0d9;border:1px solid #bcd2ce88;background:#ffffff19;border-radius:999px;padding:4px 11px;margin-top:18px;font-size:12px;font-weight:700}
+h1{line-height:1.14;letter-spacing:-.035em;font-size:clamp(26px,4vw,42px);margin:15px 0 14px;max-width:880px}
+.intro{max-width:810px;color:#e0eff0;margin:0}
+.meta{margin-top:15px;color:#ccdfdf;font-size:13px}
+section.card,.note{background:#fff;border:1px solid var(--border);border-radius:18px;padding:clamp(17px,3vw,27px);margin-top:20px;box-shadow:0 4px 18px #18354408}
+h2{font-size:clamp(19px,2.6vw,25px);margin:0 0 8px;letter-spacing:-.02em;line-height:1.25}
+.sub{color:var(--muted);font-size:14px;margin:0 0 20px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #14a69f;outline-offset:3px}
+.tab{border:1px solid #cddde0;border-radius:12px;padding:11px 15px;background:#f6faf9;color:var(--dark);font-size:14px;font-weight:750}
+.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.legend{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-weight:700;margin:8px 0 16px}
+.legend-item{display:inline-flex;align-items:center;gap:8px}
+.dot{width:11px;height:11px;display:inline-block;border-radius:3px;background:var(--teal)}
+.dot.man{background:var(--violet)}.dot.gap{background:var(--orange)}
+.axis{display:flex;justify-content:space-between;margin:0 0 7px 224px;color:#697b87;font-size:11px;font-variant-numeric:tabular-nums}
+.chart{display:grid;gap:8px}
+.group{width:100%;display:grid;grid-template-columns:210px 1fr;gap:14px;text-align:left;background:transparent;border:1px solid transparent;border-radius:12px;padding:12px;transition:background .15s,border-color .15s;color:inherit}
+.group:hover,.group[aria-pressed="true"]{background:#f3faf9;border-color:#b5dbd7}
+.group[aria-pressed="true"]{box-shadow:inset 4px 0 var(--teal)}
+.group-label{font-weight:750;font-size:13px;line-height:1.35;align-self:center}
+.group-label small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+.series{display:grid;gap:7px}
+.line{display:grid;grid-template-columns:74px 1fr 62px;align-items:center;gap:8px;font-size:12px;font-variant-numeric:tabular-nums}
+.line-name{color:var(--muted);font-weight:700}.number{text-align:right;color:var(--ink);font-weight:800}
+.track{height:13px;border-radius:12px;background:#edf2f5;overflow:hidden}
+.bar{height:100%;border-radius:10px;display:block;transition:width .22s ease}
+.bar.women{background:var(--teal)}.bar.men{background:var(--violet)}.bar.gap{background:var(--orange)}
+.detail{margin-top:18px;background:#ecf7f5;border:1px solid #cce9e4;border-radius:13px;padding:17px 18px}
+.detail-title{font-weight:850;color:#195957}
+.detail-text{font-size:14px;margin:5px 0 0}
+.pill-label{font-size:11px;color:#41697b;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.metric{background:white;border:1px solid var(--border);border-radius:14px;padding:16px}
+.metric strong{font-size:clamp(23px,3.2vw,30px);line-height:1.15;display:block;color:var(--navy);font-variant-numeric:tabular-nums}
+.metric span{font-size:12px;line-height:1.4;color:var(--muted);display:block;margin-top:5px}
+.table-wrap{overflow:auto;border-radius:13px;border:1px solid #d8e4e8}
+table{border-collapse:collapse;width:100%;min-width:590px;font-size:13px}
+th,td{padding:12px;border-bottom:1px solid #e3ebef;text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead{background:#ecf2f4}tr:last-child td{border-bottom:0}
+td:first-child{font-weight:650}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.download{background:#eff8f6;border:1px solid #bfd9d4;color:#165d5b;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:750}
+.note{background:#fffaf1;border-color:#eddfc4;box-shadow:none}
+.note h2{font-size:18px}.note p{font-size:13px;margin:8px 0;color:#475767}
+.note ul{padding-left:19px;font-size:13px;color:#475767;margin:8px 0}
+.source{font-size:13px;color:#496276;margin-top:18px}
+a{color:#08716f}
+.footer{color:#6b7c89;font-size:12px;margin:28px 0 0;text-align:center}
+.hide{display:none}
+@media(max-width:750px){.group{grid-template-columns:1fr;gap:6px}.group-label{display:flex;gap:6px;justify-content:space-between;align-items:center}.group-label small{margin:0}.axis{margin-left:0}.summary-grid{grid-template-columns:1fr}.line{grid-template-columns:66px minmax(0,1fr) 60px}.tab{flex:1 1 155px}}
+@media(prefers-reduced-motion:reduce){.group,.bar{transition:none}}
+
+.me-public-counter{max-width:1080px;margin:0 auto 35px;padding:12px 20px;text-align:center;color:#566d79;font-size:12px;display:flex;align-items:center;justify-content:center;gap:12px}.me-public-counter strong{color:#0b726e;font-variant-numeric:tabular-nums;font-size:15px}
+</style>
+</head>
+<body>
+<main><nav aria-label="Regresar a colección" style="margin-bottom:16px"><a href="../index.html?seccion=analisis" style="color:#0b7770;font-weight:780;text-decoration:none">← Volver a Datos bajo análisis</a></nav>
+<header>
+<div class="brand">MÉTODOS <span aria-hidden="true">·</span> EVIDENCIA / DATOS BAJO ANÁLISIS</div>
+<div class="badge">Análisis interactivo · Fuente oficial DANE</div>
+<h1>¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?</h1>
+<p class="intro">Exploración interactiva de las tasas de desocupación por sexo y dominio geográfico. Se muestran exclusivamente cifras del DANE correspondientes a julio–septiembre de 2026.</p>
+<div class="meta">GEIH · Trimestre móvil julio–septiembre de 2026 · Tasas (%) y brechas (puntos porcentuales)</div>
+</header>
+
+<section class="card" aria-labelledby="explore-title">
+<h2 id="explore-title">Explore las diferencias</h2>
+<p class="sub">Al cambiar de vista se comparan las tasas publicadas por sexo, las brechas oficiales o los principales indicadores nacionales. Seleccione una fila para examinarla.</p>
+<div class="tabs" role="tablist" aria-label="Seleccione el tipo de comparación">
+<button class="tab" role="tab" id="tab-tasas" aria-controls="chart-panel" aria-selected="true" data-view="tasas">Tasas por sexo</button>
+<button class="tab" role="tab" id="tab-brechas" aria-controls="chart-panel" aria-selected="false" data-view="brechas">Brecha de desocupación</button>
+<button class="tab" role="tab" id="tab-indicadores" aria-controls="chart-panel" aria-selected="false" data-view="indicadores">Indicadores nacionales</button>
+</div>
+<div id="chart-panel" role="tabpanel" aria-labelledby="tab-tasas">
+<div class="legend" id="legend"></div>
+<div class="axis" id="axis" aria-hidden="true"></div>
+<div id="chart" class="chart" aria-label="Gráfico interactivo"></div>
+<div id="details" class="detail" role="status" aria-live="polite"></div>
+</div>
+</section>
+
+<section class="card" aria-labelledby="questions-title">
+<h2 id="questions-title">Tres hallazgos para interpretar</h2>
+<div class="summary-grid">
+<div class="metric"><strong>6,5 p.p.</strong><span>Mayor brecha de desocupación: centros poblados y rural disperso</span></div>
+<div class="metric"><strong>12,3 %</strong><span>Mayor tasa de desocupación femenina entre los dominios mostrados: 10 ciudades</span></div>
+<div class="metric"><strong>23,4 p.p.</strong><span>Brecha nacional de participación laboral, a favor de los hombres</span></div>
+</div>
+<p class="sub">Una brecha más grande no equivale necesariamente a una mayor tasa de desocupación femenina. Tampoco describe por sí sola diferencias de participación u ocupación.</p>
+</section>
+
+<section class="card" aria-labelledby="table-title">
+<div class="actions"><div><h2 id="table-title">Los datos detrás del gráfico</h2><p class="sub">Tabla accesible con los valores publicados en el boletín.</p></div><button id="download" class="download" type="button">Descargar CSV de esta vista</button></div>
+<div class="table-wrap"><table id="data-table"><caption class="hide">Datos oficiales del DANE utilizados en el gráfico</caption><thead></thead><tbody></tbody></table></div>
+</section>
+
+<aside class="note" aria-labelledby="notes-title">
+<h2 id="notes-title">Cómo leer correctamente estas cifras</h2>
+<ul>
+<li>Las tasas de desocupación se calculan respecto de la fuerza de trabajo, no de toda la población en edad de trabajar.</li>
+<li>Las brechas se muestran exactamente como las publicó el DANE, <strong>sin recalcularlas con tasas redondeadas</strong>. Por ejemplo, 10,6 − 6,9 da 3,7 p.p. con las cifras visibles, mientras la brecha oficial nacional publicada es 3,6 p.p.</li>
+<li>«10 ciudades» y «13 ciudades y áreas metropolitanas» son dominios definidos por el DANE; no constituyen necesariamente grupos territoriales independientes.</li>
+<li>La comparación es descriptiva: no demuestra causalidad ni significancia estadística de las diferencias.</li>
+<li>Para participación y ocupación la brecha nacional favorece a los hombres; en desocupación, la tasa nacional femenina es superior. No se deben sumar ni comparar estas brechas como si midieran un mismo fenómeno.</li>
+</ul>
+<p class="source"><strong>Fuente:</strong> DANE, <em>Boletín técnico GEIH, Mercado laboral según sexo, julio–septiembre de 2026</em>, tablas 1 y 2 (págs. 4–5). <a href="https://www.dane.gov.co/files/operaciones/GEIH/bol-GEIHMLS-jul-sep2026.pdf" target="_blank" rel="noopener noreferrer">Consultar documento oficial ↗</a>.</p>
+</aside>
+<p class="footer">Métodos & Evidencia · GEIH · DANE, julio–septiembre de 2026 · Cifras oficiales, no simuladas.</p>
+</main>
+<footer class="me-public-counter" aria-label="Contador de visitas"><span>◉ Visitas al sitio</span><strong id="me-visit-total" aria-live="polite" title="Total acumulado del sitio">—</strong></footer>
+
+<script>
+(function(){
+"use strict";
+var domains=[
+{id:"nacional",name:"Total nacional",women:10.6,men:6.9,gap:3.6,context:"La brecha oficial nacional fue de 3,6 puntos porcentuales. La diferencia entre tasas redondeadas puede dar 3,7; debe conservarse la cifra de brecha reportada por el DANE."},
+{id:"rural",name:"Centros poblados y rural disperso",women:10.5,men:4.0,gap:6.5,context:"Se observa la mayor brecha de los dominios mostrados: 6,5 puntos. No corresponde a la tasa de desocupación femenina más elevada de esta comparación."},
+{id:"cabeceras",name:"Otras cabeceras",women:11.9,men:7.6,gap:4.3,context:"La diferencia publicada entre las tasas de desocupación femenina y masculina es de 4,3 puntos porcentuales."},
+{id:"diez",name:"10 ciudades",women:12.3,men:9.4,gap:2.9,context:"Este dominio presenta la mayor tasa femenina entre los dominios enumerados, 12,3 %, pero no la mayor brecha."},
+{id:"trece",name:"13 ciudades y áreas metropolitanas",women:9.7,men:7.8,gap:1.9,context:"Se presenta la menor brecha publicada entre los dominios mostrados: 1,9 puntos porcentuales."}
+];
+var national=[
+{id:"tgp",name:"Tasa global de participación (TGP)",women:52.7,men:76.1,gap:23.4,context:"Mide la proporción de la población en edad de trabajar que integra la fuerza de trabajo. La brecha oficial de 23,4 puntos favorece a los hombres."},
+{id:"to",name:"Tasa de ocupación (TO)",women:47.1,men:70.9,gap:23.7,context:"Mide la proporción de la población en edad de trabajar que está ocupada. La brecha oficial de 23,7 puntos favorece a los hombres."},
+{id:"td",name:"Tasa de desocupación (TD)",women:10.6,men:6.9,gap:3.6,context:"Mide la proporción de la fuerza de trabajo desocupada. La brecha oficial de 3,6 puntos refleja una tasa mayor en mujeres."}
+];
+var view="tasas", selected="rural";
+var fmt=function(v){return v.toFixed(1).replace(".",",");};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+var chart=document.getElementById("chart"),details=document.getElementById("details");
+var allTabs=Array.prototype.slice.call(document.querySelectorAll("[data-view]"));
+function bar(label,value,max,kind){
+ return '<div class="line"><span class="line-name">'+label+'</span><div class="track"><span class="bar '+kind+'" style="width:'+(100*value/max).toFixed(2)+'%"></span></div><strong class="number">'+fmt(value)+(kind==="gap"?" p.p.":" %")+'</strong></div>';
+}
+function render(){
+ var isNational=view==="indicadores";
+ var items=isNational?national:domains;
+ if(!items.some(function(x){return x.id===selected;})){selected=items[0].id;}
+ allTabs.forEach(function(b){var active=b.dataset.view===view;b.setAttribute("aria-selected",active?"true":"false");b.tabIndex=active?0:-1;});
+ document.getElementById("chart-panel").setAttribute("aria-labelledby","tab-"+view);
+ var legend=document.getElementById("legend"),axis=document.getElementById("axis");
+ legend.innerHTML=view==="brechas"?'<span class="legend-item"><i class="dot gap"></i>Brecha publicada por el DANE (p.p.)</span>':'<span class="legend-item"><i class="dot"></i>Mujeres</span><span class="legend-item"><i class="dot man"></i>Hombres</span>';
+ var max=view==="brechas"?8:(isNational?80:15);
+ var steps=view==="brechas"?[0,2,4,6,8]:isNational?[0,20,40,60,80]:[0,3,6,9,12,15];
+ axis.innerHTML=steps.map(function(x){return "<span>"+x+(view==="brechas"?" p.p.":" %")+"</span>";}).join("");
+ chart.innerHTML=items.map(function(r){
+ var bars=view==="brechas"?bar("Brecha",r.gap,max,"gap"):bar("Mujeres",r.women,max,"women")+bar("Hombres",r.men,max,"men");
+ return '<button type="button" class="group" data-id="'+r.id+'" aria-pressed="'+(selected===r.id)+'" aria-label="'+esc(r.name)+'. Mujeres: '+fmt(r.women)+' por ciento; hombres: '+fmt(r.men)+' por ciento; brecha oficial: '+fmt(r.gap)+' puntos porcentuales. Seleccionar para explicación."><span class="group-label">'+esc(r.name)+'<small>Seleccionar detalle</small></span><span class="series">'+bars+'</span></button>';
+ }).join("");
+ updateDetail(items);
+ renderTable(items,isNational);
+}
+function updateDetail(items){
+ var r=items.find(function(x){return x.id===selected;})||items[0];
+ if(!r)return;
+ details.innerHTML='<span class="pill-label">Detalle seleccionado</span><div class="detail-title">'+esc(r.name)+' · '+fmt(r.gap)+' puntos porcentuales</div><p class="detail-text">'+esc(r.context)+'</p>';
+ Array.prototype.forEach.call(chart.querySelectorAll("[data-id]"),function(b){b.setAttribute("aria-pressed",b.dataset.id===selected?"true":"false");});
+}
+function renderTable(items,isNational){
+ var head=document.querySelector("#data-table thead"),body=document.querySelector("#data-table tbody");
+ head.innerHTML="<tr><th scope='col'>"+(isNational?"Indicador nacional":"Dominio geográfico")+"</th><th scope='col'>Hombres (%)</th><th scope='col'>Mujeres (%)</th><th scope='col'>Brecha oficial (p.p.)</th></tr>";
+ body.innerHTML=items.map(function(r){return "<tr><td>"+esc(r.name)+"</td><td>"+fmt(r.men)+"</td><td>"+fmt(r.women)+"</td><td>"+fmt(r.gap)+"</td></tr>";}).join("");
+}
+document.querySelector(".tabs").addEventListener("click",function(e){
+ var b=e.target.closest("[data-view]"); if(!b)return;view=b.dataset.view;selected=view==="indicadores"?"tgp":"rural";render();b.focus();
+});
+document.querySelector(".tabs").addEventListener("keydown",function(e){
+ if(!["ArrowLeft","ArrowRight","Home","End"].includes(e.key))return;
+ e.preventDefault();var i=allTabs.indexOf(document.activeElement);if(i<0)i=0;
+ var next=e.key==="Home"?0:e.key==="End"?allTabs.length-1:(i+(e.key==="ArrowRight"?1:-1)+allTabs.length)%allTabs.length;
+ allTabs[next].click();allTabs[next].focus();
+});
+chart.addEventListener("click",function(e){var b=e.target.closest("[data-id]");if(!b)return;selected=b.dataset.id;updateDetail(view==="indicadores"?national:domains);});
+document.getElementById("download").addEventListener("click",function(){
+ var items=view==="indicadores"?national:domains;
+ var lines=[["Dominio o indicador","Hombres (%)","Mujeres (%)","Brecha oficial (p.p.)"]].concat(items.map(function(x){return [x.name,fmt(x.men),fmt(x.women),fmt(x.gap)];}));
+ var csv="\ufeff"+lines.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(";");}).join("\r\n");
+ var url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+ var a=document.createElement("a");a.href=url;a.download="dane-geih-jul-sep-2026-"+view+".csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},3000);
+});
+render();
+})();
+</script>
+<!-- GoatCounter: un registro por carga de pagina; la consulta publica de TOTAL no registra visitas adicionales. -->
+<script data-goatcounter="https://metodos-evidencia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var counter=document.getElementById('me-visit-total');
+  if(!counter) return;
+  fetch('https://metodos-evidencia.goatcounter.com/counter/TOTAL.json')
+    .then(function(response){if(!response.ok) throw new Error('Conteo publico no disponible');return response.json();})
+    .then(function(data){
+      if(data && (typeof data.count==='string'||typeof data.count==='number')){
+        counter.textContent=String(data.count);
+      }
+    })
+    .catch(function(){
+      counter.title='Activa el conteo publico en Settings de GoatCounter o verifica si el navegador bloquea la consulta.';
+    });
+})();
+</script>
+</body>
+</html>

@@ -366,6 +366,21 @@
 .me-visit-count strong{color:#08716f;font-size:14px;font-variant-numeric:tabular-nums;font-weight:850}
 .footer029 .me-visit-count{grid-column:1/-1;justify-self:end}
 @media(max-width:840px){.footer029 .me-visit-count{justify-self:center}}
+
+/* Candidato 033. Publicación acumulativa, sin sobreescritura de lecturas */
+.me033-pre{padding:8px 14px;background:#e3f4ee;color:#145e57;text-align:center;font-size:12px;font-weight:780;border-bottom:1px solid #afdacf}
+.me033-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0}
+.me033-card{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #d5e4e3;border-radius:16px;padding:20px;text-decoration:none!important;color:#18374b;box-shadow:0 6px 18px #18354409}
+.me033-card:hover,.me033-card:focus-visible{border-color:#2c9388;box-shadow:0 8px 25px #174e521a}
+.me033-card:first-child{background:linear-gradient(130deg,#f0faf7,#fff);border-color:#88cabc}
+.me033-card strong{font-size:18px;line-height:1.35}
+.me033-card p{font-size:13px;color:#556e7e;line-height:1.6;flex:1;margin:0}
+.me033-small{font-size:11px;font-weight:800;color:#11776c;text-transform:uppercase;letter-spacing:.06em}
+.me033-meta{font-size:11px;color:#69808c}
+.me033-link{font-size:13px;font-weight:800;color:#08756c;margin-top:auto}
+.me033-back{display:inline-flex;padding:9px 12px;border:1px solid #b8ddd7;border-radius:10px;text-decoration:none;color:#12675f;margin-bottom:14px;background:#f1faf8;font-size:13px}
+@media(max-width:1050px){.me033-grid{grid-template-columns:1fr 1fr}.me033-card:first-child{grid-column:span 2}}
+@media(max-width:700px){.me033-grid{grid-template-columns:1fr}.me033-card:first-child{grid-column:span 1}.me033-card strong{font-size:17px}}
 </style>
 </head>
 <body>
@@ -583,6 +598,16 @@ function updateAmount(){if(!el('amountValue'))return;el('amountValue').textConte
   templates.radar=radarPublic027;
   templates.analisis=function(){return analysis()
       .replace('Miniartículo demostrativo · IPC nacional','Análisis explicativo · IPC nacional');};
+function me033Catalog(){return '<section class="page-head"><div class="eyebrow">DATOS BAJO ANÁLISIS · COLECCIÓN</div><h1>Explore los datos y sus interpretaciones</h1><p>Una colección de estudios y recursos interactivos. Los trabajos existentes permanecen disponibles.</p></section><div class="me033-grid">'+"<a class=\"me033-card\" href=\"analisis/brecha-desempleo-mujeres-hombres-colombia.html\"><span class=\"me033-small\">NUEVO · GEIH DANE</span><strong>¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?</strong><p>Tres vistas interactivas, tablas y comparaciones por ámbito geográfico.</p><span class=\"me033-meta\">GEIH · Julio–septiembre 2026 · Datos oficiales DANE</span><span class=\"me033-link\">Leer y explorar ↗</span></a><a class=\"me033-card\" href=\"analisis/inflacion-y-nivel-de-precios.html\"><span class=\"me033-small\">ANÁLISIS 01 · IPC</span><strong>¿Si la inflación baja, por qué los precios pueden seguir aumentando?</strong><p>Se conserva íntegro el gráfico de nivel de precios e inflación anual.</p><span class=\"me033-meta\">IPC Colombia · Contenido existente</span><span class=\"me033-link\">Leer y explorar ↗</span></a><a class=\"me033-card\" href=\"analisis/significancia-estadistica-e-importancia.html\"><span class=\"me033-small\">LECTURA 02 · INFERENCIA</span><strong>¿Un resultado estadísticamente significativo es necesariamente importante?</strong><p>Se conserva íntegro el experimento sobre n, tamaño del efecto y relevancia.</p><span class=\"me033-meta\">Métodos estadísticos · Contenido existente</span><span class=\"me033-link\">Leer y explorar ↗</span></a>"+'</div>';}
+ templates.analisis=me033Catalog;
+ const me033Routes={"inflacion":"analisis/inflacion-y-nivel-de-precios.html","metodo":"analisis/significancia-estadistica-e-importancia.html","desempleo":"analisis/brecha-desempleo-mujeres-hombres-colombia.html"};
+ document.addEventListener('click',function(e){
+  const t=e.target.closest('[data-article]');if(!t||!me033Routes[t.dataset.article])return;
+  e.preventDefault();e.stopImmediatePropagation();location.href=me033Routes[t.dataset.article];
+ },true);
+ const section033=new URLSearchParams(location.search).get('seccion');
+ if(['inicio','radar','analisis','mitos','laboratorio','recursos'].includes(section033))state.page=section033;
+
   templates.mitos=function(){return myths()
       .replace('Se incluyen en el Radar dos investigaciones de Nature publicadas en 2026 que estudian estas cuestiones.','Se puede profundizar en estas diferencias consultando investigaciones sobre reproducibilidad y replicabilidad.')
       .replace('Ver las investigaciones ↗','Explorar el Radar ↗');};

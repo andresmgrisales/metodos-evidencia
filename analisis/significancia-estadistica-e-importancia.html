@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Métodos & Evidencia: artículos de divulgación científica, análisis de datos, estadística y experimentos interactivos con fuentes verificables.">
+<title>¿Un resultado estadísticamente significativo es necesariamente importante? · Métodos &amp; Evidencia</title>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://andresmgrisales.github.io/metodos-evidencia/analisis/significancia-estadistica-e-importancia.html">
+<meta name="theme-color" content="#163b52">
+<style>
+:root{--ink:#12233a;--ink2:#41546c;--muted:#708097;--teal:#0b8c89;--teald:#08716f;--blue:#233b78;--light:#f5f7fb;--line:#e1e7ef;--white:#fff;--warm:#fbf6ed;--shadow:0 10px 32px rgba(31,48,75,.055)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--light);color:var(--ink);font:15px/1.62 system-ui,-apple-system,'Segoe UI',Arial,sans-serif}button,input,select{font:inherit}a{color:var(--teald);text-decoration:none}a:hover{text-decoration:underline}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #67c4bb;outline-offset:2px}button:disabled{opacity:.5;cursor:not-allowed}
+.shell{max-width:1550px;margin:0 auto;min-height:100vh;display:grid;grid-template-columns:263px minmax(0,1fr)}.sidebar{padding:27px 18px 20px 20px;background:#fcfdff;border-right:1px solid var(--line);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:22px}.brand{display:flex;align-items:center;gap:11px;padding:4px 7px 12px}.symbol{width:42px;height:42px;display:grid;place-items:center;background:#123e5d;color:white;font-weight:800;font-size:20px;border-radius:13px}.brand-title{font-size:16px;line-height:1.23;font-weight:780;letter-spacing:-.3px}.brand-sub{font-size:10px;letter-spacing:1.25px;color:var(--muted);font-weight:700;text-transform:uppercase}.menu-kicker{font-size:10px;font-weight:750;color:#91a0af;letter-spacing:1.6px;padding:0 12px}.menu{display:flex;flex-direction:column;gap:4px}.menu button{display:flex;align-items:center;gap:12px;border:0;border-radius:11px;padding:11px 12px;color:#506079;background:transparent;text-align:left;font-weight:630;white-space:nowrap}.menu button:hover{background:#edf3f8;color:#17375c}.menu button.active{background:#e4f2f1;color:#075c5b}.menu button .ic{font-size:18px;width:24px;text-align:center}.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding:16px 12px;font-size:12px;color:var(--muted)}.sidebar-bottom strong{display:block;color:var(--ink2);font-size:12px;margin-bottom:5px}
+.main{min-width:0;padding:24px clamp(20px,4.1vw,64px) 38px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:28px}.eyebrow{font-size:11px;color:var(--teald);letter-spacing:1.6px;font-weight:800;text-transform:uppercase}.top-status{background:#e5efed;color:#17675c;border:1px solid #cce6df;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:750}.date{color:var(--muted);font-size:12px}.container{max-width:1110px}.hero{background:linear-gradient(117deg,#152d4c 0%,#234264 54%,#0e666b 115%);color:#fff;border-radius:22px;padding:clamp(23px,3.4vw,42px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(210px,.8fr);gap:15px;min-height:285px;overflow:hidden;position:relative}.hero:after{content:'';width:340px;height:340px;border:1px solid rgba(255,255,255,.1);border-radius:50%;position:absolute;right:-160px;top:-180px;box-shadow:0 0 0 62px rgba(255,255,255,.035),0 0 0 122px rgba(255,255,255,.025);pointer-events:none}.hero h1{font-weight:760;letter-spacing:-1.25px;font-size:clamp(27px,3.6vw,43px);line-height:1.16;margin:10px 0 15px}.hero p{margin:0 0 22px;color:#d8e4ee;max-width:600px;font-size:15px}.hero-visual{align-self:center;justify-self:center;width:100%;max-width:285px;opacity:.94}.hero-visual svg{width:100%;height:auto;overflow:visible}.hero .eyebrow{color:#99e2d5}.btn{border:0;border-radius:10px;padding:10px 15px;font-size:13px;font-weight:730;background:var(--teal);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{background:var(--teald);text-decoration:none}.btn.light{background:#fff;color:#23405d}.btn.light:hover{background:#e8f6f3}.btn.ghost{background:#e6f1ef;color:var(--teald)}.btn.outline{background:#fff;border:1px solid #c9d8de;color:#1b5d63}.btn.mini{font-size:12px;padding:7px 10px}.btn:focus{outline-offset:3px}.section{margin:28px 0}.section-header{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:15px}.section-header h2,.page-head h1{margin:0;letter-spacing:-.7px;line-height:1.3}.section-header h2{font-size:22px}.section-header p,.page-head p{margin:5px 0 0;color:var(--muted)}.linkbtn{border:0;background:none;color:var(--teald);font-weight:740;padding:7px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:20px;min-width:0}.tile{border:1px solid #dfe7eb;background:#fff;border-radius:15px;padding:19px;text-align:left;min-height:148px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;transition:.18s}.tile:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#b8d6d2}.tile-ico{display:inline-grid;place-items:center;background:#e8f4f3;color:var(--teald);border-radius:11px;width:34px;height:34px;font-size:18px}.tile strong{font-size:15px}.tile span:last-child{font-size:12px;color:var(--muted);line-height:1.5}.tag{display:inline-block;color:var(--teald);font-size:10px;font-weight:780;text-transform:uppercase;letter-spacing:1.1px}.muted{color:var(--muted)}.small{font-size:12px}.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.kpi{padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff}.kpi strong{display:block;font-size:27px;letter-spacing:-.8px;line-height:1.3;margin:5px 0}.kpi span{font-size:11px;color:var(--muted);font-weight:650}.highlight{background:#ecf6f4;border:1px solid #cae5df;border-radius:14px;padding:16px}.highlight h3{margin:2px 0 7px}.highlight p{margin:0}.label{display:block;font-size:12px;font-weight:730;color:#53667d;margin-bottom:7px}.field{border:1px solid #d7dfe8;background:#fff;border-radius:10px;padding:10px 11px;width:100%;min-width:0;color:var(--ink)}.filterbar{display:grid;grid-template-columns:1.4fr 1fr;gap:13px;margin-bottom:16px}.radar-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:12px}.radar-item h3{font-size:18px;margin:6px 0;line-height:1.35}.radar-item p{margin:10px 0;color:var(--ink2);font-size:14px}.meta{font-size:11px;color:#74839a;display:flex;gap:9px;flex-wrap:wrap;margin:8px 0}.item-actions{display:flex;align-items:center;gap:10px;margin-top:15px;flex-wrap:wrap}.expansion{margin-top:14px;border-left:3px solid var(--teal);padding:10px 16px;background:#f2f8f7;border-radius:0 8px 8px 0}.expansion p{margin:4px 0 8px}.page-head{margin-bottom:22px}.page-head h1{font-size:clamp(26px,3vw,34px)}.page-head .eyebrow{margin-bottom:8px}.publication{max-width:820px}.publication p{font-size:15px;color:#34465c}.publication h2{font-size:20px;letter-spacing:-.3px;margin-top:26px}.tabs{display:flex;gap:5px;background:#edf2f6;border-radius:11px;padding:5px;width:max-content;max-width:100%;flex-wrap:wrap}.tabs button{border:0;background:transparent;border-radius:8px;padding:8px 13px;font-size:12px;color:#63758b;font-weight:730}.tabs button.selected{background:#fff;color:var(--ink);box-shadow:0 2px 7px #182d4715}.chart{width:100%;max-height:345px;display:block;overflow:visible}.chart text{font-family:system-ui,'Segoe UI',sans-serif;fill:#66778e;font-size:12px}.chart .gridline{stroke:#dfe8ee;stroke-width:1;stroke-dasharray:3 5}.chart .baseline{stroke:#aebcc9;stroke-width:1.5}.chart .data-line{fill:none;stroke:#087e83;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.chart .dot{fill:#087e83;stroke:#fff;stroke-width:3}.chart .bar{fill:#238c95}.note{border-left:3px solid #e4aa5c;background:#fbf7ee;border-radius:0 9px 9px 0;padding:12px 14px;color:#715d3b;font-size:12px}.source-list a{word-break:break-word}.source-list{padding-left:20px;font-size:13px}.source-list li{margin:5px 0}.explorer-hero{background:linear-gradient(120deg,#e7f2f1,#f4f8fa);border:1px solid #d0e7e2;border-radius:14px;padding:17px}.control-row{display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap}.control-row strong{font-size:25px}.slider{width:100%;accent-color:var(--teal);cursor:pointer;margin:11px 0 4px}.center{text-align:center}.display-num{font-size:clamp(27px,3.6vw,42px);font-weight:810;letter-spacing:-1px;color:var(--teald);line-height:1.2}.quiz-options{display:grid;gap:9px;margin:14px 0}.quiz-options button{border:1px solid #dce5ec;background:#fff;border-radius:10px;padding:12px 14px;text-align:left;color:var(--ink);font-weight:600}.quiz-options button:hover{border-color:var(--teal);background:#f4fbfa}.quiz-options button.chosen{border-color:var(--teal);background:#e4f4f1}.feedback{border:1px solid #cbe3da;background:#edf7f3;padding:13px 15px;border-radius:11px;font-size:13px}.formula{font-size:19px;text-align:center;padding:10px 0;letter-spacing:1px}.resource{display:flex;gap:14px;align-items:flex-start}.resource-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#eaf4f2;font-size:20px;flex-shrink:0}.resource h3{margin:0 0 5px;font-size:15px}.resource p{margin:0;font-size:13px;color:var(--muted)}.footer{max-width:1110px;margin-top:35px;border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.pill{display:inline-block;background:#e8f2f0;color:#166660;border-radius:50px;font-size:11px;font-weight:730;padding:3px 8px}.cols-analysis{display:grid;grid-template-columns:1fr .85fr;gap:16px}.overline{color:#73859a;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800}.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-stat strong{display:block;font-size:24px;line-height:1.15}.mini-stat span{color:var(--muted);font-size:11px}.nav-mobile{display:none}.divider{height:1px;background:var(--line);margin:18px 0}.text-link{font-size:13px;font-weight:740}h3{line-height:1.35}ul{padding-left:22px}code{font-family:ui-monospace,Consolas,monospace;font-size:12px}.chart-help{font-size:11px;color:var(--muted);margin-top:4px}
+@media(max-width:1000px){.shell{grid-template-columns:218px minmax(0,1fr)}.sidebar{padding:22px 10px}.main{padding:22px}.hero{grid-template-columns:1fr .65fr}.cols-analysis{grid-template-columns:1fr}}
+@media(max-width:730px){.featured-card{grid-template-columns:1fr!important}.shell{display:block}.sidebar{position:static;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:11px 13px;gap:5px}.brand{padding:3px 5px}.menu-kicker,.sidebar-bottom{display:none}.menu{flex-direction:row;overflow-x:auto;padding:2px 0 4px;gap:4px;scrollbar-width:thin}.menu button{padding:9px 10px;font-size:12px;gap:5px}.menu button .ic{font-size:14px;width:18px}.main{padding:20px 14px}.hero{min-height:initial;padding:23px;grid-template-columns:1fr}.hero-visual{display:none}.grid3,.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(3,1fr)}.kpi{padding:12px}.kpi strong{font-size:20px}.filterbar{grid-template-columns:1fr}.topbar{margin-bottom:18px}.section{margin:24px 0}.section-header h2{font-size:19px}.stat-row{grid-template-columns:1fr 1fr}.publication{max-width:none}}
+@media(max-width:410px){.kpis{grid-template-columns:1fr 1fr}.topbar{flex-wrap:wrap}.stat-row{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* ME v0.5: accesibilidad, navegación móvil y miniartículo metodológico */
+.skip-link{position:absolute;left:14px;top:-100px;z-index:100;background:#fff;color:#123e5d;border:2px solid #0b8c89;border-radius:9px;padding:8px 12px}.skip-link:focus{top:12px}
+.article-switch{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin:0 0 25px}
+.article-switch button{border:1px solid #cadde1;background:#fff;border-radius:12px;text-align:left;padding:11px 15px;color:#36526a;font-size:13px;min-width:220px;flex:1;line-height:1.5}
+.article-switch button strong{display:block;font-size:14px;color:var(--ink)}
+.article-switch button.selected{border-color:#0b8c89;background:#e8f5f2;box-shadow:inset 0 0 0 1px #0b8c89}
+.method-grid{display:grid;grid-template-columns:1fr;gap:17px}
+.method-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.method-controls .control-row{margin-bottom:4px}
+.method-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.method-metric{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fff;min-width:0}
+.method-metric .overline{font-size:10px;line-height:1.4;letter-spacing:.8px}
+.method-metric .num{font-size:24px;line-height:1.35;font-weight:800;letter-spacing:-.5px;color:#214968;overflow-wrap:anywhere}
+.method-metric .support{font-size:12px;color:#65748c}
+.ci-plot{width:100%;height:auto;display:block;max-width:850px;margin:0 auto}
+.method-takeaway{padding:15px;border:1px solid #cce4df;background:#eff8f5;border-radius:13px}
+.method-takeaway strong{display:block;color:#145754;margin-bottom:3px}
+.method-takeaway p{margin:2px 0;color:#274b5d}
+.method-notes{padding-left:20px}
+.method-notes li{margin:8px 0}
+.mini-pill{display:inline-flex;align-items:center;border-radius:100px;padding:3px 10px;background:#eaf4f3;color:#115b5d;font-size:11px;font-weight:700}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nav-short{display:none}
+@media(max-width:930px){.method-grid{grid-template-columns:1fr}.method-controls{grid-template-columns:1fr}.method-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:730px){
+ .nav-long{display:none}.nav-short{display:inline}.menu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;gap:5px}
+ .menu button{min-width:0;white-space:normal;display:flex;align-items:center;justify-content:center;line-height:1.2;text-align:center;padding:11px 5px;min-height:42px}
+ .menu button .ic{font-size:15px;width:15px}.method-metrics{grid-template-columns:1fr 1fr}.article-switch{gap:7px}.article-switch button{min-width:0;flex-basis:100%}
+}
+@media(max-width:390px){.menu button .ic{display:none}.method-metrics{grid-template-columns:1fr 1fr}.method-metric .num{font-size:21px}}
+
+
+/* Radar editorial demo 0.6 */
+.status-pill{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700;background:#edf2f8;color:#405876}
+.status-pill.revisar{background:#e2f4f0;color:#086c66}.status-pill.descartado{background:#faecec;color:#8a4550}
+.review-buttons{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.review-buttons button{font-size:12px}.review-footer{margin-top:14px}
+@media(max-width:600px){.review-buttons .btn{flex:1 1 43%;white-space:normal}.tabs button{min-width:0}}
+
+/* Radar 0.7: indicadores de procedencia y alcance */
+.radar-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:17px 0 16px}
+.radar-summary>div{border:1px solid #dfebe9;border-radius:13px;background:#f2f8f7;padding:12px 14px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.radar-summary strong{font-size:24px;line-height:1.1;color:#145954}
+.radar-summary span{font-size:12px;color:#596a7f}
+@media(max-width:470px){.radar-summary>div{padding:10px 8px}.radar-summary strong{font-size:20px}.radar-summary span{font-size:11px;line-height:1.35}}
+
+/* METODOS & EVIDENCIA V0.8 */
+.radar-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;padding:8px;background:#edf4f4;border-radius:14px}
+.radar-tabs button{border:1px solid transparent;border-radius:10px;padding:10px 13px;background:transparent;color:#4e6074;font-weight:760;font-size:12px;cursor:pointer;flex:1 1 auto}
+.radar-tabs button.active{color:#115f5b;border-color:#c6dedb;background:white;box-shadow:0 2px 10px #173b6315}
+.trend-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.trend-summary>div{border-radius:13px;background:#f0f6f4;border:1px solid #dcebe7;padding:15px;display:flex;flex-direction:column;gap:4px}
+.trend-summary .k{font-size:10px;color:#63768c;text-transform:uppercase;letter-spacing:.8px;font-weight:750}
+.trend-summary .v{font-size:17px;font-weight:800;color:#1d4751}
+.trend-row{border-radius:14px;border:1px solid var(--line);padding:16px;background:#fff;margin:10px 0}
+.trend-svg{display:block;width:100%;max-width:850px;height:auto;margin:7px auto}
+.trend-table{width:100%;border-collapse:collapse;font-size:13px}
+.trend-table th,.trend-table td{border-bottom:1px solid #e0e8ec;padding:10px;text-align:right}
+.trend-table th:first-child,.trend-table td:first-child{text-align:left}
+.trend-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.trend-empty{min-height:195px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;border:1px dashed #a8b8c4;background:#f8fafb;border-radius:16px;text-align:center;padding:30px 18px}
+.status-info{display:inline-flex;align-items:center;gap:5px;background:#eef4f5;color:#406278;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:750}
+.status-info.demo{background:#fff2e0;color:#955a12}
+.status-info.pending{background:#f2f4f7;color:#5a6573}
+.smallprint{font-size:12px;color:#607189;line-height:1.65}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin:13px 0}
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.policy-criterion{border:1px solid #dce6ec;background:#fff;border-radius:13px;padding:16px}
+.policy-criterion strong{display:block;font-size:14px;margin:4px 0 7px;color:#25455c}
+.policy-criterion p{margin:0;color:#607188;font-size:12px}
+@media(max-width:730px){.trend-summary{grid-template-columns:1fr}.policy-grid{grid-template-columns:1fr}.radar-tabs button{flex:1 1 43%}}
+
+/* Monitor 0.9 · Real data and provenance */
+.reference-chip{background:#e8f5f2;border:1px solid #c5e9dd;border-radius:11px;padding:12px 15px;color:#155b52}
+.reference-chip strong{display:block;font-size:14px;margin-bottom:4px}
+.reference-chip p{margin:0;color:#28594f;font-size:13px;line-height:1.52}
+.trend-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.trend-actions .btn{white-space:normal;text-align:center}
+.warning-note{border-left:3px solid #d69b42;background:#fff8e9;padding:11px 14px;border-radius:0 8px 8px 0;margin-top:12px;font-size:13px;color:#674e25}
+.success-note{border-left:3px solid #0b8c89;background:#edf8f5;padding:11px 14px;border-radius:0 8px 8px 0;margin-top:12px;font-size:13px;color:#22584f}
+.ref-table{width:100%;max-width:600px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.ref-table th,.ref-table td{padding:7px 10px;border-bottom:1px solid #e6ebef;font-size:13px;text-align:right}
+.ref-table th:first-child,.ref-table td:first-child{text-align:left}
+.monitor-subtitle{font-size:13px;color:#5f7182;margin-top:2px}
+@media(max-width:540px){.trend-actions>.btn{flex:1 1 100%}.ref-table th,.ref-table td{font-size:12px}}
+
+/* 0.11: auditoría científica de 60 registros */
+.audit-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:15px 0}
+.audit-steps>div{background:#f4f8fa;border:1px solid #e1e9ee;border-radius:12px;padding:13px}
+.audit-steps strong{display:block;font-size:19px;color:#173c50}
+.audit-steps span{font-size:12px;color:#5b7180}
+.audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.audit-cell{border:1px solid #e0e9ed;border-radius:12px;padding:12px;background:#fff}
+.audit-cell strong{display:block;font-size:13px;color:#14384b}
+.audit-cell span{display:block;color:#5f7786;font-size:12px;margin-top:4px}
+.audit-cell .number{font-size:24px;color:#087c80;font-weight:800;margin:4px 0}
+.audit-item{padding:12px 0;border-bottom:1px solid #e8edf0}
+.audit-item h4{font-size:14px;line-height:1.35;margin:3px 0}
+.audit-item p{font-size:12px;margin:5px 0;line-height:1.5}
+.audit-progress{background:#f0f7f6;border:1px solid #bcded8;border-radius:10px;padding:10px 13px;margin:12px 0}
+.audit-progress strong{color:#17645c}
+.audit-actions{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}
+.audit-actions .btn:disabled{opacity:.48;cursor:not-allowed}
+@media(max-width:750px){.audit-grid{grid-template-columns:repeat(2,1fr)}.audit-steps{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:440px){.audit-grid{grid-template-columns:1fr 1fr}.audit-steps{grid-template-columns:1fr}.audit-actions .btn{width:100%}}
+
+
+/* ===== Catálogo acumulativo 0.17 ===== */
+.v17-hero{padding:clamp(19px,3vw,30px);border-radius:17px;color:white;background:linear-gradient(120deg,#143650 0%,#126b6e 100%);margin:16px 0 20px}
+.v17-hero h2{margin:5px 0 6px;font-size:clamp(22px,3vw,28px);letter-spacing:-.5px}
+.v17-hero p{color:#e2f1ef;max-width:770px;margin:0 0 15px}
+.v17-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:15px 0}
+.v17-card{border:1px solid #dfe8ea;background:#fff;border-radius:13px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.v17-card h3{margin:0;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
+.v17-card p{margin:0;color:#556b7c;font-size:13px;line-height:1.55}
+.v17-card .v17-footer{margin-top:auto;padding-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.v17-eyebrow{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:#087776}
+.v17-stat{font-size:12px;color:#4a6377}
+.v17-demo{display:inline-flex;border:1px solid #cfd8de;background:#f5f7f9;color:#536779;border-radius:50px;padding:3px 8px;font-size:10px;font-weight:750}
+.v17-published{display:inline-flex;background:#e6f5ef;color:#116956;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:750}
+.v17-tombstone{display:inline-flex;background:#fff0ef;color:#9a3532;border-radius:50px;padding:3px 8px;font-size:10px;font-weight:750}
+.v17-filter{display:grid;grid-template-columns:minmax(180px,2fr) repeat(3,minmax(130px,1fr));gap:12px;margin:17px 0;padding:17px;border:1px solid #e2e9ed;border-radius:14px;background:#fff}
+.v17-filter .field{width:100%;max-width:100%;min-width:0}
+.v17-filter label{display:block;font-size:11px;font-weight:750;color:#435971;margin-bottom:4px}
+.v17-calendar{width:100%;border-collapse:collapse;font-size:13px}
+.v17-calendar th,.v17-calendar td{border-bottom:1px solid #e8ecef;padding:10px 9px;text-align:left;vertical-align:top}
+.v17-calendar th{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#556b7c}
+.v17-tag{display:inline-block;margin-right:5px;margin-bottom:3px;border-radius:50px;background:#eaf2f3;color:#26636b;padding:2px 9px;font-size:11px}
+.v17-record{max-width:900px}
+.v17-record h1{font-size:clamp(25px,3.3vw,34px);line-height:1.2;letter-spacing:-.6px}
+.v17-sources{overflow-wrap:anywhere}
+.v17-history{border-left:3px solid #6ab7b0;padding-left:13px;margin:15px 0}
+.v17-history>div{border-bottom:1px solid #e8edf0;padding:9px 0}
+.v17-spotlight{padding:18px;border:1px solid #c9e3dd;border-radius:14px;background:#f0f9f6;margin:18px 0}
+.v17-spotlight h2{margin:0 0 5px;font-size:19px}
+.v17-spotlight p{margin:0 0 12px;color:#4c6971;font-size:13px}
+.v17-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:11px}
+.v17-empty{padding:24px;border:1px dashed #cbd9df;background:#fff;border-radius:13px;color:#637588}
+.v17-wrap{overflow-x:auto;max-width:100%}
+@media(max-width:960px){.v17-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v17-filter{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.v17-grid,.v17-filter{grid-template-columns:1fr}.v17-filter{padding:13px}.v17-card{padding:14px}.v17-calendar{min-width:520px}.v17-hero{padding:18px}.v17-actions .btn{width:100%}}
+
+
+/* ===== 0.18 · Calendarizar preparación sin autopublicar ===== */
+.a18-hero{border-radius:17px;background:linear-gradient(110deg,#15384e,#087d7c);color:white;padding:clamp(20px,3vw,32px);margin:15px 0 22px}
+.a18-hero h1{font-size:clamp(27px,3.3vw,36px);margin:6px 0 12px;color:#fff}
+.a18-hero p{max-width:800px;color:#deecee;margin:0;font-size:14px;line-height:1.65}
+.a18-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.a18-kpi{padding:16px;background:#fff;border:1px solid #dce6e9;border-radius:14px}
+.a18-kpi b{display:block;font-size:27px;line-height:1.4;color:#18586a}
+.a18-kpi span{font-size:11px;color:#526c79}
+.a18-split{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:16px;align-items:start}
+.a18-card{background:#fff;border:1px solid #e0e9e9;border-radius:14px;padding:16px;margin-bottom:12px;min-width:0}
+.a18-card h3{margin:6px 0 6px;font-size:16px;line-height:1.35}
+.a18-card p{font-size:12px;line-height:1.5;color:#53687d;margin:5px 0 10px}
+.a18-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:#657587;font-size:11px}
+.a18-pill{background:#eff3f4;color:#416473;border-radius:20px;padding:4px 9px;font-size:10px;font-weight:800}
+.a18-pill.due{background:#fdf1dc;color:#96611b}
+.a18-pill.review{background:#e7f3f2;color:#136d64}
+.a18-list{min-width:0}
+.a18-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.a18-filters label{font-size:11px;font-weight:750;color:#435d70;display:block;margin-bottom:5px}
+.a18-filters select,.a18-filters input{width:100%;min-width:0;background:white;border:1px solid #d7e1e5;color:#23384e;border-radius:10px;padding:9px 10px;font-size:13px}
+.a18-detail{margin-top:12px;padding:12px;border:1px solid #cde3e1;background:#f4faf9;border-radius:10px}
+.a18-detail ul{font-size:12px;line-height:1.65;margin:9px 0 5px;padding-left:21px;color:#334f5b}
+.a18-panel{border:1px solid #dce7e6;background:#fff;border-radius:14px;padding:18px;margin-bottom:13px}
+.a18-panel h2{font-size:18px;margin:0 0 9px}
+.a18-panel p{font-size:12px;color:#587082;line-height:1.65}
+.a18-steps{display:grid;gap:8px}
+.a18-steps div{padding:10px 12px;border-left:3px solid #58a6a0;background:#f2f7f7;color:#405a6e;font-size:12px;border-radius:6px}
+.a18-bar{height:7px;border-radius:20px;background:#e5eeee;overflow:hidden;margin:12px 0}
+.a18-bar span{height:100%;display:block;background:#168a82;border-radius:20px}
+.a18-note{font-size:12px;color:#466773;padding:12px;background:#eff6f7;border:1px solid #d5e5e5;border-radius:12px;margin-top:12px}
+@media(max-width:1000px){.a18-split{grid-template-columns:1fr}.a18-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.a18-filters{grid-template-columns:1fr}.a18-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.a18-kpi{padding:13px}.a18-card{padding:14px}}
+
+
+/* Integración editorial 0.26; no altera simuladores ni lógica del prototipo */
+.a026-callout{margin:19px 0 25px;padding:21px;border-radius:16px;border:1px solid #badbd6;background:linear-gradient(110deg,#effaf7,#fff)}
+.a026-callout h2{font-size:clamp(21px,2.8vw,27px);line-height:1.23;margin:8px 0 12px;color:#163b51}
+.a026-callout p{font-size:14px;color:#4a6172;line-height:1.6}
+.a026-kicker{font-size:11px;letter-spacing:.9px;font-weight:850;color:#0b7974}
+.a026-badge{display:inline-block;border:1px solid #b5e1ca;background:#e4f5eb;color:#216a4d;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800}
+.a026-btn{padding:10px 16px;border:0;border-radius:10px;background:#0b817a;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.a026-btn:hover{background:#076a66}
+.a026-details{background:#fff;border:1px solid #c8ddd8;border-radius:13px;overflow:hidden;margin-top:16px}
+.a026-details>summary{padding:15px 19px;cursor:pointer;font-weight:800;color:#155d66;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.a026-details>summary::-webkit-details-marker{display:none}
+.a026-details>summary::after{content:"+";font-size:22px;line-height:1}
+.a026-details[open]>summary::after{content:"−"}
+.a026-details[open]>summary{border-bottom:1px solid #dfe7ec}
+.a026-embed{background:#fff;color:#203448;font-size:15px}
+.a026-embed .reading{background:#fff;margin:0;box-shadow:none;border:none}
+.a026-embed .reading-head{padding:clamp(19px,4vw,39px);border-bottom:1px solid #dfe7ec}
+.a026-embed .reading-meta,.a026-embed .graphic-kicker{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#087f80}
+.a026-embed .pill{display:inline-block;border:1px solid #c6e3d6;background:#eaf6ee;color:#25644c;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800}
+.a026-embed .reading h2{font-size:clamp(23px,3.5vw,37px);color:#15384b;line-height:1.22;margin:15px 0;letter-spacing:-.5px}
+.a026-embed .lead{font-size:17px;color:#4e6175;margin-bottom:16px}
+.a026-embed .submeta{font-size:12px;color:#65778a}
+.a026-embed .infographic{padding:clamp(16px,3.4vw,30px);background:linear-gradient(115deg,#effaf7,#f7f9fb);border-bottom:1px solid #dfe7ec}
+.a026-embed .infographic figcaption{font-size:11px;font-weight:800;letter-spacing:1px;color:#526b7b;margin-bottom:12px}
+.a026-embed .graphic-body{border:1px solid #d9e9e6;background:#fff;border-radius:14px;padding:clamp(13px,3vw,23px)}
+.a026-embed .flow3{display:flex;gap:7px;align-items:center;margin:20px 0}
+.a026-embed .flow-number{flex:1;min-width:0;padding:12px 4px;text-align:center;background:#e8f4f2;border-radius:10px}
+.a026-embed .flow-number strong{display:block;color:#086b71;font-size:clamp(20px,3vw,31px);line-height:1.2}
+.a026-embed .flow-number span{display:block;color:#587480;font-size:11px;margin-top:4px}
+.a026-embed .arrow{font-size:23px;color:#418f8e}
+.a026-embed .graphic-message{background:#ecf6f4;color:#165c62;border-radius:9px;padding:13px 15px;display:flex;gap:8px}
+.a026-embed .graphic-chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.a026-embed .graphic-chips span{font-size:12px;background:#f5f7f9;border:1px solid #e1e7eb;border-radius:30px;padding:5px 10px}
+.a026-embed .graphic-footnote{color:#607380;font-size:12px;margin:9px 0 0}
+.a026-embed .reading-content{padding:clamp(20px,4vw,39px)}
+.a026-embed .reading-content>h3{font-size:20px;margin:0 0 19px}
+.a026-embed .section-narrative{margin-bottom:22px}
+.a026-embed .section-narrative h3{font-size:17px;margin:0 0 7px;color:#154e58}
+.a026-embed .section-narrative p{margin:0;line-height:1.66;color:#334b5f}
+.a026-embed .interpretation{background:#fff8ec;border-left:4px solid #c99954;border-radius:0 10px 10px 0;margin:0 clamp(20px,4vw,39px) 27px;padding:15px 20px}
+.a026-embed .interpretation h3{margin:0 0 7px;font-size:14px}
+.a026-embed .interpretation p{margin:0;color:#67563e;font-size:13px}
+.a026-embed .sources{margin:0 clamp(20px,4vw,39px);padding:25px 0 33px;border-top:1px solid #dfe7ec;font-size:13px;overflow-wrap:anywhere}
+.a026-embed .sources p{margin:7px 0}
+.a026-home{margin:22px 0;border:1px solid #beded6;background:#edf8f4;border-radius:16px;padding:21px}
+.a026-home h2{font-size:21px;margin:7px 0 9px;color:#155060}
+.a026-home p{font-size:14px;color:#4a6172}
+@media(max-width:650px){.a026-callout{padding:14px}.a026-embed .flow3{gap:4px}.a026-embed .flow-number strong{font-size:20px}.a026-embed .flow-number span{font-size:10px}.a026-embed .arrow{font-size:17px}}
+
+
+/* Navegación de audiencia general · vista editorial de revisión */
+.m27-areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 26px}
+.m27-areas article{border:1px solid #dce5ec;background:#fff;border-radius:15px;padding:19px;min-width:0}
+.m27-areas strong{font-size:14px;color:#0a7770}.m27-areas h3{font-size:17px;margin:8px 0 7px;color:#203d54}
+.m27-areas p{font-size:13px;color:#506678;line-height:1.58;margin:0}
+.m27-note{padding:17px 19px;background:#eef8f6;border:1px solid #d0e5df;border-radius:12px;margin-top:20px;color:#2c5d62;font-size:13px;line-height:1.6}
+.m27-header{margin-bottom:25px}.m27-header h1{font-size:clamp(29px,4vw,40px);line-height:1.2;margin:6px 0 12px}
+.m27-header p{max-width:780px;color:#586a7e;font-size:15px}
+.m27-hero{margin-top:12px;background:linear-gradient(115deg,#16475a,#097d79);border-radius:19px;color:#fff;padding:clamp(22px,4vw,36px)}
+.m27-hero h2{color:#fff;font-size:clamp(24px,3.4vw,33px);margin:9px 0;line-height:1.24}
+.m27-hero p{color:#e1f0f0;font-size:15px;line-height:1.6;max-width:73ch}
+.m27-hero .a026-btn{background:#fff;color:#125d61}.m27-hero .a026-btn:hover{background:#e1f2ed}
+.m27-muted{font-size:13px;color:#607387}
+.m27-callout{display:flex;gap:15px;align-items:center;flex-wrap:wrap;justify-content:space-between;padding:18px 22px;background:#fff;border:1px solid #dce5ec;border-radius:15px;margin:20px 0}
+.m27-callout p{margin:0;color:#536c7b;font-size:13px;max-width:64ch}
+@media(max-width:750px){.m27-areas{grid-template-columns:1fr}.m27-callout{align-items:flex-start}.m27-hero{padding:20px}}
+
+
+/* v0.28: identidad editorial y acceso permanente a una sola lectura destacada */
+.brand>div:last-child{min-width:0}
+.brand-sub{font-size:11px;line-height:1.4;font-weight:550;text-transform:none;letter-spacing:0;max-width:280px;margin-top:6px;color:#526779}
+.topbar.featured028{position:sticky;top:8px;z-index:45;display:block;margin:0 0 25px;padding:0;
+  background:rgba(255,255,255,.98);border:1px solid #cedfdf;border-left:4px solid #0b8882;
+  border-radius:14px;box-shadow:0 5px 23px rgba(18,52,71,.10);overflow:hidden}
+.featured028-click{width:100%;display:flex;gap:18px;align-items:center;text-align:left;min-width:0;padding:14px 17px;
+  border:0;background:transparent;color:inherit;cursor:pointer;font:inherit}
+.featured028-click:hover{background:#f1f9f7}
+.featured028-click:focus-visible{outline:3px solid #0b8c89;outline-offset:-4px}
+.featured028-label{flex:0 0 123px;display:block;font-size:10px;font-weight:850;line-height:1.45;letter-spacing:1.05px;color:#06766f}
+.featured028-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.featured028-title{font-size:15px;font-weight:770;line-height:1.35;color:#16354a;letter-spacing:-.1px}
+.featured028-summary{font-size:12px;line-height:1.45;color:#52677b}
+.featured028-arrow{flex:0 0 28px;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:#e3f2f0;color:#12665e;font-weight:800;font-size:19px}
+@media(max-width:730px){
+  .brand-sub{font-size:11px;max-width:310px;line-height:1.36;margin-top:4px}
+  .main{padding-top:13px}
+  .topbar.featured028{top:6px;margin-bottom:22px}
+  .featured028-click{padding:12px 13px;gap:12px;align-items:flex-start}
+  .featured028-label{flex:0 0 79px;font-size:9px;letter-spacing:.55px;line-height:1.3;padding-top:4px}
+  .featured028-title{font-size:14px;line-height:1.32}
+  .featured028-summary{font-size:11px;line-height:1.43}
+  .featured028-arrow{flex:0 0 23px;height:23px;width:23px;font-size:16px}
+}
+@media(max-width:370px){
+  .featured028-click{gap:9px;padding:10px}
+  .featured028-label{flex-basis:63px;font-size:8.3px}
+  .featured028-arrow{display:none}
+}
+
+
+/* v0.29 · Franja editorial con dos columnas centradas en ambos ejes */
+.topbar.featured028 .featured028-click{
+  display:grid; grid-template-columns:minmax(115px,.72fr) minmax(0,2.15fr);
+  align-items:center;justify-items:center;gap:16px;position:relative;
+  text-align:center;min-height:96px;padding:14px 50px 14px 20px;
+}
+.topbar.featured028 .featured028-label{
+  display:flex;align-items:center;justify-content:center;
+  align-self:stretch;justify-self:stretch;text-align:center;
+  padding:0 10px;line-height:1.5;
+}
+.topbar.featured028 .featured028-main{
+  min-width:0;width:100%;display:flex;align-self:stretch;
+  flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  gap:5px;
+}
+.topbar.featured028 .featured028-title,.topbar.featured028 .featured028-summary{text-align:center;max-width:65ch}
+.topbar.featured028 .featured028-arrow{
+ position:absolute;right:14px;top:50%;transform:translateY(-50%);
+}
+@media (max-width:730px){
+ .topbar.featured028 .featured028-click{
+   grid-template-columns:minmax(81px,.82fr) minmax(0,2fr);gap:9px;
+   min-height:110px;padding:12px 35px 12px 12px;align-items:center;
+ }
+ .topbar.featured028 .featured028-label{padding:0 3px;font-size:9px;align-items:center;letter-spacing:.38px}
+ .topbar.featured028 .featured028-main{align-items:center;justify-content:center}
+ .topbar.featured028 .featured028-title{font-size:14px}
+ .topbar.featured028 .featured028-summary{font-size:11px;line-height:1.42}
+ .topbar.featured028 .featured028-arrow{right:8px;width:22px;height:22px;font-size:15px}
+}
+@media (max-width:390px){
+ .topbar.featured028 .featured028-click{grid-template-columns:73px minmax(0,1fr);gap:7px;padding:12px 10px;}
+ .topbar.featured028 .featured028-arrow{display:none}
+ .topbar.featured028 .featured028-label{font-size:8.6px;letter-spacing:.1px}
+}
+/* v0.29 · Datos del autor e identidad académica */
+.author029{background:linear-gradient(120deg,#f2faf8,#fff);border:1px solid #c9e1db;
+ border-radius:18px;padding:clamp(18px,3vw,30px);margin:20px 0 26px;display:grid;
+ grid-template-columns:minmax(0,1.25fr) minmax(250px,.9fr);gap:24px;align-items:center}
+.author029-kicker{font-size:11px;letter-spacing:1px;color:#086e69;font-weight:850;text-transform:uppercase}
+.author029-name{margin:9px 0 6px;font-size:clamp(21px,2.5vw,27px);color:#173a4d;line-height:1.27}
+.author029-degree{font-size:13px;font-weight:750;color:#246b66;line-height:1.55;margin:0 0 10px}
+.author029-bio{font-size:14px;line-height:1.7;color:#4b6071;margin:0}
+.author029-channels{background:#fff;border:1px solid #ddeae6;padding:17px;border-radius:12px}
+.author029-channels h3{font-size:14px;margin:0 0 9px;color:#173a4d}
+.author029-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.author029-links a{display:inline-flex;align-items:center;justify-content:center;min-height:35px;
+ border-radius:9px;background:#e8f5f1;border:1px solid #c5e5dc;color:#07665f;padding:6px 11px;
+ text-decoration:none;font-size:12px;font-weight:760}
+.author029-links a:hover{background:#d9eee6}
+.author029-email{display:inline-flex;align-items:center;gap:7px;color:#106968;overflow-wrap:anywhere;font-weight:760;font-size:13px}
+.author029-subtle{font-size:11px;color:#6b7b89;margin:8px 0 0}
+.footer029{align-items:center;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px}
+.footer029-identity strong{color:#254657;font-weight:800}
+.footer029-social{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.footer029-social a{font-size:12px;text-decoration:none;color:#166a6a;font-weight:730}
+.footer029-social a:hover{text-decoration:underline}
+@media(max-width:840px){.author029{grid-template-columns:1fr;gap:13px}.footer029{grid-template-columns:1fr;text-align:center}.footer029-social{justify-content:center}}
+
+
+/* v0.30 · Identidad editorial breve, separada del nombre y de los grados académicos */
+.author030-role{display:inline-flex;align-items:center;max-width:100%;margin:3px 0 12px;
+ padding:6px 11px;border-radius:8px;border:1px solid #cbe7df;background:#e8f6f1;
+ color:#12645c;font-size:12.5px;line-height:1.45;font-weight:760}
+@media(max-width:430px){.author030-role{font-size:12px;line-height:1.5;white-space:normal}}
+
+
+/* Contador publico de visitas: datos suministrados por GoatCounter. */
+.me-visit-count{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;border:1px solid #d9e9e7;border-radius:999px;padding:6px 12px;background:#f2f8f7;color:#41546c;font-size:12px;font-weight:650}
+.me-visit-count strong{color:#08716f;font-size:14px;font-variant-numeric:tabular-nums;font-weight:850}
+.footer029 .me-visit-count{grid-column:1/-1;justify-self:end}
+@media(max-width:840px){.footer029 .me-visit-count{justify-self:center}}
+
+/* Candidato 033. Publicación acumulativa, sin sobreescritura de lecturas */
+.me033-pre{padding:8px 14px;background:#e3f4ee;color:#145e57;text-align:center;font-size:12px;font-weight:780;border-bottom:1px solid #afdacf}
+.me033-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0}
+.me033-card{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #d5e4e3;border-radius:16px;padding:20px;text-decoration:none!important;color:#18374b;box-shadow:0 6px 18px #18354409}
+.me033-card:hover,.me033-card:focus-visible{border-color:#2c9388;box-shadow:0 8px 25px #174e521a}
+.me033-card:first-child{background:linear-gradient(130deg,#f0faf7,#fff);border-color:#88cabc}
+.me033-card strong{font-size:18px;line-height:1.35}
+.me033-card p{font-size:13px;color:#556e7e;line-height:1.6;flex:1;margin:0}
+.me033-small{font-size:11px;font-weight:800;color:#11776c;text-transform:uppercase;letter-spacing:.06em}
+.me033-meta{font-size:11px;color:#69808c}
+.me033-link{font-size:13px;font-weight:800;color:#08756c;margin-top:auto}
+.me033-back{display:inline-flex;padding:9px 12px;border:1px solid #b8ddd7;border-radius:10px;text-decoration:none;color:#12675f;margin-bottom:14px;background:#f1faf8;font-size:13px}
+@media(max-width:1050px){.me033-grid{grid-template-columns:1fr 1fr}.me033-card:first-child{grid-column:span 2}}
+@media(max-width:700px){.me033-grid{grid-template-columns:1fr}.me033-card:first-child{grid-column:span 1}.me033-card strong{font-size:17px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#page">Saltar al contenido principal</a>
+<div class="shell">
+<aside class="sidebar" aria-label="Navegación principal">
+ <div class="brand"><div class="symbol" aria-hidden="true">M<span style="color:#57c8bd">·</span></div><div><div class="brand-title">Métodos &<br>Evidencia</div><div class="brand-sub">Estadística, ciencia de datos y métodos de investigación</div></div></div>
+ <div class="menu-kicker">EXPLORAR</div>
+ <nav class="menu" id="nav"></nav>
+ <div class="sidebar-bottom"><strong>Una iniciativa académica</strong>Estadística aplicada · Investigación · NLP · Inteligencia artificial.</div>
+</aside>
+<div class="main"><div class="container">
+  <header class="topbar featured028" aria-label="Artículo destacado">
+  <button class="featured028-click" type="button" data-open-approved026 aria-label="Abrir artículo destacado: ¿Puede una IA investigar sola?">
+    <span class="featured028-label">ARTÍCULO DESTACADO</span>
+    <span class="featured028-main"><strong class="featured028-title">¿Puede una IA investigar sola?</strong><span class="featured028-summary">Una revisión analiza las capacidades y limitaciones de los agentes de IA, destacando la reproducibilidad y supervisión humana.</span></span>
+    <span class="featured028-arrow" aria-hidden="true">↗</span>
+  </button>
+</header>
+  <main id="page" tabindex="-1"></main>
+  <footer class="footer footer029"><span class="footer029-identity">© 2026 <strong>Métodos &amp; Evidencia</strong> · Andrés Mauricio Grisales Aguirre · Edición académica</span>
+<nav class="footer029-social" aria-label="Perfiles y contacto">
+<a href="https://orcid.org/0000-0002-4385-4474" target="_blank" rel="noopener noreferrer">ORCID</a>
+<a href="https://scholar.google.com/citations?hl=en&amp;sortby=pubdate&amp;user=-urmP7EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener noreferrer">Scholar</a>
+<a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001436256" target="_blank" rel="noopener noreferrer">CvLAC</a>
+<a href="https://github.com/andresmgrisales" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a href="mailto:andresmgrisales@gmail.com">Correo</a>
+</nav>
+<div class="me-visit-count" aria-label="Visitas registradas en Métodos y Evidencia"><span>◉ Visitas al sitio</span><strong id="me-visit-total" aria-live="polite" title="Total acumulado del sitio. Las cifras pueden tardar en actualizarse.">—</strong></div></footer>
+</div></div>
+</div>
+<script>
+'use strict';
+const navItems=[['inicio','⌂','Inicio'],['radar','◉','Radar científico'],['analisis','▥','Datos bajo análisis'],['mitos','✳','Estadística sin mitos'],['laboratorio','◫','Experimenta'],['recursos','☷','Recursos y contacto']];
+const areaLabel=(id)=>({estadistica:'Estadística y sus usos',ia:'IA en la investigación',ciencia:'Ciencia y sociedad'}[id]||'Por clasificar');
+const studies=[
+ {id:'repro',area:'ciencia',year:2026,tag:'CIENCIA Y SOCIEDAD · NATURE · REPRODUCIBILIDAD',date:'1 abr 2026',title:'Investigating the reproducibility of the social and behavioural sciences',authors:'Miske y colaboradores',url:'https://www.nature.com/articles/s41586-026-10203-5',doi:'10.1038/s41586-026-10203-5',summary:'Se analiza la reproducibilidad de una muestra estratificada de 600 artículos de ciencias sociales y del comportamiento. Se identifican obstáculos para acceder a los datos y reconstruir los resultados.',why:'La reproducibilidad permite verificar si, con los mismos datos y análisis, se obtienen resultados compatibles con los publicados.',limit:'Las estimaciones describen el conjunto de trabajos estudiados y sus condiciones de acceso; no deben generalizarse automáticamente a todas las disciplinas.'},
+ {id:'replica',area:'ciencia',year:2026,tag:'CIENCIA Y SOCIEDAD · NATURE · REPRODUCIBILIDAD',date:'1 abr 2026',title:'Investigating the replicability of the social and behavioural sciences',authors:'Tyner y colaboradores',url:'https://www.nature.com/articles/s41586-025-10078-y',doi:'10.1038/s41586-025-10078-y',summary:'Se intentó replicar 274 afirmaciones de resultados positivos provenientes de 164 artículos. Un total de 151 afirmaciones (55,1 %) produjo resultados significativos con el patrón original.',why:'La replicabilidad evalúa si una afirmación recibe respaldo mediante evidencia independiente. No equivale a repetir el mismo cálculo.',limit:'Que una replicación no alcance significación no implica, por sí solo, que la afirmación original sea falsa.'},
+ {id:'topic',area:'ia',year:2025,tag:'IA EN LA INVESTIGACIÓN · NAACL',date:'Abril 2025',title:'Reliability of Topic Modeling',authors:'Kayla Schroeder y Zach Wood-Doughty',url:'https://aclanthology.org/2025.naacl-long.134/',doi:'10.18653/v1/2025.naacl-long.134',summary:'Se estudian limitaciones de prácticas habituales para evaluar la confiabilidad de modelos de tópicos y se analizan alternativas basadas en teoría de medición, incluido el coeficiente omega.',why:'Los tópicos pueden variar entre ejecuciones. La interpretación de las métricas requiere distinguir coherencia, estabilidad y confiabilidad.',limit:'Los resultados se refieren a las condiciones y modelos incluidos en el trabajo; una sola medida no sustituye la evaluación multidimensional.'}
+];
+const radarCandidates=[]; /* Candidaturas privadas excluidas de la web */
+
+const annual=[{label:'Dic. 2021',idx:100},{label:'Dic. 2022',rate:13.12,idx:113.12},{label:'Dic. 2023',rate:9.28,idx:123.617536},{label:'Dic. 2024',rate:5.2,idx:130.045647872},{label:'Dic. 2025',rate:5.1,idx:136.677975913472},{label:'Sep. 2026',idx:144.5232917309053,yearToDate:5.74}];
+const sources={dane2026:'https://www.dane.gov.co/index.php/estadisticas-por-tema/precios-y-costos/indice-de-precios-al-consumidor-ipc/ipc-informacion-tecnica',dane2025:'https://www.dane.gov.co/files/operaciones/IPC/dic2025/bol-IPC-dic2025.pdf',dane2023:'https://www.dane.gov.co/files/operaciones/IPC/cp-IPC-dic2023.pdf',dane2022:'https://www.dane.gov.co/files/investigaciones/boletines/ipc/cp_ipc_dic22.pdf'};
+let state={page:'analisis',radarArea:'todas',radarQuery:'',openStudy:'',radarTab:'candidatos',radarDecision:{},chart:'nivel',amount:200000,amountYear:'5',quizInflation:'',quizP:'',quizEffect:'',article:'metodo',methodN:50,methodDelta:2,methodThreshold:5,n:100,p:.5};
+const el=id=>document.getElementById(id);const fmt=(n,d=2)=>Number(n).toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n);
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const legacyNav=()=>{el('nav').innerHTML=navItems.map(([id,ico,name])=>`<button type="button" data-nav="${id}" class="${state.page===id?'active':''}" ${state.page===id?'aria-current="page"':''}><span class="ic" aria-hidden="true">${ico}</span><span>${name}</span></button>`).join('')};
+function miniRadarCard(s){return `<div class="card"><div class="tag">${s.tag}</div><h3 style="margin:9px 0 7px;font-size:17px">${escapeHtml(s.title)}</h3><div class="small muted">${escapeHtml(s.authors)} · ${s.year}</div><p style="color:var(--ink2);font-size:13px;margin-bottom:15px">${escapeHtml(s.summary)}</p><button class="linkbtn" data-nav="radar">Ver en el Radar →</button></div>`}
+function originalHome(){return `<section class="hero"><div><div class="eyebrow">DONDE LOS MÉTODOS ENCUENTRAN SU CONTEXTO</div><h1>La evidencia merece<br>una buena interpretación.</h1><p>Investigaciones recientes, análisis con datos reales y experimentos interactivos para fortalecer la cultura estadística.</p><button class="btn light" data-nav="analisis">Ver el análisis destacado <span aria-hidden="true">↗</span></button></div><div class="hero-visual" aria-hidden="true"><svg viewBox="0 0 270 195"><g stroke="#d0e7e8" opacity=".25"><path d="M18 160H255M18 115H255M18 70H255M18 25H255" stroke-dasharray="4 5"/></g><path d="M22 147C55 130 67 155 102 105S160 95 180 67S220 62 248 23" fill="none" stroke="#6cddd1" stroke-width="5" stroke-linecap="round"/><g fill="#6cddd1" stroke="#ffffff" stroke-width="2"><circle cx="22" cy="147" r="5"/><circle cx="102" cy="105" r="5"/><circle cx="180" cy="67" r="5"/><circle cx="248" cy="23" r="5"/></g><g fill="none" stroke="#a6cde0" opacity=".6"><circle cx="184" cy="102" r="83"/><circle cx="184" cy="102" r="55"/></g></svg></div></section>
+<section class="section"><div class="section-header"><div><div class="eyebrow">EXPLORAR CONTENIDOS</div><h2>Un espacio, varias maneras de aprender</h2></div></div><div class="grid3">${[['radar','◉','Radar científico','Publicaciones verificadas y comentarios metodológicos.'],['analisis','▥','Datos bajo análisis','Miniartículos sustentados en fuentes oficiales.'],['mitos','✳','Estadística sin mitos','Preguntas breves para interpretar con rigor.'],['laboratorio','◫','Experimenta','Simulaciones para comprender la incertidumbre.'],['recursos','☷','Recursos','Fuentes y herramientas para profundizar.'],['recursos','✉','Asesorías','Información sobre acompañamiento especializado.']].map(x=>`<button class="tile" data-nav="${x[0]}"><span class="tile-ico">${x[1]}</span><strong>${x[2]}</strong><span>${x[3]}</span></button>`).join('')}</div></section>
+<section class="section"><div class="section-header"><div><div class="eyebrow">DATOS BAJO ANÁLISIS</div><h2>Publicación destacada</h2></div><button class="linkbtn" data-nav="analisis">Abrir artículo →</button></div><div class="card featured-card" style="display:grid;grid-template-columns:1.2fr .75fr;gap:15px"><div><span class="tag">COLOMBIA · IPC · 2022–2026</span><h3 style="font-size:24px;line-height:1.25;letter-spacing:-.5px;margin:10px 0">¿Si la inflación disminuye, por qué los precios siguen aumentando?</h3><p class="muted">Se reconstruye un índice acumulado con cifras oficiales del DANE para distinguir la tasa de variación del nivel de precios.</p><button class="btn" data-nav="analisis">Leer e interactuar ↗</button></div><div style="align-self:center"><div class="overline">INFLACIÓN ANUAL · SEP. 2026</div><div style="font-size:38px;font-weight:790;color:#174f60">6,29 %</div><div class="muted small">DANE · Último corte incluido en el prototipo</div><div class="divider"></div><div class="overline">VARIACIÓN ACUMULADA · DIC. 2021 – SEP. 2026</div><div style="font-weight:750;font-size:24px">+44,52 %</div></div></div></section>
+<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS</div><h2>Desde el Radar científico</h2></div><button class="linkbtn" data-nav="radar">Ver todas →</button></div><div class="grid2">${miniRadarCard(studies[0])}${miniRadarCard(studies[2])}</div></section><div class="highlight"><strong>Una nota sobre la versión 0.6.1</strong><p class="small">El contenido se utiliza para validar estructura, interacción y lenguaje editorial. No existe conexión automática con fuentes de datos ni publicación externa.</p></div>`}
+function radarItems(){const q=state.radarQuery.trim().toLocaleLowerCase('es');const results=studies.filter(s=>(state.radarArea==='todas'||s.area===state.radarArea)&&(!q||[s.title,s.summary,s.authors,s.tag].join(' ').toLocaleLowerCase('es').includes(q)));return `<div class="small muted" style="margin:3px 0 13px">${results.length} ${results.length===1?'estudio seleccionado':'estudios seleccionados'}</div>${results.length?results.map(s=>`<article class="radar-item"><div class="tag">${s.tag}</div><h3>${escapeHtml(s.title)}</h3><div class="meta"><span>${escapeHtml(s.authors)}</span><span>· ${s.date}</span><span>· DOI: ${s.doi}</span></div><p>${escapeHtml(s.summary)}</p><div class="item-actions"><a class="btn outline mini" href="${s.url}" target="_blank" rel="noopener noreferrer">Publicación original ↗</a><button class="btn ghost mini" data-study="${s.id}" aria-expanded="${state.openStudy===s.id}">${state.openStudy===s.id?'Cerrar lectura':'Lectura metodológica'} ${state.openStudy===s.id?'−':'+'}</button></div>${state.openStudy===s.id?`<div class="expansion"><strong>¿Por qué importa?</strong><p>${escapeHtml(s.why)}</p><strong>Precaución interpretativa</strong><p>${escapeHtml(s.limit)}</p></div>`:''}</article>`).join(''):'<div class="card muted">No se encontraron estudios con estos filtros. Se puede modificar el área o la búsqueda.</div>'}`}
+function reviewLabel(status){return {pendiente:'Pendiente',revisar:'Priorizada para revisión',descartado:'Descartada en prueba'}[status]||'Pendiente'}
+function reviewCandidates(){let q=state.radarQuery.trim().toLocaleLowerCase('es');let subset=radarCandidates.filter(c=>(state.radarArea==='todas'||state.radarArea===c.area)&&(!q||[c.title,c.authors,c.summary,c.source,c.doi].join(' ').toLocaleLowerCase('es').includes(q)));
+return `<div class="small muted" style="margin:4px 0 15px">${subset.length} fichas bibliográficas para revisión · El origen se indica en cada registro · Sin aprobación para publicar</div>${subset.map(c=>{let status=state.radarDecision[c.id]||'pendiente';return `<article class="radar-item" style="border-left:4px solid ${status==='revisar'?'#0b8c89':status==='descartado'?'#ac6670':'#b7c5d8'}"><div class="tag">${areaLabel(c.area).toUpperCase()} · ${c.year}</div><h3>${escapeHtml(c.title)}</h3><div class="meta">${escapeHtml(c.authors)} · ${escapeHtml(c.source)} · ${escapeHtml(c.date)}</div><p>${escapeHtml(c.summary)}</p><p class="small muted"><strong>Alcance:</strong> Síntesis provisional; no sustituye la lectura del texto y de sus anexos.</p><p class="small muted"><strong>Aspecto por revisar:</strong> ${escapeHtml(c.note)}</p><p class="small muted"><strong>Procedencia:</strong> ${escapeHtml(c.ingest||"sin especificar")}</p><p class="small muted"><strong>Validación:</strong> ${escapeHtml(c.bibliographic_verification||"pendiente")}</p><p class="small muted"><strong>Etiquetas:</strong> ${escapeHtml((c.method_tags||[]).join(" · "))}</p><p class="small muted"><strong>DOI:</strong> ${escapeHtml(c.doi)}</p><div class="item-actions"><a class="btn outline mini" href="${escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">Consultar original ↗</a><span class="status-pill ${status}">${reviewLabel(status)}</span></div><div class="review-buttons"><button type="button" data-review="${c.id}" data-review-status="revisar" class="btn mini ${status==='revisar'?'':'outline'}">Priorizar revisión</button><button type="button" data-review="${c.id}" data-review-status="descartado" class="btn mini ghost">Descartar en prueba</button><button type="button" data-review="${c.id}" data-review-status="pendiente" class="btn mini ghost">Restablecer</button></div></article>`}).join('')||'<div class="card muted">No hay fichas con estos filtros.</div>'}`};
+function radar(){const q=escapeHtml(state.radarQuery);return `<section class="page-head"><div class="eyebrow">ARTÍCULOS Y EVIDENCIA</div><h1>Radar científico</h1><p>Tres áreas temáticas · literatura reciente, verificación bibliográfica y evaluación editorial separadas.</p></section><div class="note"><strong>Radar bibliográfico · Fecha de extracción: ${escapeHtml(radarMeta.checked_on)}.</strong> ${escapeHtml(radarMeta.origin)}. ${radarMeta.api_live_executed?"Se recuperaron metadatos desde OpenAlex; deben contrastarse con la publicación original.":"La API de OpenAlex no pudo consultarse directamente desde el entorno de desarrollo; se entrega un programa para utilizarla desde un equipo con conexión."} Ningún registro se publica ni se aprueba automáticamente.</div><section class="section" style="margin-top:12px"><div class="grid3" aria-label="Áreas temáticas del Radar"><div class="card"><div class="tag">01 · ESTADÍSTICA Y SUS USOS</div><p class="small" style="margin:10px 0 0">Métodos, inferencia, diseños cuantitativos y aplicaciones en salud, educación, economía o ciencias sociales.</p></div><div class="card"><div class="tag">02 · IA EN LA INVESTIGACIÓN</div><p class="small" style="margin:10px 0 0">Inteligencia artificial como herramienta y objeto de investigación: NLP, análisis, revisión científica y evaluación de modelos.</p></div><div class="card"><div class="tag">03 · CIENCIA Y SOCIEDAD</div><p class="small" style="margin:10px 0 0">Hallazgos científicos de interés general con impacto social y lectura crítica de la evidencia.</p></div></div><p class="small muted" style="margin:12px 0 0"><strong>Enfoque transversal:</strong> diseño de estudios, muestreo, ética, reproducibilidad y calidad metodológica se examinan en todas las áreas.</p></section><div class="radar-summary"><div><strong>${radarCandidates.length}</strong><span>Referencias recientes</span></div><div><strong>3</strong><span>Áreas científicas</span></div><div><strong>1</strong><span>Lectura con aprobación editorial</span></div></div><div class="tabs" role="tablist" aria-label="Vista del radar" style="margin:17px 0"><button type="button" role="tab" data-radar-tab="publicadas" aria-selected="${state.radarTab==='publicadas'}" class="${state.radarTab==='publicadas'?'selected':''}">Biblioteca inicial (${studies.length})</button><button type="button" role="tab" data-radar-tab="candidatos" aria-selected="${state.radarTab==='candidatos'}" class="${state.radarTab==='candidatos'?'selected':''}">Nuevas referencias (${radarCandidates.length})</button></div><div class="card"><div class="filterbar"><div><label class="label" for="radarQ">Buscar por título, autor o concepto</label><input class="field" id="radarQ" type="search" placeholder="Ej. replicación, tópicos..." value="${q}"></div><div><label class="label" for="radarArea">Área de investigación</label><select class="field" id="radarArea"><option value="todas" ${state.radarArea==='todas'?'selected':''}>Todas</option><option value="estadistica" ${state.radarArea==='estadistica'?'selected':''}>Estadística y sus usos</option><option value="ia" ${state.radarArea==='ia'?'selected':''}>IA en la investigación</option><option value="ciencia" ${state.radarArea==='ciencia'?'selected':''}>Ciencia y sociedad</option></select></div></div><div class="small muted">${state.radarTab==='publicadas'?'Selección de referencia heredada de la versión anterior; no equivale a aprobación editorial.':'Fuentes originales cotejadas; análisis integral pendiente. Las marcas de revisión son locales.'}</div></div><div style="height:15px"></div><div id="radarList">${state.radarTab==='publicadas'?radarItems():reviewCandidates()}</div>${state.radarTab==='candidatos'?`<div class="review-footer card"><strong>Decisiones editoriales locales</strong><p class="small muted">La selección se conserva durante esta sesión; exportar genera un JSON local. Ninguna decisión implica aprobación científica ni se transmite automáticamente.</p><div class="item-actions"><button type="button" class="btn mini" data-review-export="1">Descargar decisiones JSON ↓</button><span class="small muted" id="reviewStats">${Object.values(state.radarDecision).filter(x=>x==='revisar').length} listas para revisión</span></div></div>`:''}<div class="note">Regla editorial: ninguna publicación recuperada automáticamente pasa al portal público sin verificación bibliográfica, lectura crítica y aprobación humana. La actualidad se distingue de la calidad científica. La extracción automatizada no demuestra originalidad, validez ni relevancia de un estudio.</div>`}
+function chartSVG(which){const isLevel=which==='nivel',data=isLevel?annual:annual.slice(1,5);const values=data.map(x=>isLevel?x.idx:x.rate),lo=isLevel?95:0,hi=isLevel?150:16;const X=i=>57+(i/(data.length-1||1))*548,Y=v=>247-(v-lo)/(hi-lo)*196;let grid='';for(let i=0;i<=4;i++){let v=lo+(hi-lo)*i/4,y=Y(v);grid+=`<line class="gridline" x1="52" x2="632" y1="${y}" y2="${y}"/><text x="43" y="${y+4}" text-anchor="end">${isLevel?fmt(v,0):fmt(v,0)+' %'}</text>`}let marks='';if(isLevel){let coords=data.map((d,i)=>`${X(i)},${Y(d.idx)}`).join(' ');marks=`<polyline class="data-line" points="${coords}"/>`+data.map((d,i)=>`<circle class="dot" cx="${X(i)}" cy="${Y(d.idx)}" r="6"><title>${d.label}: ${fmt(d.idx)}</title></circle>`).join('')}else{marks=data.map((d,i)=>{let x=X(i)-26,y=Y(d.rate);return `<rect class="bar" x="${x}" y="${y}" width="52" height="${247-y}" rx="5"><title>${d.label}: ${fmt(d.rate)} %</title></rect>`}).join('')}let labels=data.map((d,i)=>`<text x="${X(i)}" y="268" text-anchor="middle">${isLevel?d.label.replace('Dic. ','') : d.label.slice(-4)}</text>`).join('');return `<svg class="chart" role="img" aria-label="${isLevel?'Índice reconstruido de precios desde 100 hasta 144,52, diciembre 2021 a septiembre 2026':'Inflación anual de cierre: 13,12 %, 9,28 %, 5,20 % y 5,10 %, 2022 a 2025'}" viewBox="0 0 660 290" xmlns="http://www.w3.org/2000/svg">${grid}<line class="baseline" x1="52" x2="632" y1="247" y2="247"/>${marks}${labels}</svg>`}
+function analysis(){if(state.article==='metodo')return analysisMethod();return `${articleSwitch()}<article class="publication"><div class="page-head"><div class="eyebrow">DATOS BAJO ANÁLISIS · COLOMBIA</div><h1>¿Si la inflación baja, por qué los precios pueden seguir aumentando?</h1><p>Miniartículo demostrativo · IPC nacional · 2022–septiembre 2026 · Fuente: DANE</p></div><div class="card"><div class="overline">INDICADORES OFICIALES · SEPTIEMBRE 2026</div><div class="kpis" style="margin-top:12px"><div class="kpi"><span>Inflación anual</span><strong>6,29 %</strong></div><div class="kpi"><span>Inflación mensual</span><strong>0,37 %</strong></div><div class="kpi"><span>Inflación año corrido</span><strong>5,74 %</strong></div></div><p class="small muted" style="margin-bottom:0">Boletín DANE publicado el 7 de octubre de 2026.</p></div><h2>1. Una misma realidad, dos maneras de observarla</h2><p>La inflación mide la variación porcentual del nivel general de precios. Una disminución de la tasa puede coexistir con precios todavía crecientes. Para visualizarlo se reconstruye un índice con base 100 en diciembre de 2021.</p><div class="card"><div class="tabs" role="tablist" aria-label="Perspectiva del IPC"><button role="tab" data-chart="nivel" aria-selected="${state.chart==='nivel'}" class="${state.chart==='nivel'?'selected':''}">Nivel de precios</button><button role="tab" data-chart="inflacion" aria-selected="${state.chart==='inflacion'}" class="${state.chart==='inflacion'?'selected':''}">Inflación anual</button></div><h3 id="chartTitle" style="font-size:16px;margin:20px 0 2px">${state.chart==='nivel'?'Índice acumulado · Dic. 2021 = 100':'Tasa anual · Diciembre de cada año'}</h3><div id="articleChart">${chartSVG(state.chart)}</div><p class="chart-help">${state.chart==='nivel'?'Índice encadenado a partir de tasas oficiales publicadas, redondeadas a dos decimales.':'Tasas anuales de cierre publicadas por el DANE.'}</p><div class="highlight"><div class="tag">LECTURA DEL GRÁFICO</div><p style="margin-top:6px" id="chartInterpret">${state.chart==='nivel'?'El índice reconstruido pasa de 100 a 144,52 entre diciembre de 2021 y septiembre de 2026; equivale a un aumento acumulado aproximado del 44,52 %.':'La tasa anual de cierre pasa del 13,12 % en 2022 al 5,10 % en 2025. Esto representa una desaceleración del aumento de los precios, no su reducción.'}</p></div></div><h2>2. ¿Cómo se obtiene el índice?</h2><p>Se parte de un valor de referencia igual a 100 en diciembre de 2021 y se multiplican las variaciones anuales, expresadas como factores de crecimiento. Para septiembre de 2026 se utiliza la variación de año corrido de 5,74 %:</p><div class="formula">I<sub>t</sub> = I<sub>t−1</sub> (1 + π<sub>t</sub>/100)</div><div class="note">La cifra de 6,29 % corresponde a la inflación de septiembre de 2025 a septiembre de 2026; no debe utilizarse como variación adicional desde diciembre de 2025.</div><h2>3. Hallazgos y límites</h2><p>Se observa que las variaciones anuales siguen acumulándose incluso durante periodos de desinflación. No se analiza aquí el comportamiento de los salarios, el bienestar económico ni las causas de la inflación.</p><p>El índice reconstruido es aproximado por utilizar tasas redondeadas. Tampoco representa los gastos específicos de cada hogar, que pueden diferir de la canasta agregada del IPC.</p><h2>4. Fuentes y trazabilidad</h2><ul class="source-list"><li><a href="${sources.dane2026}" target="_blank" rel="noopener">DANE — información técnica IPC (septiembre de 2026) ↗</a></li><li><a href="${sources.dane2025}" target="_blank" rel="noopener">DANE — boletín técnico diciembre de 2025 ↗</a></li><li><a href="${sources.dane2023}" target="_blank" rel="noopener">DANE — comunicado diciembre de 2023 ↗</a></li><li><a href="${sources.dane2022}" target="_blank" rel="noopener">DANE — comunicado diciembre de 2022 ↗</a></li></ul><div class="highlight"><strong>El contenido también se conecta con dos recursos:</strong><p>Una pregunta en <em>Estadística sin mitos</em> y un explorador de valores equivalentes del IPC dentro de <em>Experimenta</em>.</p><div class="item-actions"><button class="btn mini" data-nav="laboratorio">Ir al explorador ↗</button><button class="btn outline mini" data-nav="mitos">Consultar el tip ↗</button></div></div></article>`}
+function quizBlock(id,title,question,opts,correct,answer,expl){return `<div class="card" style="margin-bottom:16px"><div class="tag">${title}</div><h3 style="margin:9px 0 4px">${question}</h3><div class="quiz-options">${opts.map((o,i)=>`<button data-quiz="${id}" data-answer="${i}" class="${String(i)===answer?'chosen':''}" aria-pressed="${String(i)===answer}">${['A','B','C'][i]}. ${o}</button>`).join('')}</div>${answer!==''?`<div class="feedback"><strong>${Number(answer)===correct?'Respuesta correcta.':'Se revisa la afirmación.'}</strong><p style="margin:5px 0 0">${expl}</p></div>`:''}</div>`}
+function originalMyths(){return `<div class="page-head"><div class="eyebrow">ALFABETIZACIÓN ESTADÍSTICA</div><h1>Estadística sin mitos</h1><p>Conceptos breves y preguntas interactivas que ayudan a interpretar datos y resultados con mayor rigor.</p></div>${quizBlock('inflation','TIP #001 · INDICADORES','¿Una reducción de la inflación significa que los precios están bajando?',['Sí, siempre.','No necesariamente: pueden seguir creciendo más despacio.','La inflación no guarda relación con el nivel de precios.'],1,state.quizInflation,'Cuando la inflación continúa siendo positiva, el nivel agregado de precios sigue aumentando. Una tasa menor refleja desinflación; la disminución efectiva del nivel general de precios se denomina deflación.')}${quizBlock('p','TIP #002 · INFERENCIA','Si se obtiene p = 0,03, ¿qué puede afirmarse?',['Existe un 97 % de probabilidad de que la hipótesis alternativa sea verdadera.','El efecto observado es necesariamente importante.','El resultado es poco compatible con la hipótesis nula bajo los supuestos de la prueba.'],2,state.quizP,'El valor p no es la probabilidad de que una hipótesis sea verdadera. Tampoco cuantifica por sí solo la magnitud o relevancia del efecto.')}
+<div class="highlight"><div class="tag">CONEXIÓN CON EL RADAR</div><h3>Reproducibilidad no es lo mismo que replicabilidad</h3><p class="small">La reproducibilidad se relaciona con obtener resultados consistentes al aplicar el mismo procedimiento a los mismos datos. La replicabilidad incorpora evidencia independiente. Se incluyen en el Radar dos investigaciones de Nature publicadas en 2026 que estudian estas cuestiones.</p><button class="btn mini" data-nav="radar" style="margin-top:12px">Ver las investigaciones ↗</button></div>`}
+function sampleMargin(){return 1.96*Math.sqrt(state.p*(1-state.p)/state.n)*100}
+function originalLaboratory(){return `<div class="page-head"><div class="eyebrow">SIMULACIONES Y EXPLORACIÓN</div><h1>Experimenta</h1><p>Experiencias breves para observar cómo cambian los resultados cuando se modifican parámetros.</p></div><div class="grid2"><section class="card"><div class="tag">EXPERIMENTO #001 · MUESTREO</div><h3>¿Cómo influye el tamaño de muestra en la precisión?</h3><p class="muted small">Se calcula el margen de error normal aproximado para una proporción bajo muestreo aleatorio simple.</p><div class="control-row"><label class="label" for="sizeSlider">Tamaño de muestra (n)</label><strong id="nValue">${state.n}</strong></div><input class="slider" type="range" id="sizeSlider" min="50" max="1000" step="25" value="${state.n}"><div class="control-row"><label class="label" for="pSlider">Proporción esperada (p)</label><strong id="pValue">${fmt(state.p*100,0)} %</strong></div><input class="slider" type="range" id="pSlider" min="10" max="90" step="5" value="${state.p*100}"><div class="explorer-hero center"><div class="overline">Margen de error al 95 % (aprox.)</div><div class="display-num" id="marginValue">±${fmt(sampleMargin())} pp</div><div class="small muted" id="marginInterval">Intervalo ilustrativo: ${fmt(state.p*100-sampleMargin())} % – ${fmt(state.p*100+sampleMargin())} %</div></div><div class="formula" style="font-size:16px">1,96 × √[p (1 − p) / n]</div><p class="small muted">No se incluyen correcciones por población finita, ponderaciones ni efecto de diseño. Se supone una muestra aleatoria simple y se utiliza una aproximación normal.</p></section>
+<section class="card"><div class="tag">EXPERIMENTO #002 · IPC</div><h3>¿Cuánto representa hoy un valor de 2021?</h3><p class="small muted">Se actualiza un importe hipotético usando el índice nacional de precios reconstruido.</p><div class="control-row"><label class="label" for="amountSlider">Valor en diciembre de 2021</label><strong id="amountValue">${money(state.amount)}</strong></div><input class="slider" type="range" id="amountSlider" min="100000" max="1000000" step="50000" value="${state.amount}"><label class="label" for="amountYear">Periodo equivalente</label><select class="field" id="amountYear">${annual.map((d,i)=>`<option value="${i}" ${String(i)===state.amountYear?'selected':''}>${d.label}</option>`).join('')}</select><div class="explorer-hero center" style="margin-top:15px"><div class="overline">VALOR EQUIVALENTE APROXIMADO</div><div class="display-num" id="resultMoney">${money(state.amount*annual[Number(state.amountYear)].idx/100)}</div><div class="small muted" id="resultGrow">Variación acumulada: +${fmt(annual[Number(state.amountYear)].idx-100)} %</div></div><p class="small muted">Se emplea el IPC general. No corresponde a una compra específica y no representa el poder adquisitivo real sin considerar ingresos.</p><button class="btn outline mini" data-nav="analisis">Ver cálculo y fuentes ↗</button></section></div>`}
+function originalResources(){return `<div class="page-head"><div class="eyebrow">AUTOR · PERFILES ACADÉMICOS · RECURSOS</div><h1>Contacto y recursos</h1><p>Se reúnen fuentes verificables, materiales de consulta y un espacio para solicitar orientación metodológica.</p></div><div class="grid2"><section class="card resource"><div class="resource-icon">⌁</div><div><h3>Series oficiales del IPC</h3><p>Boletines y fuentes del DANE utilizados en el miniartículo.</p><a class="text-link" href="${sources.dane2026}" target="_blank" rel="noopener">Consultar fuente ↗</a></div></section><section class="card resource"><div class="resource-icon">▤</div><div><h3>Bibliografía y DOI</h3><p>Las investigaciones seleccionadas enlazan a los documentos de los editores y a la ACL Anthology.</p><button class="linkbtn" data-nav="radar">Ir al Radar →</button></div></section><section class="card resource"><div class="resource-icon">◫</div><div><h3>Experimentos didácticos</h3><p>Las simulaciones actuales son demostrativas y no realizan inferencia sobre datos introducidos por el visitante.</p><button class="linkbtn" data-nav="laboratorio">Explorar →</button></div></section><section class="card resource"><div class="resource-icon">✉</div><div><h3>Consultas y asesoría metodológica</h3><p>Para consultas sobre estadística aplicada, análisis de datos o acompañamiento académico se dispone de un correo de contacto.</p><a class="text-link" href="mailto:andresmgrisales@gmail.com">Escribir por correo ↗</a></div></section></div><div class="highlight section"><h3 style="margin-top:0">Sobre Métodos & Evidencia</h3><p>Esta iniciativa se concibe como un entorno de divulgación académica, revisión crítica de evidencia y experimentación estadística. No pretende reemplazar software de análisis de datos ni publicar resultados sin validación metodológica.</p><p class="small" style="margin-top:12px"><strong>Política de edición:</strong> se documentan las fuentes, se explicitan supuestos y se distinguen resultados observados de demostraciones didácticas. El contenido utiliza tercera persona o construcciones impersonales.</p></div>`}
+
+const shortNames={inicio:'Inicio',radar:'Radar',analisis:'Artículos',mitos:'Consejos',laboratorio:'Explora',recursos:'Contacto'};
+function nav(){el('nav').innerHTML=navItems.map(([id,ico,name])=>`<button type="button" data-nav="${id}" class="${state.page===id?'active':''}" ${state.page===id?'aria-current="page"':''} title="${name}"><span class="ic" aria-hidden="true">${ico}</span><span class="nav-long">${name}</span><span class="nav-short">${shortNames[id]}</span></button>`).join('')}
+function articleSwitch(){return '<nav class="article-switch" aria-label="Lecturas relacionadas"><a class="me033-back" href="../index.html?seccion=analisis">← Volver a la colección</a><a href="inflacion-y-nivel-de-precios.html">Inflación</a><a href="significancia-estadistica-e-importancia.html">Significancia</a><a href="brecha-desempleo-mujeres-hombres-colombia.html">Desempleo</a></nav>'}
+function home(){const old=originalHome();const addition=`<section class="section"><div class="section-header"><div><div class="eyebrow">NUEVO EN LA VERSIÓN 0.5 · MÉTODOS</div><h2>Una pregunta para investigadores</h2></div></div><div class="card featured-card" style="display:grid;grid-template-columns:1.35fr .7fr;gap:20px"><div><span class="tag">INFERENCIA · TAMAÑO MUESTRAL · INTERPRETACIÓN</span><h3 style="font-size:23px;line-height:1.25;margin:10px 0">¿Un resultado estadísticamente significativo es necesariamente importante?</h3><p class="muted">Se compara la significación con la magnitud del efecto y con un umbral mínimo de relevancia definido antes del análisis. Incluye un experimento interactivo.</p><button class="btn" data-article="metodo">Leer y experimentar ↗</button></div><div style="align-self:center"><div class="overline">SIMULACIÓN DIDÁCTICA · EFECTO FIJO</div><div style="font-size:37px;font-weight:800;color:#185463">d = 0,20</div><div class="muted small">Se mantiene la misma magnitud mientras cambia n.</div><div class="divider"></div><span class="mini-pill">Sin datos de participantes</span></div></div></section>`;return old.replace(/data-nav="analisis"/g,'data-article="inflacion"').replace('<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS',addition+'<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS')}
+function phiUpper(z){ // cola superior normal estándar, aproximación clásica de 5 términos
+ const x=Math.abs(z),t=1/(1+.2316419*x),pdf=Math.exp(-.5*x*x)/Math.sqrt(2*Math.PI);
+ return pdf*t*(.319381530+t*(-.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));
+}
+function methodStats(){const n=state.methodN,delta=state.methodDelta,sigma=10,threshold=state.methodThreshold;
+ const se=sigma*Math.sqrt(2/n),z=delta/se,p=Math.max(0,Math.min(1,2*phiUpper(z))),margin=1.95996398454005*se;
+ return {n,delta,sigma,threshold,se,z,p,lower:delta-margin,upper:delta+margin,d:delta/sigma,sig:p<.05,practical:delta>=threshold};
+}
+function numberP(p){return p<.0001?'< 0,0001':fmt(p,4)}
+function ciFigure(m){const x=v=>Math.max(62,Math.min(650,62+(v+10)/30*588)),zero=x(0),thr=x(m.threshold),left=x(m.lower),right=x(m.upper),center=x(m.delta),ticks=[-10,-5,0,5,10,15,20];
+ return `<svg class="ci-plot" viewBox="0 0 720 178" role="img" aria-label="Intervalo de confianza del 95 por ciento para diferencia ${fmt(m.delta,1)}: desde ${fmt(m.lower)} hasta ${fmt(m.upper)}. Umbral de relevancia ${fmt(m.threshold,1)}. Cero como hipótesis nula."><title>Intervalo del 95 % y umbral de relevancia</title><text x="63" y="19" font-size="12" fill="#52677d">Diferencia estimada (unidades originales)</text><line x1="62" x2="650" y1="124" y2="124" stroke="#c9d5df" stroke-width="2"/>${ticks.map(v=>`<line x1="${x(v)}" x2="${x(v)}" y1="121" y2="130" stroke="#7c8da0"/><text x="${x(v)}" y="147" text-anchor="middle" fill="#627387" font-size="11">${v}</text>`).join('')}<line x1="${zero}" x2="${zero}" y1="34" y2="118" stroke="#a9b7c7" stroke-width="2" stroke-dasharray="5 4"/><text x="${zero}" y="31" fill="#6f8196" text-anchor="middle" font-size="11">H₀: 0</text><line x1="${thr}" x2="${thr}" y1="34" y2="118" stroke="#c17b34" stroke-width="2" stroke-dasharray="5 4"/><text x="${thr}" y="31" text-anchor="middle" fill="#9a611c" font-size="11">Mín. relevante</text><line x1="${left}" y1="86" x2="${right}" y2="86" stroke="#138d89" stroke-width="7" stroke-linecap="round"/><line x1="${left}" x2="${left}" y1="76" y2="96" stroke="#138d89" stroke-width="2"/><line x1="${right}" x2="${right}" y1="76" y2="96" stroke="#138d89" stroke-width="2"/><circle cx="${center}" cy="86" r="9" fill="#173b63" stroke="#fff" stroke-width="2"/><text x="${center}" y="67" text-anchor="middle" fill="#173b63" font-size="12" font-weight="700">${fmt(m.delta,1)}</text><text x="62" y="169" fill="#7a8999" font-size="11">Línea verde: IC 95 %</text><text x="650" y="169" fill="#7a8999" font-size="11" text-anchor="end">No son datos observados</text></svg>`;
+}
+function methodWidget(){const m=methodStats();return `<section class="card" id="experimentoEfecto"><div class="tag">EXPERIENCIA INTERACTIVA · DATOS HIPOTÉTICOS</div><h3 style="margin-top:8px">La magnitud, la precisión y la decisión</h3><p class="small muted">Se supone una comparación de dos medias independientes con desviación estándar poblacional conocida σ = 10, mismo tamaño por grupo y aproximación normal bilateral. Las diferencias introducidas son escenarios fijos, no muestras simuladas.</p><div class="method-grid" style="margin-top:17px"><div class="method-controls"><div><div class="control-row"><label class="label" for="methodN">Participantes por grupo (n)</label><strong id="methodNValue">${m.n}</strong></div><input class="slider" type="range" id="methodN" min="25" max="1000" step="25" value="${m.n}"><div class="small muted">Total de participantes: <span id="methodTotal">${m.n*2}</span></div></div><div><div class="control-row"><label class="label" for="methodDelta">Diferencia de medias del escenario</label><strong id="methodDeltaValue">${fmt(m.delta,1)} puntos</strong></div><input class="slider" type="range" id="methodDelta" min="1" max="8" step="0.5" value="${m.delta}"></div><div><div class="control-row"><label class="label" for="methodThreshold">Diferencia mínima relevante</label><strong id="methodThresholdValue">${fmt(m.threshold,1)} puntos</strong></div><input class="slider" type="range" id="methodThreshold" min="1" max="8" step="0.5" value="${m.threshold}"><div class="small muted">Es un criterio práctico hipotético, elegido antes de valorar los resultados.</div></div></div><div><div class="method-metrics" style="margin-top:0"><div class="method-metric"><div class="overline">VALOR p</div><div id="mP" class="num">${numberP(m.p)}</div><div class="support">Contraste bilateral z</div></div><div class="method-metric"><div class="overline">EFECTO ESTANDARIZADO (d)</div><div id="mD" class="num">${fmt(m.d,2)}</div><div class="support">Diferencia / σ</div></div><div class="method-metric"><div class="overline">IC DEL 95 %</div><div id="mIC" class="num" style="font-size:18px">[${fmt(m.lower,2)}; ${fmt(m.upper,2)}]</div><div class="support">Unidades originales</div></div></div><div id="mFigure">${ciFigure(m)}</div></div></div><div class="method-takeaway" style="margin-top:10px" aria-live="polite"><strong id="mConclusion">${m.sig?'El contraste resulta significativo al 5 %.':'El contraste no resulta significativo al 5 %.'}</strong><p id="mInterpret">${m.practical?'La diferencia planteada alcanza el umbral de relevancia elegido.':'La diferencia planteada no alcanza el umbral de relevancia elegido.'} Se trata de criterios distintos.</p></div><div class="item-actions"><button class="btn ghost mini" type="button" data-method-case="small">Caso: muestra pequeña</button><button class="btn ghost mini" type="button" data-method-case="large">Caso: muestra grande</button><button class="btn outline mini" type="button" data-method-case="reset">Restablecer escenario</button></div><div class="note">Cambiar n manteniendo fija la diferencia permite un <strong>análisis de sensibilidad didáctico</strong>; no equivale a extraer nuevas muestras ni demuestra que aumentar la muestra garantice un resultado significativo en un estudio real. El umbral de relevancia debe justificarse según el contexto científico.</div></section>`;}
+function updateMethod(){if(!el('methodN'))return;const m=methodStats();const put=(id,v)=>{const node=el(id);if(node)node.textContent=v;};put('methodNValue',String(m.n));put('methodTotal',String(m.n*2));put('methodDeltaValue',fmt(m.delta,1)+' puntos');put('methodThresholdValue',fmt(m.threshold,1)+' puntos');put('mP',numberP(m.p));put('mD',fmt(m.d,2));put('mIC','['+fmt(m.lower,2)+'; '+fmt(m.upper,2)+']');put('mConclusion',m.sig?'El contraste resulta significativo al 5 %.':'El contraste no resulta significativo al 5 %.');put('mInterpret',(m.practical?'La diferencia planteada alcanza el umbral mínimo de relevancia.':'La diferencia planteada no alcanza el umbral mínimo de relevancia.')+' '+(m.lower<=0?'El IC del 95 % incluye el valor nulo.':'El IC del 95 % excluye el valor nulo.')+' La significación, magnitud y relevancia requieren interpretaciones distintas.');el('mFigure').innerHTML=ciFigure(m)}
+function analysisMethod(){return `${articleSwitch()}<article class="publication"><header class="page-head"><div class="eyebrow">DATOS BAJO ANÁLISIS · NOTA METODOLÓGICA #002</div><h1>¿Un resultado estadísticamente significativo es necesariamente importante?</h1><p>Inferencia estadística · Tamaño del efecto · Tamaño muestral · Ejemplo didáctico reproducible</p></header><div class="highlight"><div class="tag">IDEA CENTRAL</div><h3>El valor p no mide el tamaño ni la importancia de un efecto.</h3><p>Un resultado puede superar un umbral convencional de significación y, aun así, representar una diferencia muy pequeña desde una perspectiva práctica. La interpretación necesita considerar la magnitud, su incertidumbre y la pregunta de investigación.</p></div><h2>1. El problema de interpretar solo p &lt; 0,05</h2><p>Dos investigaciones pueden obtener diferencias de magnitud similar y valores p diferentes si cambia la precisión de las estimaciones. La significación estadística aporta información sobre la compatibilidad de los datos con un modelo de hipótesis, pero no determina por sí sola si el resultado merece una intervención, una decisión clínica o una recomendación de política.</p><p>La American Statistical Association advierte que la relevancia científica no puede deducirse exclusivamente de cruzar un umbral de significación. La justificación de la muestra y de los efectos considerados importantes debe partir de los objetivos inferenciales del estudio.</p><h2>2. Experimento: la misma diferencia, distintos tamaños de muestra</h2><p>Se plantea una comparación hipotética entre dos grupos independientes. En el escenario inicial, sus medias difieren en <strong>2 puntos</strong> y la desviación estándar poblacional se supone conocida e igual a 10 puntos. Así, el tamaño del efecto estandarizado es <strong>d = 0,20</strong>. Se examina cómo cambia la incertidumbre al modificar el tamaño muestral.</p>${methodWidget()}<h2>3. ¿Cómo se obtienen los indicadores?</h2><p>Para ilustrar la sensibilidad del contraste se usa un modelo normal con varianza poblacional conocida, muestras independientes y tamaños iguales. Se calcula:</p><div class="formula">EE = σ √(2/n) &nbsp; · &nbsp; z = Δ / EE &nbsp; · &nbsp; p = 2[1 − Φ(|z|)]</div><div class="formula">IC<sub>95 %</sub> = Δ ± 1,96 · EE &nbsp; · &nbsp; d = Δ / σ</div><p>La función Φ corresponde a la distribución normal estándar; Δ es la diferencia planteada entre las medias y n el número de observaciones por grupo. Se utiliza el estadístico z porque la desviación poblacional <em>se supone conocida</em>. En aplicaciones ordinarias donde se estima la varianza, suele ser más apropiado un procedimiento basado en la distribución t, sujeto a sus supuestos.</p><h2>4. Interpretación y límites</h2><ul class="method-notes"><li><strong>Significación:</strong> no informa directamente sobre la importancia científica ni establece causalidad.</li><li><strong>Magnitud:</strong> la diferencia de medias y d describen el efecto según escalas distintas; su relevancia depende del campo.</li><li><strong>Precisión:</strong> a medida que n aumenta, el error estándar disminuye bajo el modelo supuesto.</li><li><strong>Relevancia:</strong> el umbral mínimo debería justificarse antes de observar los datos, a partir de conocimientos sustantivos.</li><li><strong>Incertidumbre:</strong> un resultado no significativo no prueba que el efecto sea inexistente; tampoco un IC que cruce el umbral práctico prueba equivalencia.</li></ul><div class="note"><strong>Alcance:</strong> se trata de un análisis didáctico con parámetros hipotéticos y fórmulas reproducibles, sin datos de participantes ni inferencia aplicada a una población concreta. Los valores se recalculan localmente en el navegador y no se envían a ningún servidor.</div><h2>5. Referencias y trazabilidad</h2><ul class="source-list"><li><a href="https://magazine.amstat.org/blog/2016/03/07/pvalue-mar16/" target="_blank" rel="noopener noreferrer">American Statistical Association (2016): Statement on Statistical Significance and P-Values ↗</a></li><li><a href="https://doi.org/10.1525/collabra.33267" target="_blank" rel="noopener noreferrer">Lakens (2022): Sample Size Justification · Collabra: Psychology ↗</a></li><li><a href="https://www.nature.com/articles/d41586-019-00857-9" target="_blank" rel="noopener noreferrer">Amrhein, Greenland y McShane (2019): Scientists rise up against statistical significance · Nature ↗</a></li></ul><div class="highlight"><h3>El análisis también se presenta como recurso interactivo</h3><p>Se conecta con la sección <em>Experimenta</em> y con una nueva pregunta de <em>Estadística sin mitos</em>, sin duplicar sus resultados.</p><div class="item-actions"><button class="btn mini" data-nav="laboratorio">Explorar el laboratorio ↗</button><button class="btn outline mini" data-nav="mitos">Ver consejo metodológico ↗</button></div></div></article>`}
+function myths(){return originalMyths()+quizBlock('effect','TIP #003 · INTERPRETACIÓN DE RESULTADOS','Si un resultado tiene p = 0,01, ¿qué se puede concluir?',['Que la diferencia necesariamente es relevante en la práctica.','Que se rechazó la hipótesis nula al 5 % bajo los supuestos del contraste, pero la importancia del efecto requiere otras consideraciones.','Que se demostró una relación causal.'],1,state.quizEffect,'El valor p es una pieza del análisis. Es necesario examinar magnitud, intervalos de confianza, diseño del estudio y criterios sustantivos de relevancia.')+`<div class="highlight"><div class="tag">AMPLIAR EL TEMA</div><p>El miniartículo metodológico permite variar la diferencia hipotética y el tamaño muestral para observar cómo cambia el valor p.</p><button class="btn mini" data-article="metodo" style="margin-top:10px">Ir al miniartículo ↗</button></div>`}
+function laboratory(){return originalLaboratory().replace('data-nav="analisis"','data-article="inflacion"')+`<section class="section"><div class="section-header"><div><div class="eyebrow">EXPERIMENTO #003 · INFERENCIA</div><h2>¿Significativo significa importante?</h2></div><button class="linkbtn" data-article="metodo">Leer metodología →</button></div><p>Se observa el efecto del tamaño de muestra sobre el valor p y la precisión de una diferencia de medias. Se mantiene separada la relevancia práctica.</p>${methodWidget()}</section>`}
+function authorCard029(){return `<section class="author029" aria-labelledby="author029-heading">
+ <div class="author029-main"><span class="author029-kicker">Sobre el autor y editor</span>
+ <h2 class="author029-name" id="author029-heading">Andrés Mauricio Grisales Aguirre</h2>
+ <p class="author030-role">Dirección académica y editorial de Métodos &amp; Evidencia</p>
+ <p class="author029-degree">Matemático · Magíster en Matemática Aplicada · Doctor en Ciencias – Matemáticas</p>
+ <p class="author029-bio">Docente e investigador en matemáticas, estadística aplicada y ciencia de datos, con interés en inteligencia artificial, procesamiento del lenguaje natural y métodos para la investigación científica.</p>
+ </div>
+ <div class="author029-channels"><h3>Contacto y perfiles académicos</h3>
+ <a class="author029-email" href="mailto:andresmgrisales@gmail.com">✉ andresmgrisales@gmail.com</a>
+ <div class="author029-links"><a href="https://orcid.org/0000-0002-4385-4474" target="_blank" rel="noopener noreferrer">ORCID ↗</a><a href="https://scholar.google.com/citations?hl=en&amp;sortby=pubdate&amp;user=-urmP7EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001436256" target="_blank" rel="noopener noreferrer">CvLAC ↗</a><a href="https://github.com/andresmgrisales" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+ <p class="author029-subtle">Enlaces a perfiles profesionales y publicaciones del autor.</p>
+ </div></section>`; }
+function resources(){return originalResources().replace('<div class="grid2">',authorCard029()+'<div class="grid2">')+`<div class="section card"><div class="tag">BIBLIOGRAFÍA METODOLÓGICA</div><h3>Lecturas de inferencia estadística</h3><p class="small">Referencias para comprender el valor p, la justificación muestral y la importancia de interpretar la incertidumbre.</p><ul class="source-list"><li><a href="https://magazine.amstat.org/blog/2016/03/07/pvalue-mar16/" target="_blank" rel="noopener">ASA, 2016 ↗</a></li><li><a href="https://doi.org/10.1525/collabra.33267" target="_blank" rel="noopener">Lakens, 2022 ↗</a></li></ul><button class="btn mini" data-article="metodo">Consultar miniartículo ↗</button></div>`}
+
+
+/* v0.26 · contenido editorial autorizado conservando el resto de la interfaz */
+function approvedFeature026(){return `<section class="a026-callout" aria-labelledby="a026-title">
+<div class="a026-kicker">RADAR CIENTÍFICO · IA EN LA INVESTIGACIÓN · LECTURA 01</div>
+<p><span class="a026-badge">Aprobada editorialmente · 13 nov 2026</span> <span style="font-size:12px;color:#6c7e89">Artículo disponible en Métodos & Evidencia</span></p>
+<h2 id="a026-title">¿Puede una IA investigar sola? Lo que la evidencia dice sobre los agentes científicos</h2>
+<p><a href="./articulos/agentes-ia-investigacion-verificabilidad.html" style="font-weight:750;color:#08716f;text-underline-offset:3px">Leer el artículo en su página independiente</a></p>
+<p>Análisis crítico de una revisión de agentes basados en modelos de lenguaje: automatización de tareas científicas, verificación de fuentes, reproducibilidad y supervisión humana.</p>
+<details id="approved026-details" class="a026-details"><summary>Leer artículo completo y ver infografía</summary>
+<div class="a026-embed"><article class="reading" id="a026-agentes" aria-labelledby="a026-h0">
+  <div class="reading-head"><div class="reading-meta">LECTURA 01 · IA EN INVESTIGACIÓN</div>
+    <span class="pill">Lectura de evidencia · 2026</span>
+    <h2 id="a026-h0">¿Puede una IA investigar sola? Lo que la evidencia dice sobre los agentes científicos</h2><p class="lead">Una revisión de 883 trabajos revela avances en búsqueda y experimentación computacional, pero también límites de fiabilidad, reproducción y supervisión humana.</p>
+    <div class="submeta">Journal of Superintelligence · 2026-10-17 · revisión con búsqueda sistemática y síntesis narrativa</div>
+  </div>
+  <figure class="infographic"><figcaption>RESUMEN GRÁFICO</figcaption><div class="graphic-body">
+<div class="graphic-kicker">REVISIÓN DE LITERATURA · LECTURA DEL PROCESO DE SELECCIÓN</div><div class="flow3" aria-label="De 2928 registros recuperados a 883 incluidos y 253 analizados en profundidad">
+<div class="flow-number"><strong>2.928</strong><span>Registros recuperados</span></div><div class="arrow" aria-hidden="true">→</div><div class="flow-number"><strong>883</strong><span>Trabajos codificados</span></div><div class="arrow" aria-hidden="true">→</div><div class="flow-number"><strong>253</strong><span>Trabajos analizados en profundidad</span></div></div>
+<div class="graphic-message"><span aria-hidden="true">◉</span><strong>Automatizar pasos no demuestra validez científica.</strong></div><div class="graphic-chips"><span>Verificación de citas</span><span>Reproducibilidad</span><span>Control humano</span><span>Trazabilidad</span></div>
+<p class="graphic-footnote">Las cifras describen la revisión bibliográfica de Gao y colaboradores, no tasas de éxito de los agentes de IA.</p></div></figure>
+  <div class="reading-content"><h3>Lectura y análisis</h3><section class="section-narrative"><h3>¿Realizar una búsqueda, programar un experimento y redactar un informe significa que una IA hizo ciencia?</h3><p>No necesariamente. Un sistema puede completar una secuencia de tareas y producir un texto convincente sin haber demostrado que sus resultados sean reproducibles, sus citas exactas o sus conclusiones válidas.</p></section>
+<section class="section-narrative"><h3>Qué examinó la investigación.</h3><p>Gao, Yu y Li revisaron aplicaciones de agentes basados en modelos de lenguaje a lo largo del ciclo científico: búsqueda de evidencia, generación de hipótesis, experimentación, redacción y revisión. Partieron de 2.928 registros únicos; incorporaron 883 a un corpus codificado y analizaron 253 con mayor profundidad. No construyeron ni evaluaron un único agente nuevo: sintetizaron resultados de trabajos diferentes.</p></section>
+<section class="section-narrative"><h3>Qué encontró.</h3><p>La literatura muestra progresos particularmente visibles en búsqueda asistida por recuperación de fuentes y en tareas delimitadas de ingeniería de aprendizaje automático. Pero reproducir resultados científicos, formular hipótesis sólidas sin guía y sostener investigaciones completas continúan siendo desafíos. Por ejemplo, la revisión comunica 21 % como mejor puntuación de reproducción sobre 20 artículos de un benchmark; ese porcentaje <strong>no es una tasa universal de éxito de todos los agentes</strong>.</p></section>
+<section class="section-narrative"><h3>Qué exige cautela.</h3><p>Los autores auditaron su propio cribado asistido por IA. En una muestra estratificada de 400 registros estimaron una precisión de 0,94 entre los aceptados y una recuperación de aproximadamente 0,70 para el cribado, bajo un patrón de referencia parcialmente construido mediante acuerdo entre modelos. Por tanto, el corpus puede omitir trabajos pertinentes; sus recuentos no representan toda la investigación existente. Además, mezclan estudios publicados y preprints, con diseños y métricas que no son directamente comparables.</p></section>
+<section class="section-narrative"><h3>Aplicación al trabajo académico.</h3><p>El valor de un agente no debería medirse por cuántas tareas termina, sino por la trazabilidad de cada afirmación, la posibilidad de reproducir cálculos y la capacidad de reconocer incertidumbre. Para utilizar agentes en investigación conviene conservar consultas, versiones de datos y código; verificar DOI y citas contra originales; contrastar resultados de manera independiente; y documentar decisiones humanas de aceptación o rechazo.</p></section>
+<section class="section-narrative"><h3>Pregunta para el lector.</h3><p>Si una IA entrega un artículo completo, pero no proporciona datos, código y evidencia verificable, ¿qué parte del proceso científico puede considerarse realmente terminada?</p></section>
+<p><em>Nota editorial:</em> esta ficha describe una revisión de literatura. No sostiene que los agentes de IA sean autónomos y científicamente confiables de manera general. Aprobada editorialmente el 13 de noviembre de 2026. Publicado en Métodos & Evidencia.</p></div>
+  <aside class="interpretation"><h3>Lo que aún requiere verificación</h3><p>La revisión de Gao y colaboradores sintetiza estudios con evaluaciones diferentes. El desempeño observado en un benchmark no permite atribuir autonomía científica general ni concluir que todas las investigaciones son reproducibles.</p></aside>
+  <footer class="sources"><b>Referencia bibliográfica</b><p>Yifan Gao; Leyi Yu; Haoyue Li (2026). <em>Large Language Model Agents for Autonomous Scientific Research: A Lifecycle Survey of Methods, Systems, Benchmarks, and Risks</em>. Journal of Superintelligence.</p>
+     <a href="https://doi.org/10.3390/superintelligence1020008" target="_blank" rel="noopener noreferrer">Consultar publicación original · DOI 10.3390/superintelligence1020008</a>
+     
+  </footer></article></div></details></section>`;}
+function homeFeature026(){return `<section class="a026-home">
+<div class="a026-kicker">PRIMERA LECTURA · IA EN LA INVESTIGACIÓN</div><h2>¿Puede una IA investigar sola?</h2>
+<p>Ya cuenta con aprobación editorial y puede previsualizarse íntegramente dentro del Radar científico, con infografía original y referencias contrastables.</p>
+<button type="button" class="a026-btn" data-open-approved026>Consultar lectura e infografía</button></section>`;}
+document.addEventListener('click',event=>{
+ if(!event.target.closest('[data-open-approved026]'))return;
+ go('radar');const pane=el('approved026-details');if(pane){pane.open=true;pane.scrollIntoView({behavior:'smooth',block:'start'});}
+});
+
+const templates={inicio:()=>home()+homeFeature026(),radar:()=>radar().replace('<div class="note">',approvedFeature026()+'<div class="note">'),analisis:analysis,mitos:myths,laboratorio:laboratory,recursos:resources};
+function render(scroll=true){nav();el('page').innerHTML=templates[state.page]();document.title=`${navItems.find(x=>x[0]===state.page)[2]} · Métodos & Evidencia`;if(scroll){window.scrollTo({top:0,behavior:'instant'});}}
+function go(p){if(!templates[p])return;state.page=p;state.openStudy='';render();}
+function exportReview(){const payload={schema:'metodos-evidencia/radar-review-v0.8',exported_at:new Date().toISOString(),note:'Preselección local; no representa aprobación científica ni orden de publicación.',items:radarCandidates.map(c=>({id:c.id,doi:c.doi,title:c.title,decision:state.radarDecision[c.id]||'pendiente'}))};const data=JSON.stringify(payload,null,2);const blob=new Blob([data],{type:'application/json;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='radar_dictamen_local_08.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}
+document.addEventListener('click',e=>{let b=e.target.closest('[data-radar-tab],[data-review],[data-review-export],[data-nav],[data-chart],[data-study],[data-quiz],[data-article],[data-method-case]');if(!b)return;if(b.dataset.radarTab){state.radarTab=b.dataset.radarTab;state.radarQuery='';state.radarArea='todas';render(false);return}if(b.dataset.review){state.radarDecision[b.dataset.review]=b.dataset.reviewStatus;let target=el('radarList');if(target)target.innerHTML=reviewCandidates();let counter=el('reviewStats');if(counter)counter.textContent=Object.values(state.radarDecision).filter(x=>x==='revisar').length+' priorizadas para revisión';return}if(b.dataset.reviewExport){exportReview();return}if(b.dataset.article){state.article=b.dataset.article;go('analisis');return}if(b.dataset.methodCase){const kind=b.dataset.methodCase;state.methodN=kind==='small'?50:kind==='large'?600:50;state.methodDelta=2;state.methodThreshold=5;if(el('methodN')){el('methodN').value=state.methodN;el('methodDelta').value=state.methodDelta;el('methodThreshold').value=state.methodThreshold;updateMethod()}return}if(b.dataset.nav){go(b.dataset.nav);return}if(b.dataset.chart){state.chart=b.dataset.chart;render(false);return}if(b.dataset.study){state.openStudy=state.openStudy===b.dataset.study?'':b.dataset.study;let target=el('radarList');if(target)target.innerHTML=radarItems();return}if(b.dataset.quiz){let field=b.dataset.quiz==='inflation'?'quizInflation':b.dataset.quiz==='effect'?'quizEffect':'quizP';state[field]=b.dataset.answer;render(false)}});
+document.addEventListener('input',e=>{let id=e.target.id;if(id==='radarQ'){state.radarQuery=e.target.value;el('radarList').innerHTML=state.radarTab==='publicadas'?radarItems():reviewCandidates()}if(id==='sizeSlider'){state.n=Number(e.target.value);updateSample()}if(id==='pSlider'){state.p=Number(e.target.value)/100;updateSample()}if(id==='amountSlider'){state.amount=Number(e.target.value);updateAmount()}if(id==='methodN'){state.methodN=Number(e.target.value);updateMethod()}if(id==='methodDelta'){state.methodDelta=Number(e.target.value);updateMethod()}if(id==='methodThreshold'){state.methodThreshold=Number(e.target.value);updateMethod()}});
+document.addEventListener('change',e=>{if(e.target.id==='radarArea'){state.radarArea=e.target.value;el('radarList').innerHTML=state.radarTab==='publicadas'?radarItems():reviewCandidates()}if(e.target.id==='amountYear'){state.amountYear=e.target.value;updateAmount()}});
+function updateSample(){if(!el('nValue'))return;el('nValue').textContent=state.n;el('pValue').textContent=fmt(state.p*100,0)+' %';el('marginValue').textContent='±'+fmt(sampleMargin())+' pp';el('marginInterval').textContent='Intervalo ilustrativo: '+fmt(state.p*100-sampleMargin())+' % – '+fmt(state.p*100+sampleMargin())+' %'}
+function updateAmount(){if(!el('amountValue'))return;el('amountValue').textContent=money(state.amount);let idx=annual[Number(state.amountYear)].idx;el('resultMoney').textContent=money(state.amount*idx/100);el('resultGrow').textContent='Variación acumulada: +'+fmt(idx-100)+' %'}
+
+
+</script>
+
+
+
+
+
+
+<script>
+/* Audience-facing composition. Technical workflows are preserved in the private codebase
+   but are intentionally not exposed on this reader preview. */
+(function(){
+  'use strict';
+  const publicSections027 = new Set(['inicio','radar','analisis','mitos','laboratorio','recursos']);
+  const publicLabels027 = {inicio:'Inicio',radar:'Radar científico',analisis:'Datos bajo análisis',mitos:'Estadística sin mitos',laboratorio:'Experimenta',recursos:'Recursos'};
+  nav = function(){
+    el('nav').innerHTML = navItems.filter(([id])=>publicSections027.has(id)).map(([id,ico])=>
+      `<button type="button" data-nav="${id}" class="${state.page===id?'active':''}" ${state.page===id?'aria-current="page"':''} title="${publicLabels027[id]}"><span class="ic" aria-hidden="true">${ico}</span><span class="nav-long">${publicLabels027[id]}</span><span class="nav-short">${shortNames[id]||publicLabels027[id]}</span></button>`
+    ).join('');
+  };
+  function landing027(){
+    let html = home();
+    html = html.replace(/<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS<\/div>[\s\S]*?<\/div><\/section>(?=<div class="highlight">)/,'');
+    html = html.replace(/<div class="highlight"><strong>Una nota sobre la versión 0\.6\.1<\/strong>[\s\S]*?<\/div>/,'');
+    html = html.replace('NUEVO EN LA VERSIÓN 0.5 · MÉTODOS','INTERPRETACIÓN ESTADÍSTICA');
+    html = html.replace('DANE · Último corte incluido en el prototipo','DANE · Datos con corte a septiembre de 2026');
+    html = html.replace('Publicaciones verificadas y comentarios metodológicos.','Lecturas críticas de investigaciones y sus resultados.');
+    html = html.replace('Miniartículos sustentados en fuentes oficiales.','Ejemplos con datos oficiales y gráficos interpretables.');
+    html = html.replace('Información sobre acompañamiento especializado.','Bibliografía, recursos y fuentes para profundizar.');
+    html = html.replace('<strong>Asesorías</strong>','<strong>Más recursos</strong>');
+    html = html.replace('Publicación destacada','Análisis destacado');
+    html += `<section class="m27-hero"><div class="a026-kicker" style="color:#b8ebe4">IA EN LA INVESTIGACIÓN · LECTURA DESTACADA</div>
+        <h2>¿Puede una IA investigar sola?</h2>
+        <p>Una revisión de 883 trabajos permite examinar avances y límites de los agentes científicos. Se presentan los hallazgos, una infografía original y las precauciones para interpretar la evidencia.</p>
+        <button type="button" class="a026-btn" data-open-approved026>Leer el artículo y explorar la infografía</button></section>`;
+    return html;
+  }
+  function areas027(){return `<div class="m27-areas" aria-label="Áreas editoriales">
+    <article><strong>01 · ESTADÍSTICA Y SUS USOS</strong><h3>Interpretar los datos</h3><p>Inferencia, métodos, aplicaciones y lectura cuidadosa de resultados.</p></article>
+    <article><strong>02 · IA EN LA INVESTIGACIÓN</strong><h3>Examinar nuevas herramientas</h3><p>Inteligencia artificial, modelos de lenguaje, NLP y evaluación de evidencia.</p></article>
+    <article><strong>03 · CIENCIA Y SOCIEDAD</strong><h3>Conectar hallazgos</h3><p>Investigaciones relevantes para la sociedad explicadas con sus alcances y límites.</p></article>
+  </div>`;}
+  function publishedReading027(){
+    return approvedFeature026()
+      .replace('<span class="a026-badge">Aprobada editorialmente · 13 nov 2026</span> <span style="font-size:12px;color:#6c7e89">Previsualización privada, no publicada</span>','<span class="a026-badge">Lectura de evidencia · 2026</span>')
+      .replace('Aprobación editorial · 13 nov 2026 · Previsualización','Análisis científico · Fuente 2026')
+      .replace('Aprobada editorialmente el 13 de noviembre de 2026. Vista previa local, aún no publicada en internet.','Esta lectura crítica no atribuye confiabilidad científica autónoma a todos los agentes. Cada cifra se interpreta dentro del estudio del que procede.')
+      .replace('Lo que aún requiere verificación','Alcances y limitaciones de la evidencia')
+      .replace('Leer artículo completo y ver infografía','Leer el análisis completo y explorar la infografía');
+  }
+  function radarPublic027(){return `<section class="m27-header"><div class="eyebrow">INVESTIGACIONES · CONTEXTO · EVIDENCIA</div><h1>Radar científico</h1>
+    <p>Se exploran investigaciones relevantes a partir de sus preguntas, resultados, fuentes originales y limitaciones. Cada lectura diferencia lo que reporta el estudio de las interpretaciones que pueden hacerse.</p></section>`
+    + areas027() + publishedReading027() + `<div class="m27-note"><strong>¿Cómo se interpretan estas lecturas?</strong> Se indican las fuentes bibliográficas, la naturaleza del estudio y las limitaciones que deben considerarse antes de generalizar sus conclusiones.</div>`;}
+  function resourcesPublic027(){return resources()
+     .replace(/<section class="card resource"><div class="resource-icon">✉<\/div>[\s\S]*?<\/section>/,'')
+     .replace('y un espacio para solicitar orientación metodológica','para ampliar la comprensión de los temas presentados')
+     .replace('Recursos y acompañamiento','Recursos para profundizar')
+     .replace('RECURSOS · TRANSPARENCIA · CONTACTO','BIBLIOGRAFÍA · FUENTES · RECURSOS')
+     .replace('El contenido utiliza tercera persona o construcciones impersonales.','');}
+  templates.inicio=landing027;
+  templates.radar=radarPublic027;
+  templates.analisis=function(){return analysis()
+      .replace('Miniartículo demostrativo · IPC nacional','Análisis explicativo · IPC nacional');};
+const me033LegacyRoutes={"inflacion":"inflacion-y-nivel-de-precios.html","metodo":"significancia-estadistica-e-importancia.html","desempleo":"brecha-desempleo-mujeres-hombres-colombia.html"};
+ document.addEventListener('click',function(e){
+  const t=e.target.closest('[data-article],[data-nav],[data-open-approved026]');if(!t)return;
+  if(t.dataset.article&&me033LegacyRoutes[t.dataset.article]){e.preventDefault();e.stopImmediatePropagation();location.href=me033LegacyRoutes[t.dataset.article];return;}
+  if(t.dataset.nav){e.preventDefault();e.stopImmediatePropagation();location.href='../index.html?seccion='+encodeURIComponent(t.dataset.nav);return;}
+  if(t.hasAttribute('data-open-approved026')){e.preventDefault();e.stopImmediatePropagation();location.href='../articulos/agentes-ia-investigacion-verificabilidad.html';}
+ },true);
+  templates.mitos=function(){return myths()
+      .replace('Se incluyen en el Radar dos investigaciones de Nature publicadas en 2026 que estudian estas cuestiones.','Se puede profundizar en estas diferencias consultando investigaciones sobre reproducibilidad y replicabilidad.')
+      .replace('Ver las investigaciones ↗','Explorar el Radar ↗');};
+  templates.laboratorio=laboratory;
+  templates.recursos=resourcesPublic027;
+  const previousRender033=render;
+  render=function(scroll=true){previousRender033(scroll);if(state.page==='analisis')document.title="¿Un resultado estadísticamente significativo es necesariamente importante? · Métodos & Evidencia";};
+  if(!publicSections027.has(state.page)){state.page='inicio'}
+  render(false);
+})();
+</script>
+
+<!-- GoatCounter: un registro por carga de pagina; la consulta publica de TOTAL no registra visitas adicionales. -->
+<script data-goatcounter="https://metodos-evidencia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var counter=document.getElementById('me-visit-total');
+  if(!counter) return;
+  fetch('https://metodos-evidencia.goatcounter.com/counter/TOTAL.json')
+    .then(function(response){if(!response.ok) throw new Error('Conteo publico no disponible');return response.json();})
+    .then(function(data){
+      if(data && (typeof data.count==='string'||typeof data.count==='number')){
+        counter.textContent=String(data.count);
+      }
+    })
+    .catch(function(){
+      counter.title='Activa el conteo publico en Settings de GoatCounter o verifica si el navegador bloquea la consulta.';
+    });
+})();
+</script>
+</body>
+</html>
