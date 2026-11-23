@@ -381,6 +381,17 @@
 .me033-back{display:inline-flex;padding:9px 12px;border:1px solid #b8ddd7;border-radius:10px;text-decoration:none;color:#12675f;margin-bottom:14px;background:#f1faf8;font-size:13px}
 @media(max-width:1050px){.me033-grid{grid-template-columns:1fr 1fr}.me033-card:first-child{grid-column:span 2}}
 @media(max-width:700px){.me033-grid{grid-template-columns:1fr}.me033-card:first-child{grid-column:span 1}.me033-card strong{font-size:17px}}
+
+/* Portada: solo la lectura GEIH 2026 ocupa el espacio editorial destacado */
+.me-new-feature-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.7fr);gap:24px;align-items:center}
+.me-new-feature h3{font-size:clamp(20px,2.8vw,26px);line-height:1.26;letter-spacing:-.3px;margin:11px 0}
+.me-new-feature p{line-height:1.65}
+.me-new-feature-figures{padding:18px 21px;background:#f0f8f6;border:1px solid #d5eae6;border-radius:14px}
+.me-new-feature-figures strong{display:block;font-size:clamp(28px,4vw,39px);font-variant-numeric:tabular-nums;color:#155967;line-height:1.18;margin-top:6px}
+.me-new-feature-figures p{margin:4px 0 0}
+.me-new-feature .btn{text-decoration:none}
+@media(max-width:780px){.me-new-feature-grid{grid-template-columns:1fr}.me-new-feature-figures{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}.me-new-feature-figures .divider{grid-column:1 / -1}}
+@media(max-width:500px){.me-new-feature-figures{display:block}.me-new-feature-figures .divider{margin:14px 0}}
 </style>
 </head>
 <body>
@@ -393,12 +404,12 @@
  <div class="sidebar-bottom"><strong>Una iniciativa académica</strong>Estadística aplicada · Investigación · NLP · Inteligencia artificial.</div>
 </aside>
 <div class="main"><div class="container">
-  <header class="topbar featured028" aria-label="Artículo destacado">
-  <button class="featured028-click" type="button" data-open-approved026 aria-label="Abrir artículo destacado: ¿Puede una IA investigar sola?">
-    <span class="featured028-label">ARTÍCULO DESTACADO</span>
-    <span class="featured028-main"><strong class="featured028-title">¿Puede una IA investigar sola?</strong><span class="featured028-summary">Una revisión analiza las capacidades y limitaciones de los agentes de IA, destacando la reproducibilidad y supervisión humana.</span></span>
+  <header class="topbar featured028" aria-label="Publicación destacada">
+  <a class="featured028-click" style="text-decoration:none" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html" aria-label="Leer la nueva publicación destacada: ¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?">
+    <span class="featured028-label">NUEVA PUBLICACIÓN</span>
+    <span class="featured028-main"><strong class="featured028-title">Brechas de desempleo entre mujeres y hombres en Colombia</strong><span class="featured028-summary">Datos oficiales DANE · Comparaciones territoriales y gráficos interactivos · Julio–septiembre 2026</span></span>
     <span class="featured028-arrow" aria-hidden="true">↗</span>
-  </button>
+  </a>
 </header>
   <main id="page" tabindex="-1"></main>
   <footer class="footer footer029"><span class="footer029-identity">© 2026 <strong>Métodos &amp; Evidencia</strong> · Andrés Mauricio Grisales Aguirre · Edición académica</span>
@@ -430,9 +441,22 @@ const el=id=>document.getElementById(id);const fmt=(n,d=2)=>Number(n).toLocaleSt
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 const legacyNav=()=>{el('nav').innerHTML=navItems.map(([id,ico,name])=>`<button type="button" data-nav="${id}" class="${state.page===id?'active':''}" ${state.page===id?'aria-current="page"':''}><span class="ic" aria-hidden="true">${ico}</span><span>${name}</span></button>`).join('')};
 function miniRadarCard(s){return `<div class="card"><div class="tag">${s.tag}</div><h3 style="margin:9px 0 7px;font-size:17px">${escapeHtml(s.title)}</h3><div class="small muted">${escapeHtml(s.authors)} · ${s.year}</div><p style="color:var(--ink2);font-size:13px;margin-bottom:15px">${escapeHtml(s.summary)}</p><button class="linkbtn" data-nav="radar">Ver en el Radar →</button></div>`}
-function originalHome(){return `<section class="hero"><div><div class="eyebrow">DONDE LOS MÉTODOS ENCUENTRAN SU CONTEXTO</div><h1>La evidencia merece<br>una buena interpretación.</h1><p>Investigaciones recientes, análisis con datos reales y experimentos interactivos para fortalecer la cultura estadística.</p><button class="btn light" data-nav="analisis">Ver el análisis destacado <span aria-hidden="true">↗</span></button></div><div class="hero-visual" aria-hidden="true"><svg viewBox="0 0 270 195"><g stroke="#d0e7e8" opacity=".25"><path d="M18 160H255M18 115H255M18 70H255M18 25H255" stroke-dasharray="4 5"/></g><path d="M22 147C55 130 67 155 102 105S160 95 180 67S220 62 248 23" fill="none" stroke="#6cddd1" stroke-width="5" stroke-linecap="round"/><g fill="#6cddd1" stroke="#ffffff" stroke-width="2"><circle cx="22" cy="147" r="5"/><circle cx="102" cy="105" r="5"/><circle cx="180" cy="67" r="5"/><circle cx="248" cy="23" r="5"/></g><g fill="none" stroke="#a6cde0" opacity=".6"><circle cx="184" cy="102" r="83"/><circle cx="184" cy="102" r="55"/></g></svg></div></section>
+function originalHome(){return `<section class="hero"><div><div class="eyebrow">DONDE LOS MÉTODOS ENCUENTRAN SU CONTEXTO</div><h1>La evidencia merece<br>una buena interpretación.</h1><p>Investigaciones recientes, análisis con datos reales y experimentos interactivos para fortalecer la cultura estadística.</p><a class="btn light" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html">Explorar la nueva publicación <span aria-hidden="true">↗</span></a></div><div class="hero-visual" aria-hidden="true"><svg viewBox="0 0 270 195"><g stroke="#d0e7e8" opacity=".25"><path d="M18 160H255M18 115H255M18 70H255M18 25H255" stroke-dasharray="4 5"/></g><path d="M22 147C55 130 67 155 102 105S160 95 180 67S220 62 248 23" fill="none" stroke="#6cddd1" stroke-width="5" stroke-linecap="round"/><g fill="#6cddd1" stroke="#ffffff" stroke-width="2"><circle cx="22" cy="147" r="5"/><circle cx="102" cy="105" r="5"/><circle cx="180" cy="67" r="5"/><circle cx="248" cy="23" r="5"/></g><g fill="none" stroke="#a6cde0" opacity=".6"><circle cx="184" cy="102" r="83"/><circle cx="184" cy="102" r="55"/></g></svg></div></section>
 <section class="section"><div class="section-header"><div><div class="eyebrow">EXPLORAR CONTENIDOS</div><h2>Un espacio, varias maneras de aprender</h2></div></div><div class="grid3">${[['radar','◉','Radar científico','Publicaciones verificadas y comentarios metodológicos.'],['analisis','▥','Datos bajo análisis','Miniartículos sustentados en fuentes oficiales.'],['mitos','✳','Estadística sin mitos','Preguntas breves para interpretar con rigor.'],['laboratorio','◫','Experimenta','Simulaciones para comprender la incertidumbre.'],['recursos','☷','Recursos','Fuentes y herramientas para profundizar.'],['recursos','✉','Asesorías','Información sobre acompañamiento especializado.']].map(x=>`<button class="tile" data-nav="${x[0]}"><span class="tile-ico">${x[1]}</span><strong>${x[2]}</strong><span>${x[3]}</span></button>`).join('')}</div></section>
-<section class="section"><div class="section-header"><div><div class="eyebrow">DATOS BAJO ANÁLISIS</div><h2>Publicación destacada</h2></div><button class="linkbtn" data-nav="analisis">Abrir artículo →</button></div><div class="card featured-card" style="display:grid;grid-template-columns:1.2fr .75fr;gap:15px"><div><span class="tag">COLOMBIA · IPC · 2022–2026</span><h3 style="font-size:24px;line-height:1.25;letter-spacing:-.5px;margin:10px 0">¿Si la inflación disminuye, por qué los precios siguen aumentando?</h3><p class="muted">Se reconstruye un índice acumulado con cifras oficiales del DANE para distinguir la tasa de variación del nivel de precios.</p><button class="btn" data-nav="analisis">Leer e interactuar ↗</button></div><div style="align-self:center"><div class="overline">INFLACIÓN ANUAL · SEP. 2026</div><div style="font-size:38px;font-weight:790;color:#174f60">6,29 %</div><div class="muted small">DANE · Último corte incluido en el prototipo</div><div class="divider"></div><div class="overline">VARIACIÓN ACUMULADA · DIC. 2021 – SEP. 2026</div><div style="font-weight:750;font-size:24px">+44,52 %</div></div></div></section>
+<section class="section me-new-feature" aria-labelledby="me-new-feature-heading">
+<div class="section-header"><div><div class="eyebrow">DATOS BAJO ANÁLISIS · NUEVA PUBLICACIÓN</div><h2 id="me-new-feature-heading">Una nueva mirada a las brechas laborales</h2></div><a class="linkbtn" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html">Abrir publicación →</a></div>
+<div class="card featured-card me-new-feature-grid">
+<div><span class="tag">COLOMBIA · GEIH · JULIO–SEPTIEMBRE 2026</span>
+<h3>¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?</h3>
+<p class="muted">Se comparan las tasas de desocupación por sexo en distintos dominios geográficos, con cifras oficiales del DANE. El análisis permite explorar las brechas, contrastar indicadores y consultar los datos de origen.</p>
+<a class="btn" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html">Leer la nota y explorar los gráficos ↗</a>
+</div><div class="me-new-feature-figures" aria-label="Indicadores destacados del nuevo análisis">
+<div class="overline">MAYOR BRECHA DE DESOCUPACIÓN</div>
+<strong>6,5 p.p.</strong><p class="muted small">Centros poblados y rural disperso</p>
+<div class="divider"></div>
+<div class="overline">BRECHA EN 13 CIUDADES Y ÁREAS METROPOLITANAS</div>
+<strong>1,9 p.p.</strong><p class="muted small">DANE · GEIH · Julio–septiembre 2026</p>
+</div></div></section>
 <section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS</div><h2>Desde el Radar científico</h2></div><button class="linkbtn" data-nav="radar">Ver todas →</button></div><div class="grid2">${miniRadarCard(studies[0])}${miniRadarCard(studies[2])}</div></section><div class="highlight"><strong>Una nota sobre la versión 0.6.1</strong><p class="small">El contenido se utiliza para validar estructura, interacción y lenguaje editorial. No existe conexión automática con fuentes de datos ni publicación externa.</p></div>`}
 function radarItems(){const q=state.radarQuery.trim().toLocaleLowerCase('es');const results=studies.filter(s=>(state.radarArea==='todas'||s.area===state.radarArea)&&(!q||[s.title,s.summary,s.authors,s.tag].join(' ').toLocaleLowerCase('es').includes(q)));return `<div class="small muted" style="margin:3px 0 13px">${results.length} ${results.length===1?'estudio seleccionado':'estudios seleccionados'}</div>${results.length?results.map(s=>`<article class="radar-item"><div class="tag">${s.tag}</div><h3>${escapeHtml(s.title)}</h3><div class="meta"><span>${escapeHtml(s.authors)}</span><span>· ${s.date}</span><span>· DOI: ${s.doi}</span></div><p>${escapeHtml(s.summary)}</p><div class="item-actions"><a class="btn outline mini" href="${s.url}" target="_blank" rel="noopener noreferrer">Publicación original ↗</a><button class="btn ghost mini" data-study="${s.id}" aria-expanded="${state.openStudy===s.id}">${state.openStudy===s.id?'Cerrar lectura':'Lectura metodológica'} ${state.openStudy===s.id?'−':'+'}</button></div>${state.openStudy===s.id?`<div class="expansion"><strong>¿Por qué importa?</strong><p>${escapeHtml(s.why)}</p><strong>Precaución interpretativa</strong><p>${escapeHtml(s.limit)}</p></div>`:''}</article>`).join(''):'<div class="card muted">No se encontraron estudios con estos filtros. Se puede modificar el área o la búsqueda.</div>'}`}
 function reviewLabel(status){return {pendiente:'Pendiente',revisar:'Priorizada para revisión',descartado:'Descartada en prueba'}[status]||'Pendiente'}
@@ -452,7 +476,7 @@ function originalResources(){return `<div class="page-head"><div class="eyebrow"
 const shortNames={inicio:'Inicio',radar:'Radar',analisis:'Artículos',mitos:'Consejos',laboratorio:'Explora',recursos:'Contacto'};
 function nav(){el('nav').innerHTML=navItems.map(([id,ico,name])=>`<button type="button" data-nav="${id}" class="${state.page===id?'active':''}" ${state.page===id?'aria-current="page"':''} title="${name}"><span class="ic" aria-hidden="true">${ico}</span><span class="nav-long">${name}</span><span class="nav-short">${shortNames[id]}</span></button>`).join('')}
 function articleSwitch(){return `<nav class="article-switch" aria-label="Seleccionar miniartículo"><button type="button" data-article="inflacion" class="${state.article==='inflacion'?'selected':''}" aria-current="${state.article==='inflacion'?'true':'false'}"><span class="tag">CASO 01 · DATOS OFICIALES</span><strong>Inflación y nivel de precios</strong><span class="small muted">Colombia · IPC · DANE</span></button><button type="button" data-article="metodo" class="${state.article==='metodo'?'selected':''}" aria-current="${state.article==='metodo'?'true':'false'}"><span class="tag">CASO 02 · MÉTODOS ESTADÍSTICOS</span><strong>¿Significativo significa importante?</strong><span class="small muted">Efectos, tamaño muestral e incertidumbre</span></button></nav>`}
-function home(){const old=originalHome();const addition=`<section class="section"><div class="section-header"><div><div class="eyebrow">NUEVO EN LA VERSIÓN 0.5 · MÉTODOS</div><h2>Una pregunta para investigadores</h2></div></div><div class="card featured-card" style="display:grid;grid-template-columns:1.35fr .7fr;gap:20px"><div><span class="tag">INFERENCIA · TAMAÑO MUESTRAL · INTERPRETACIÓN</span><h3 style="font-size:23px;line-height:1.25;margin:10px 0">¿Un resultado estadísticamente significativo es necesariamente importante?</h3><p class="muted">Se compara la significación con la magnitud del efecto y con un umbral mínimo de relevancia definido antes del análisis. Incluye un experimento interactivo.</p><button class="btn" data-article="metodo">Leer y experimentar ↗</button></div><div style="align-self:center"><div class="overline">SIMULACIÓN DIDÁCTICA · EFECTO FIJO</div><div style="font-size:37px;font-weight:800;color:#185463">d = 0,20</div><div class="muted small">Se mantiene la misma magnitud mientras cambia n.</div><div class="divider"></div><span class="mini-pill">Sin datos de participantes</span></div></div></section>`;return old.replace(/data-nav="analisis"/g,'data-article="inflacion"').replace('<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS',addition+'<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS')}
+function home(){return originalHome()}
 function phiUpper(z){ // cola superior normal estándar, aproximación clásica de 5 términos
  const x=Math.abs(z),t=1/(1+.2316419*x),pdf=Math.exp(-.5*x*x)/Math.sqrt(2*Math.PI);
  return pdf*t*(.319381530+t*(-.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));
@@ -559,17 +583,12 @@ function updateAmount(){if(!el('amountValue'))return;el('amountValue').textConte
     let html = home();
     html = html.replace(/<section class="section"><div class="section-header"><div><div class="eyebrow">LECTURAS SELECCIONADAS<\/div>[\s\S]*?<\/div><\/section>(?=<div class="highlight">)/,'');
     html = html.replace(/<div class="highlight"><strong>Una nota sobre la versión 0\.6\.1<\/strong>[\s\S]*?<\/div>/,'');
-    html = html.replace('NUEVO EN LA VERSIÓN 0.5 · MÉTODOS','INTERPRETACIÓN ESTADÍSTICA');
     html = html.replace('DANE · Último corte incluido en el prototipo','DANE · Datos con corte a septiembre de 2026');
     html = html.replace('Publicaciones verificadas y comentarios metodológicos.','Lecturas críticas de investigaciones y sus resultados.');
     html = html.replace('Miniartículos sustentados en fuentes oficiales.','Ejemplos con datos oficiales y gráficos interpretables.');
     html = html.replace('Información sobre acompañamiento especializado.','Bibliografía, recursos y fuentes para profundizar.');
     html = html.replace('<strong>Asesorías</strong>','<strong>Más recursos</strong>');
     html = html.replace('Publicación destacada','Análisis destacado');
-    html += `<section class="m27-hero"><div class="a026-kicker" style="color:#b8ebe4">IA EN LA INVESTIGACIÓN · LECTURA DESTACADA</div>
-        <h2>¿Puede una IA investigar sola?</h2>
-        <p>Una revisión de 883 trabajos permite examinar avances y límites de los agentes científicos. Se presentan los hallazgos, una infografía original y las precauciones para interpretar la evidencia.</p>
-        <button type="button" class="a026-btn" data-open-approved026>Leer el artículo y explorar la infografía</button></section>`;
     return html;
   }
   function areas027(){return `<div class="m27-areas" aria-label="Áreas editoriales">
