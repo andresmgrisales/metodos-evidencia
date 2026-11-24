@@ -70,6 +70,14 @@ a{color:#08716f}
 @media(prefers-reduced-motion:reduce){.group,.bar{transition:none}}
 
 .me-public-counter{max-width:1080px;margin:0 auto 35px;padding:12px 20px;text-align:center;color:#566d79;font-size:12px;display:flex;align-items:center;justify-content:center;gap:12px}.me-public-counter strong{color:#0b726e;font-variant-numeric:tabular-nums;font-size:15px}
+
+.story-card{padding:clamp(22px,4vw,34px)}
+.story-kicker{font-size:11px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:#087b75;margin-bottom:7px}
+.story-card h2{font-size:clamp(23px,3vw,31px);line-height:1.22;margin:0 0 16px;color:#15394a}
+.story-copy{max-width:82ch}
+.story-copy p{margin:0 0 15px;color:#324b5b;line-height:1.72;font-size:15.5px}
+.story-copy p:last-child{margin-bottom:0}
+.story-prompt{margin-top:22px;padding:15px 17px;border-left:4px solid var(--teal);background:#eef8f6;border-radius:0 10px 10px 0;color:#315866;font-size:14px;line-height:1.55}
 </style>
 </head>
 <body>
@@ -81,6 +89,24 @@ a{color:#08716f}
 <p class="intro">Exploración interactiva de las tasas de desocupación por sexo y dominio geográfico. Se muestran exclusivamente cifras del DANE correspondientes a julio–septiembre de 2026.</p>
 <div class="meta">GEIH · Trimestre móvil julio–septiembre de 2026 · Tasas (%) y brechas (puntos porcentuales)</div>
 </header>
+
+
+<section class="card story-card" aria-labelledby="story-title">
+<div class="story-kicker">LECTURA · QUÉ MUESTRAN LOS DATOS</div>
+<h2 id="story-title">Más que una cifra nacional</h2>
+<div class="story-copy">
+<p>Una tasa nacional puede resumir un fenómeno y, al mismo tiempo, ocultar contrastes importantes. En el trimestre julio–septiembre de 2026, el DANE estimó una tasa de desocupación del <strong>10,6 % para las mujeres</strong> y del <strong>6,9 % para los hombres</strong>. Sin embargo, la diferencia no fue la misma en todos los ámbitos geográficos. La brecha reportada fue de 6,5 puntos porcentuales en centros poblados y rural disperso, frente a 1,9 puntos en el conjunto de las 13 ciudades y áreas metropolitanas.</p>
+
+<p>Para interpretar estos porcentajes es indispensable recordar qué mide la desocupación. Su denominador es la <strong>fuerza de trabajo</strong>: personas ocupadas más personas desocupadas que cumplen los criterios de búsqueda y disponibilidad. Por tanto, la tasa de desocupación no representa por sí sola la proporción de todas las mujeres u hombres en edad de trabajar que carecen de empleo. Una persona fuera de la fuerza de trabajo no se clasifica como desocupada.</p>
+
+<p>Los contrastes también aparecen al revisar otros indicadores. En el total nacional, la tasa global de participación fue 76,1 % en hombres y 52,7 % en mujeres. La tasa de ocupación fue 70,9 % y 47,1 %, respectivamente. Mirar únicamente la desocupación deja por fuera una parte importante del fenómeno: las diferencias de participación y ocupación. Las brechas publicadas por el DANE fueron de 23,4 puntos porcentuales en participación y 23,7 puntos en ocupación.</p>
+
+<p>Al desagregar territorialmente la desocupación, los resultados cambian. En centros poblados y rural disperso, las tasas fueron 10,5 % para mujeres y 4,0 % para hombres; en otras cabeceras, 11,9 % y 7,6 %; en las 10 ciudades del dominio correspondiente, 12,3 % y 9,4 %; y en las 13 ciudades y áreas metropolitanas, 9,7 % y 7,8 %. Así, el ámbito con la mayor brecha no coincide con el que presenta la mayor tasa de desocupación femenina.</p>
+
+<p>El resultado relevante no consiste solo en identificar dónde es mayor la diferencia. También muestra por qué comparar <strong>tasas</strong> exige revisar sus denominadores y su cobertura territorial. Una brecha elevada puede coexistir con niveles de desocupación femenina que no son los más altos. Los datos describen disparidades observadas durante un trimestre; no demuestran sus causas ni permiten concluir, por sí solos, que un territorio tenga mayor o menor desigualdad en todos los aspectos del mercado laboral.</p>
+</div>
+<div class="story-prompt"><strong>Para explorar:</strong> ¿el lugar con la mayor brecha es también el que presenta la mayor tasa de desocupación femenina? Use las tres vistas del gráfico para contrastarlo.</div>
+</section>
 
 <section class="card" aria-labelledby="explore-title">
 <h2 id="explore-title">Explore las diferencias</h2>
