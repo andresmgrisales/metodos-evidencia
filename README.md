@@ -19,3 +19,10 @@ Los nombres, el título y subtítulo del portal, la identidad gráfica y la estr
 Las actualizaciones ordinarias de contenidos respetarán el protocolo editorial y su periodicidad vigente, preservarán las publicaciones anteriores en sus colecciones y no modificarán los elementos estructurales aprobados. No se cambia la periodicidad ni el flujo de aprobación mediante esta política.
 
 Antes de publicar un cambio, comprobar los seis nombres y su orden en navegación móvil y de escritorio, revisar que las secciones y publicaciones previas se conservan, y verificar que el diff no incluye cambios estructurales no autorizados. Los cambios estructurales aprobados se registrarán en un commit separado con su justificación.
+
+### Ajuste editorial autorizado · 25 de noviembre de 2026
+
+- Inicio: se retira el bloque introductorio azul y se incorpora «Destacados de la semana», con título de cada publicación, sección de origen y enlace directo.
+- Estadística sin mitos: queda temporalmente oculta del menú, portada y navegación pública; se conserva su nombre y contenido para una futura reactivación autorizada.
+- Las cuatro tarjetas activas de Inicio conservan los nombres oficiales y usan iconos temáticos y tonalidades suaves diferenciadas. Recursos se presenta en una sola tarjeta.
+- La portada puede actualizar sus destacados conforme al protocolo editorial vigente, sin sustituir los contenidos de las colecciones ni alterar nombres o estructura sin aprobación.
