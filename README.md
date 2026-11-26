@@ -30,3 +30,4 @@ Antes de publicar un cambio, comprobar los seis nombres y su orden en navegació
 ### Ajuste editorial autorizado · 26 de noviembre de 2026
 
 - Título de la pestaña en Inicio: muestra el título completo del portal, «Métodos & Evidencia · Estadística, ciencia de datos y métodos de investigación», en lugar de «Inicio · Métodos & Evidencia». Así coincide con el título del HTML y con el que muestran los buscadores. Las demás secciones conservan el formato «Sección · Métodos & Evidencia».
+- Inicio: se incorpora entre «Destacados de la semana» y «Explorar contenidos» un recuadro de servicios de análisis de datos para que instituciones, empresas e investigadores soliciten una propuesta por correo (andresmgrisales@gmail.com). No cambia los nombres, el orden ni la estructura de la navegación.
