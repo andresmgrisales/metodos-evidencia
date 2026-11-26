@@ -26,3 +26,7 @@ Antes de publicar un cambio, comprobar los seis nombres y su orden en navegació
 - Estadística sin mitos: queda temporalmente oculta del menú, portada y navegación pública; se conserva su nombre y contenido para una futura reactivación autorizada.
 - Las cuatro tarjetas activas de Inicio conservan los nombres oficiales y usan iconos temáticos y tonalidades suaves diferenciadas. Recursos se presenta en una sola tarjeta.
 - La portada puede actualizar sus destacados conforme al protocolo editorial vigente, sin sustituir los contenidos de las colecciones ni alterar nombres o estructura sin aprobación.
+
+### Ajuste editorial autorizado · 26 de noviembre de 2026
+
+- Título de la pestaña en Inicio: muestra el título completo del portal, «Métodos & Evidencia · Estadística, ciencia de datos y métodos de investigación», en lugar de «Inicio · Métodos & Evidencia». Así coincide con el título del HTML y con el que muestran los buscadores. Las demás secciones conservan el formato «Sección · Métodos & Evidencia».
