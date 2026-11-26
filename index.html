@@ -422,16 +422,17 @@
 .home-section-grid .tile-recursos{--tile-bg:#faf5eb;--tile-line:#eadfc9;--tile-icon:#f2e6cf;--tile-accent:#896124}
 @media(max-width:730px){.home-week-grid,.home-section-grid{grid-template-columns:1fr;gap:12px}.home-section-grid .tile{min-height:164px;padding:21px}.week-card{padding:18px}.menu{grid-template-columns:repeat(6,minmax(0,1fr))}.menu button{grid-column:span 2}.menu button:nth-last-child(-n+2){grid-column:span 3}}
 
-/* Portada · recuadro de contacto para servicios de análisis de datos */
-.home-contact{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px 30px;align-items:center;margin:0 0 30px;padding:24px;border:1px solid #cddfdf;border-left:4px solid #123348;border-radius:15px;background:#fff;box-shadow:0 5px 16px #18354408}
-.home-contact h2{font-size:clamp(19px,2.3vw,24px);line-height:1.32;letter-spacing:-.4px;margin:8px 0 10px;color:var(--ink)}
-.home-contact-text p{margin:0 0 16px;color:var(--ink2);line-height:1.6;font-size:14px}
-.home-contact-btn{text-decoration:none!important;font-size:14px;padding:11px 18px}
-.home-contact .home-contact-note{margin:10px 0 0;font-size:12px;color:var(--muted)}
-.home-contact-list{list-style:none;margin:0;padding:16px 18px;background:#f0f8f6;border:1px solid #d5eae6;border-radius:13px;display:grid;gap:10px}
-.home-contact-list li{position:relative;padding-left:22px;font-size:14px;line-height:1.45;color:var(--ink)}
-.home-contact-list li::before{content:"✓";position:absolute;left:0;top:0;color:#08706c;font-weight:800}
-@media(max-width:730px){.home-contact{grid-template-columns:1fr;padding:19px}.home-contact-btn{width:100%}}
+/* Recursos · recuadro de servicios de análisis de datos */
+.svc-contact{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px 30px;align-items:center;margin:0 0 24px;padding:24px;border:1px solid #cddfdf;border-left:4px solid #123348;border-radius:15px;background:#fff;box-shadow:0 5px 16px #18354408}
+.svc-contact h2{font-size:clamp(19px,2.3vw,24px);line-height:1.32;letter-spacing:-.4px;margin:8px 0 10px;color:var(--ink)}
+.svc-contact-text p{margin:0 0 16px;color:var(--ink2);line-height:1.6;font-size:14px}
+.svc-contact-actions{display:flex;flex-wrap:wrap;gap:10px}
+.svc-contact-btn{text-decoration:none!important;font-size:14px;padding:11px 18px;cursor:pointer}
+.svc-contact .svc-contact-note{margin:12px 0 0;font-size:12px;color:var(--muted)}
+.svc-contact-list{list-style:none;margin:0;padding:16px 18px;background:#f0f8f6;border:1px solid #d5eae6;border-radius:13px;display:grid;gap:10px}
+.svc-contact-list li{position:relative;padding-left:22px;font-size:14px;line-height:1.45;color:var(--ink)}
+.svc-contact-list li::before{content:"✓";position:absolute;left:0;top:0;color:#08706c;font-weight:800}
+@media(max-width:730px){.svc-contact{grid-template-columns:1fr;padding:19px}.svc-contact-btn{flex:1 1 100%}}
 </style>
 </head>
 <body>
@@ -449,7 +450,6 @@
 <a class="week-card" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html"><span class="week-section">Datos bajo análisis</span><h2>¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?</h2><p>Datos oficiales del DANE · Comparaciones territoriales y gráficos interactivos · Julio–septiembre de 2026.</p><span class="week-link">Leer y explorar ↗</span></a>
 <a class="week-card radar" href="articulos/valor-p-utilidad-interpretacion.html"><span class="week-section">Radar científico</span><h2>¿Debemos abandonar el valor p o aprender a utilizarlo correctamente?</h2><p>Lectura metodológica basada en una revisión sistemática sobre la interpretación de la evidencia estadística · 25 de noviembre de 2026.</p><span class="week-link">Leer el artículo ↗</span></a>
 </div></section>
-<section class="home-contact" aria-labelledby="home-contact-heading"><div class="home-contact-text"><div class="eyebrow">SERVICIOS DE ANÁLISIS DE DATOS</div><h2 id="home-contact-heading">¿Necesita analizar datos para una investigación, una institución o una empresa?</h2><p>Se ofrece acompañamiento profesional en estadística aplicada y ciencia de datos, con el mismo rigor y la misma trazabilidad de las publicaciones de este portal.</p><a class="btn home-contact-btn" href="mailto:andresmgrisales@gmail.com?subject=Solicitud%20de%20servicios%20de%20an%C3%A1lisis%20de%20datos">Solicitar una propuesta ↗</a><p class="home-contact-note">La solicitud llega por correo a andresmgrisales@gmail.com.</p></div><ul class="home-contact-list" aria-label="Servicios"><li>Análisis estadístico de encuestas y bases de datos</li><li>Análisis de textos con inteligencia artificial (NLP y modelado de temas)</li><li>Informes y tableros con datos oficiales</li><li>Asesoría metodológica para proyectos de investigación</li></ul></section>
 <section class="section" aria-labelledby="home-sections-heading"><div class="section-header"><div><div class="eyebrow">EXPLORAR CONTENIDOS</div><h2 id="home-sections-heading">Un espacio, varias maneras de aprender</h2></div></div><div class="home-section-grid">
 <button type="button" class="tile tile-radar" data-nav="radar"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5M8 11l2-2 2 2 2-3"></path></svg></span><strong>Radar científico</strong><span>Lecturas críticas de investigaciones y sus resultados, con fuentes y limitaciones.</span></button>
 <button type="button" class="tile tile-analisis" data-nav="analisis"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 17v-5h3v5M12 17V7h3v10M17 17v-8h3v8"></path></svg></span><strong>Datos bajo análisis</strong><span>Análisis con datos reales, fuentes oficiales y gráficos interactivos.</span></button>
@@ -491,7 +491,6 @@ function originalHome(){return `<section class="home-week" aria-labelledby="home
 <a class="week-card" href="analisis/brecha-desempleo-mujeres-hombres-colombia.html"><span class="week-section">Datos bajo análisis</span><h2>¿Dónde es mayor la brecha de desempleo entre mujeres y hombres en Colombia?</h2><p>Datos oficiales del DANE · Comparaciones territoriales y gráficos interactivos · Julio–septiembre de 2026.</p><span class="week-link">Leer y explorar ↗</span></a>
 <a class="week-card radar" href="articulos/valor-p-utilidad-interpretacion.html"><span class="week-section">Radar científico</span><h2>¿Debemos abandonar el valor p o aprender a utilizarlo correctamente?</h2><p>Lectura metodológica basada en una revisión sistemática sobre la interpretación de la evidencia estadística · 25 de noviembre de 2026.</p><span class="week-link">Leer el artículo ↗</span></a>
 </div></section>
-<section class="home-contact" aria-labelledby="home-contact-heading"><div class="home-contact-text"><div class="eyebrow">SERVICIOS DE ANÁLISIS DE DATOS</div><h2 id="home-contact-heading">¿Necesita analizar datos para una investigación, una institución o una empresa?</h2><p>Se ofrece acompañamiento profesional en estadística aplicada y ciencia de datos, con el mismo rigor y la misma trazabilidad de las publicaciones de este portal.</p><a class="btn home-contact-btn" href="mailto:andresmgrisales@gmail.com?subject=Solicitud%20de%20servicios%20de%20an%C3%A1lisis%20de%20datos">Solicitar una propuesta ↗</a><p class="home-contact-note">La solicitud llega por correo a andresmgrisales@gmail.com.</p></div><ul class="home-contact-list" aria-label="Servicios"><li>Análisis estadístico de encuestas y bases de datos</li><li>Análisis de textos con inteligencia artificial (NLP y modelado de temas)</li><li>Informes y tableros con datos oficiales</li><li>Asesoría metodológica para proyectos de investigación</li></ul></section>
 <section class="section" aria-labelledby="home-sections-heading"><div class="section-header"><div><div class="eyebrow">EXPLORAR CONTENIDOS</div><h2 id="home-sections-heading">Un espacio, varias maneras de aprender</h2></div></div><div class="home-section-grid">
 <button type="button" class="tile tile-radar" data-nav="radar"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 11l2-2 2 2 2-3"/></svg></span><strong>Radar científico</strong><span>Lecturas críticas de investigaciones y sus resultados, con fuentes y limitaciones.</span></button>
 <button type="button" class="tile tile-analisis" data-nav="analisis"><span class="tile-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 17v-5h3v5M12 17V7h3v10M17 17v-8h3v8"/></svg></span><strong>Datos bajo análisis</strong><span>Análisis con datos reales, fuentes oficiales y gráficos interactivos.</span></button>
@@ -546,7 +545,9 @@ function authorCard029(){return `<section class="author029" aria-labelledby="aut
  <div class="author029-links"><a href="https://orcid.org/0000-0002-4385-4474" target="_blank" rel="noopener noreferrer">ORCID ↗</a><a href="https://scholar.google.com/citations?hl=en&amp;sortby=pubdate&amp;user=-urmP7EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001436256" target="_blank" rel="noopener noreferrer">CvLAC ↗</a><a href="https://github.com/andresmgrisales" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
  <p class="author029-subtle">Enlaces a perfiles profesionales y publicaciones del autor.</p>
  </div></section>`; }
-function resources(){return originalResources().replace('<div class="grid2">',authorCard029()+'<div class="grid2">')+`<div class="section card"><div class="tag">BIBLIOGRAFÍA METODOLÓGICA</div><h3>Lecturas de inferencia estadística</h3><p class="small">Referencias para comprender el valor p, la justificación muestral y la importancia de interpretar la incertidumbre.</p><ul class="source-list"><li><a href="https://magazine.amstat.org/blog/2016/03/07/pvalue-mar16/" target="_blank" rel="noopener">ASA, 2016 ↗</a></li><li><a href="https://doi.org/10.1525/collabra.33267" target="_blank" rel="noopener">Lakens, 2022 ↗</a></li></ul><button class="btn mini" data-article="metodo">Consultar miniartículo ↗</button></div>`}
+// Recursos · recuadro de servicios de análisis de datos (autorizado el 26/11/2026).
+function servicesContact(){return `<section class="svc-contact" aria-labelledby="svc-contact-heading"><div class="svc-contact-text"><div class="eyebrow">SERVICIOS DE ANÁLISIS DE DATOS</div><h2 id="svc-contact-heading">¿Necesita analizar datos para una investigación, una institución o una empresa?</h2><p>Se ofrece acompañamiento profesional en estadística aplicada y ciencia de datos, con el mismo rigor y la misma trazabilidad de las publicaciones de este portal.</p><div class="svc-contact-actions"><a class="btn svc-contact-btn" href="mailto:andresmgrisales@gmail.com?subject=Solicitud%20de%20servicios%20de%20an%C3%A1lisis%20de%20datos">Solicitar una propuesta ↗</a><button type="button" class="btn outline svc-contact-btn" data-copy-email="andresmgrisales@gmail.com">Copiar correo</button></div><p class="svc-contact-note">Correo: andresmgrisales@gmail.com. Si el botón no abre su aplicación de correo, copie la dirección y escriba desde su cuenta.</p></div><ul class="svc-contact-list" aria-label="Servicios"><li>Análisis estadístico de encuestas y bases de datos</li><li>Análisis de textos con inteligencia artificial (NLP y modelado de temas)</li><li>Informes y tableros con datos oficiales</li><li>Asesoría metodológica para proyectos de investigación</li></ul></section>`}
+function resources(){return originalResources().replace('<div class="grid2">',authorCard029()+servicesContact()+'<div class="grid2">')+`<div class="section card"><div class="tag">BIBLIOGRAFÍA METODOLÓGICA</div><h3>Lecturas de inferencia estadística</h3><p class="small">Referencias para comprender el valor p, la justificación muestral y la importancia de interpretar la incertidumbre.</p><ul class="source-list"><li><a href="https://magazine.amstat.org/blog/2016/03/07/pvalue-mar16/" target="_blank" rel="noopener">ASA, 2016 ↗</a></li><li><a href="https://doi.org/10.1525/collabra.33267" target="_blank" rel="noopener">Lakens, 2022 ↗</a></li></ul><button class="btn mini" data-article="metodo">Consultar miniartículo ↗</button></div>`}
 
 
 /* v0.26 · contenido editorial autorizado conservando el resto de la interfaz */
@@ -661,6 +662,16 @@ function me033Catalog(){return '<section class="page-head"><div class="eyebrow">
       .replace('Ver las investigaciones ↗','Explorar el Radar ↗');};
   templates.laboratorio=laboratory;
   templates.recursos=resourcesPublic027;
+
+// «Copiar correo» del recuadro de servicios: funciona aunque no haya app de correo configurada.
+document.addEventListener('click',function(e){
+  const b=e.target.closest('[data-copy-email]');if(!b)return;
+  const mail=b.dataset.copyEmail,label=b.dataset.label||(b.dataset.label=b.textContent);
+  const done=()=>{b.textContent='Correo copiado ✓';setTimeout(()=>{b.textContent=label},2500)};
+  const legacy=()=>{const t=document.createElement('textarea');t.value=mail;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch(_){}t.remove();ok?done():window.prompt('Copie el correo:',mail)};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(mail).then(done,legacy)}else{legacy()}
+});
   if(!publicSections027.has(state.page)){state.page='inicio'}
   render(false);
 })();
