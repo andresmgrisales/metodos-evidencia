@@ -51,3 +51,23 @@ Cambios aplicados:
 - «Datos bajo análisis» usa el nombre de la sección como título, igual que las demás, y sus tarjetas describen cada análisis para el lector, en lugar de notas internas como «Contenido existente».
 - La lectura de agentes de IA deja «Lectura inaugural» y «Laboratorio Académico de IA» y se alinea con los rótulos del Radar. El análisis de desempleo agrega el nombre del portal arriba y el regreso al final.
 - El mapa del sitio actualiza sus fechas.
+
+### Plantilla común de las publicaciones · 26 de noviembre de 2026
+
+Todas las publicaciones de `analisis/` y `articulos/` comparten el mismo marco: el menú lateral de la página principal (arriba en el celular, con las cinco secciones completas y la sección activa resaltada), «← Volver a [colección]» arriba y al final, y el pie con perfiles y contador de visitas. El marco está en `css/marco.css` y sus clases llevan el prefijo `mx-`, para no chocar con los estilos propios de cada publicación.
+
+- Inflación y Significancia dejan de ser copias completas de la página principal: pasan de unos 120 KB a 15 y 21 KB. Conservan su contenido, su encabezado (metadatos y vista previa al compartir) y solo el JavaScript de su gráfico o simulador, copiado literalmente de la versión anterior. Sus estilos de contenido están en `css/analisis.css`. Se verificó que se ven igual, píxel a píxel, y que el gráfico y el simulador producen exactamente los mismos resultados.
+- Desempleo y las dos lecturas del Radar conservan su contenido, sus estilos y sus scripts; solo se sustituyen su navegación y su pie por el marco común.
+- `herramientas/prerender.py` procesa ahora solo `index.html`, porque las publicaciones ya traen su contenido escrito en el HTML.
+
+## Plantilla de las publicaciones
+
+Para crear un análisis o una lectura nueva:
+
+1. Copiar `herramientas/plantilla-publicacion.html` en `analisis/` (Datos bajo análisis) o `articulos/` (Radar científico), con un nombre descriptivo en minúsculas y con guiones.
+2. Completar los metadatos (título, descripción, dirección canónica y Open Graph) y quitar la línea `noindex`.
+3. En el menú lateral, marcar como activa la sección correspondiente y ajustar los dos enlaces «← Volver a …».
+4. Escribir el contenido con la estructura de las demás publicaciones: rótulo (colección · número · tema), pregunta como título, entradilla, línea de datos, secciones, alcances y límites, fuentes y cierre «Para seguir explorando».
+5. Agregar la tarjeta en su colección dentro de `index.html` (y en «Destacados de la semana», si corresponde), añadir la dirección a `sitemap.xml` y ejecutar `herramientas/prerender.py`.
+
+Si cambian los nombres o el orden del menú, el cambio se hace en `navItems` de `index.html` y en la barra lateral de cada publicación y de la plantilla, que tienen los mismos cinco enlaces.
