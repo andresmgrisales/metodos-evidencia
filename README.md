@@ -12,7 +12,7 @@ Los nombres oficiales de navegación, en el orden establecido y para todos los t
 3. Datos bajo análisis
 4. Estadística sin mitos
 5. Experimenta
-6. Recursos
+6. Contacto
 
 Los nombres, el título y subtítulo del portal, la identidad gráfica y la estructura de navegación requieren aprobación expresa del responsable editorial antes de modificarse. La adaptación a dispositivos debe ajustar el diseño al texto, sin abreviar, sustituir ni ocultar nombres de secciones.
 
@@ -31,3 +31,4 @@ Antes de publicar un cambio, comprobar los seis nombres y su orden en navegació
 
 - Título de la pestaña en Inicio: muestra el título completo del portal, «Métodos & Evidencia · Estadística, ciencia de datos y métodos de investigación», en lugar de «Inicio · Métodos & Evidencia». Así coincide con el título del HTML y con el que muestran los buscadores. Las demás secciones conservan el formato «Sección · Métodos & Evidencia».
 - Recursos: se incorpora después de «Sobre el autor y editor» un recuadro de servicios de análisis de datos para que instituciones, empresas e investigadores soliciten una propuesta por correo (andresmgrisales@gmail.com). Incluye el botón «Copiar correo», que funciona aunque el dispositivo no tenga una aplicación de correo configurada. El recuadro se publicó primero en Inicio y el mismo día se trasladó a Recursos, junto al perfil y los canales de contacto del autor; Inicio vuelve a su versión anterior. No cambia los nombres, el orden ni la estructura de la navegación.
+- Recursos pasa a llamarse **Contacto** en el menú (escritorio y móvil), en su tarjeta de Inicio y en su encabezado. Su ícono pasa a ser un sobre (✉) en el menú y en la tarjeta. Conserva su posición en el menú y su identificador interno (`?seccion=recursos`), para que los enlaces existentes sigan funcionando. La sección queda con «Sobre el autor y editor», el recuadro de servicios y «Sobre Métodos & Evidencia». Se retiran las tarjetas «Series oficiales del IPC», «Bibliografía y DOI», «Experimentos didácticos» y «Lecturas de inferencia estadística», porque esas fuentes ya se citan en cada artículo y en cada publicación.
