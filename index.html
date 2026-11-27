@@ -433,6 +433,16 @@
 .svc-contact-list li{position:relative;padding-left:22px;font-size:14px;line-height:1.45;color:var(--ink)}
 .svc-contact-list li::before{content:"✓";position:absolute;left:0;top:0;color:#08706c;font-weight:800}
 @media(max-width:730px){.svc-contact{grid-template-columns:1fr;padding:19px}.svc-contact-btn{flex:1 1 100%}}
+
+/* Experimenta · colección de experimentos y vista propia de cada uno */
+.xp-grid .me033-card:first-child{background:#fff;border-color:#d5e4e3}
+.xp-grid .me033-card:first-child:hover,.xp-grid .me033-card:first-child:focus-visible{border-color:#2c9388}
+.xp-intro{max-width:780px;margin:0 0 22px}
+.xp-intro p{font-size:16px;line-height:1.75;color:var(--ink2);margin:0 0 14px}
+.xp-intro .xp-more{margin-top:4px}
+.xp-sim{max-width:780px}
+.xp-sim.xp-wide{max-width:none}
+@media(max-width:730px){.xp-intro p{font-size:15px}}
 </style>
 </head>
 <body>
@@ -662,6 +672,44 @@ function me033Catalog(){return '<section class="page-head"><div class="eyebrow">
       .replace('Se incluyen en el Radar dos investigaciones de Nature publicadas en 2026 que estudian estas cuestiones.','Se puede profundizar en estas diferencias consultando investigaciones sobre reproducibilidad y replicabilidad.')
       .replace('Ver las investigaciones ↗','Explorar el Radar ↗');};
   templates.laboratorio=laboratory;
+
+  // Experimenta (26/11/2026): colección de tarjetas; cada experimento abre su propia vista
+  // (?seccion=laboratorio&experimento=<id>). Los simuladores conservan su lógica original.
+  const experiments034 = {"muestra": {"tag": "EXPERIMENTO #001 · MUESTREO", "title": "¿Cómo influye el tamaño de muestra en la precisión?", "summary": "Margen de error de una proporción según el tamaño de la muestra.", "meta": "Simulador · Muestreo aleatorio simple", "intro": ["Cuando una encuesta informa que el 52 % de las personas prefiere una opción, ese porcentaje proviene de una muestra y no de toda la población. Otra muestra del mismo tamaño daría un resultado algo distinto. El margen de error resume cuánto puede variar la estimación solo por el azar del muestreo: cuanto mayor es la muestra, menor es esa variación. La ganancia, sin embargo, no es proporcional. Para reducir el margen a la mitad hay que cuadruplicar la muestra, porque el error depende de la raíz cuadrada de n. La proporción también influye: el margen es mayor cuando se acerca al 50 %.", "En el simulador se modifican el tamaño de muestra y la proporción esperada, y se observa cómo cambian el margen de error al 95 % y el intervalo ilustrativo. Una comparación útil es n = 100 frente a n = 400."], "more": ""}, "ipc": {"tag": "EXPERIMENTO #002 · IPC", "title": "¿Cuánto representa hoy un valor de 2021?", "summary": "Actualización de un monto de diciembre de 2021 con el IPC.", "meta": "Simulador · IPC Colombia · Datos DANE", "intro": ["Un billete de 100.000 pesos conserva su valor nominal con el paso del tiempo, pero no su poder de compra. El índice de precios al consumidor (IPC), que publica el DANE, mide cómo cambia el costo de una canasta representativa de bienes y servicios de los hogares. Con ese índice, un monto de una fecha puede expresarse en pesos de otra: si los precios subieron 30 %, se necesitan 130.000 pesos para comprar lo que antes costaba 100.000. Esta actualización permite comparar salarios, arriendos o presupuestos de distintos años sin confundir aumentos nominales con aumentos reales.", "En el simulador se elige un valor de diciembre de 2021 y un periodo posterior. El resultado muestra el monto equivalente y la variación acumulada de precios, calculados con el índice nacional reconstruido a partir de las cifras oficiales del DANE."], "more": ""}, "significancia": {"tag": "EXPERIMENTO #003 · INFERENCIA", "title": "¿Significativo significa importante?", "summary": "Valor p, tamaño del efecto e intervalo de confianza en dos grupos hipotéticos.", "meta": "Simulador · Datos hipotéticos", "intro": ["El valor p indica qué tan compatibles son los datos con la hipótesis de que no existe diferencia. Un valor menor que 0,05 señala que una diferencia como la observada sería poco frecuente si no hubiera efecto, pero no dice que esa diferencia sea grande ni que tenga consecuencias prácticas. Con muestras muy grandes, diferencias mínimas resultan significativas; con muestras pequeñas, diferencias relevantes pueden no serlo. Por eso conviene mirar también el tamaño del efecto, el intervalo de confianza y un umbral de relevancia definido antes de ver los resultados.", "En el simulador se comparan dos grupos hipotéticos. Se ajustan los participantes por grupo, la diferencia de medias y la diferencia mínima relevante, y se observan el valor p, el efecto estandarizado d y el intervalo de confianza del 95 %."], "more": "<p class=\"xp-more\"><button class=\"linkbtn\" data-article=\"metodo\">Leer la lectura completa sobre significancia →</button></p>"}};
+  function experimentSims034(){
+    const cards = laboratory().match(/<section class="card">[\s\S]*?<\/section>/g) || [];
+    const strip = html => html.replace(/<div class="tag">[\s\S]*?<\/div><h3>[\s\S]*?<\/h3>/, '<div class="tag">SIMULADOR</div>');
+    return {muestra: strip(cards[0]||''), ipc: strip(cards[1]||''), significancia: methodWidget()};
+  }
+  function experimentCatalog034(){
+    return '<div class="page-head"><div class="eyebrow">SIMULACIONES Y EXPLORACIÓN</div><h1>Experimenta</h1><p>Experiencias breves para observar cómo cambian los resultados cuando se modifican parámetros.</p></div>'
+      + '<div class="me033-grid xp-grid">' + Object.entries(experiments034).map(([id,x]) =>
+        `<a class="me033-card" href="?seccion=laboratorio&amp;experimento=${id}"><span class="me033-small">${x.tag}</span><strong>${x.title}</strong><p>${x.summary}</p><span class="me033-meta">${x.meta}</span><span class="me033-link">Abrir experimento →</span></a>`).join('') + '</div>';
+  }
+  function experimentDetail034(id){
+    const x = experiments034[id];
+    return `<a class="me033-back" href="?seccion=laboratorio">← Volver a Experimenta</a>`
+      + `<div class="page-head"><div class="eyebrow">EXPERIMENTA · ${x.tag}</div><h1>${x.title}</h1></div>`
+      + `<div class="xp-intro">${x.intro.map(p => `<p>${p}</p>`).join('')}${x.more}</div>`
+      + `<div class="xp-sim${id==='significancia'?' xp-wide':''}">${experimentSims034()[id]}</div>`;
+  }
+  templates.laboratorio = function(){ return state.experiment ? experimentDetail034(state.experiment) : experimentCatalog034(); };
+  const experimentParam034 = new URLSearchParams(location.search).get('experimento');
+  state.experiment = (state.page === 'laboratorio' && experiments034[experimentParam034]) ? experimentParam034 : null;
+  // Al cambiar de sección desde el menú se sale de la vista del experimento.
+  const go034 = go;
+  go = function(p){
+    if(state.experiment){
+      state.experiment = null;
+      try{ const q = new URLSearchParams(location.search); q.delete('experimento'); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(_){}
+    }
+    return go034(p);
+  };
+  const render034 = render;
+  render = function(scroll){
+    render034(scroll);
+    if(state.page === 'laboratorio' && state.experiment){ document.title = experiments034[state.experiment].title + ' · Experimenta · Métodos & Evidencia'; }
+  };
   templates.recursos=resourcesPublic027;
 
 // «Copiar correo» del recuadro de servicios: funciona aunque no haya app de correo configurada.
