@@ -1,4 +1,4 @@
-"""Pre-renderiza el contenido inicial de <main id="page"> en las páginas que lo generan con JavaScript.
+"""Pre-renderiza el contenido inicial de <main id="page"> en la portada (index.html), que lo genera con JavaScript.
 
 Por qué: los buscadores y las vistas previas de redes sociales que no ejecutan JavaScript
 ven <main> vacío. Este script abre cada página en Chrome sin interfaz, toma el HTML que
@@ -13,9 +13,9 @@ import asyncio, pathlib, re
 from playwright.async_api import async_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PAGES = ["index.html",
-         "analisis/inflacion-y-nivel-de-precios.html",
-         "analisis/significancia-estadistica-e-importancia.html"]
+# Solo la portada genera su contenido con JavaScript. Las publicaciones de analisis/ y articulos/
+# usan la plantilla común (css/marco.css) y ya traen su contenido escrito en el HTML: no se procesan aquí.
+PAGES = ["index.html"]
 MAIN_RE = re.compile(r'(<main id="page" tabindex="-1">)(.*?)(</main>)', re.S)
 import os
 LAUNCH = {"executable_path": os.environ["CHROME_PATH"], "args": ["--no-sandbox"]} if os.environ.get("CHROME_PATH") else {}

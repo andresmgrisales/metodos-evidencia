@@ -1,0 +1,70 @@
+/* Métodos & Evidencia · marco común de las publicaciones (análisis y lecturas).
+   Reproduce el menú lateral, el pie y el regreso de la página principal.
+   Las clases llevan el prefijo mx- para no chocar con los estilos propios de cada publicación.
+   Los nombres del menú son los oficiales del README: completos y en el mismo orden en todos los tamaños. */
+
+.mx-skip{position:absolute;left:14px;top:-100px;z-index:100;background:#fff;color:#123e5d;border:2px solid #0b8c89;border-radius:9px;padding:8px 12px;font:600 14px system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.mx-skip:focus{top:12px}
+
+.mx-shell{max-width:1550px;margin:0 auto;min-height:100vh;display:grid;grid-template-columns:263px minmax(0,1fr)}
+.mx-sidebar{box-sizing:border-box;padding:27px 18px 20px 20px;background:#fcfdff;border-right:1px solid #e1e7ef;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:22px;font:15px/1.62 system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#12233a}
+.mx-brand{display:flex;align-items:center;gap:11px;padding:4px 7px 12px;color:#12233a;text-decoration:none}
+.mx-brand>span:last-child{min-width:0}
+.mx-symbol{width:42px;height:42px;display:grid;place-items:center;background:#123e5d;color:#fff;font-weight:800;font-size:20px;border-radius:13px;line-height:1.62}
+.mx-symbol span{color:#57c8bd}
+.mx-brand-title{display:block;font-size:16px;line-height:1.23;font-weight:780;letter-spacing:-.3px}
+.mx-brand-sub{display:block;font-size:11px;line-height:1.4;font-weight:550;max-width:280px;margin-top:6px;color:#526779}
+.mx-kicker{font-size:10px;font-weight:750;color:#91a0af;letter-spacing:1.6px;padding:0 12px}
+.mx-menu{display:flex;flex-direction:column;gap:4px}
+.mx-menu a{display:flex;align-items:center;gap:12px;border-radius:11px;padding:11px 12px;color:#506079;background:transparent;text-align:left;font-weight:630;white-space:nowrap;text-decoration:none;font-size:15px;line-height:1.62}
+.mx-menu a:hover{background:#edf3f8;color:#17375c}
+.mx-menu a.active{background:#e4f2f1;color:#075c5b}
+.mx-menu a:focus-visible{outline:3px solid #0b8c89;outline-offset:2px}
+.mx-menu .ic{font-size:18px;width:24px;text-align:center}
+.mx-sidebar-bottom{margin-top:auto;border-top:1px solid #e1e7ef;padding:16px 12px;font-size:12px;color:#708097}
+.mx-sidebar-bottom strong{display:block;color:#41546c;font-size:12px;margin-bottom:5px}
+
+.mx-main{min-width:0;padding:24px clamp(20px,4.1vw,64px) 38px}
+.mx-container{max-width:1110px}
+
+/* Regreso a la colección, arriba y al final de cada publicación */
+.mx-back{display:inline-flex;align-items:center;padding:9px 12px;border:1px solid #b8ddd7;border-radius:10px;text-decoration:none!important;color:#12675f;background:#f1faf8;font:400 13px/1.62 system-ui,-apple-system,'Segoe UI',Arial,sans-serif;margin-bottom:14px}
+.mx-back:hover{border-color:#2c9388}
+.mx-back-wrap{display:flex;margin:0 0 25px}
+.mx-back-wrap.mx-back-end{margin:26px 0 0}
+
+/* Publicaciones independientes: su contenido se alinea con el regreso y el menú */
+.mx-container>main#contenido{margin-left:0;margin-right:0;padding:0}
+
+/* Pie común */
+.mx-footer{max-width:1110px;margin-top:35px;border-top:1px solid #e1e7ef;padding:18px 0;color:#708097;font:11px/1.62 system-ui,-apple-system,'Segoe UI',Arial,sans-serif;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+.mx-footer strong{color:#254657;font-weight:800}
+.mx-social{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.mx-social a{font-size:12px;text-decoration:none;color:#166a6a;font-weight:730}
+.mx-social a:hover{text-decoration:underline}
+.mx-visits{grid-column:1/-1;justify-self:end;display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;border:1px solid #d9e9e7;border-radius:999px;padding:6px 12px;background:#f2f8f7;color:#41546c;font-size:12px;font-weight:650}
+.mx-visits strong{color:#08716f;font-size:14px;font-variant-numeric:tabular-nums;font-weight:850}
+
+@media(max-width:1000px){
+  .mx-shell{grid-template-columns:218px minmax(0,1fr)}
+  .mx-sidebar{padding:22px 10px}
+  .mx-main{padding:22px}
+}
+@media(max-width:840px){
+  .mx-footer{grid-template-columns:1fr;text-align:center}
+  .mx-social{justify-content:center}
+  .mx-visits{justify-self:center}
+}
+@media(max-width:730px){
+  .mx-shell{display:block}
+  .mx-sidebar{position:static;width:100%;height:auto;border-right:0;border-bottom:1px solid #e1e7ef;padding:11px 13px;gap:5px}
+  .mx-brand{padding:3px 5px}
+  .mx-brand-sub{max-width:310px;line-height:1.36;margin-top:4px}
+  .mx-kicker,.mx-sidebar-bottom{display:none}
+  /* Cinco secciones: tres arriba y dos abajo, con el nombre completo */
+  .mx-menu{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;padding:2px 0 4px}
+  .mx-menu a{grid-column:span 2;min-width:0;white-space:normal;flex-direction:column;justify-content:center;line-height:1.25;text-align:center;padding:8px 4px;min-height:72px;gap:4px;font-size:12px}
+  .mx-menu a:nth-last-child(-n+2){grid-column:span 3}
+  .mx-menu .ic{font-size:15px;width:15px}
+  .mx-main{padding:13px 14px 20px}
+}
