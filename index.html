@@ -443,6 +443,12 @@
 .xp-sim{max-width:780px}
 .xp-sim.xp-wide{max-width:none}
 @media(max-width:730px){.xp-intro p{font-size:15px}}
+
+/* Radar científico · lecturas como tarjetas */
+.rd-label{margin:26px 0 0}
+.rd-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
+@media(max-width:1050px){.rd-grid .me033-card:first-child{grid-column:auto}}
+@media(max-width:700px){.rd-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -645,9 +651,14 @@ function updateAmount(){if(!el('amountValue'))return;el('amountValue').textConte
       .replace('Lo que aún requiere verificación','Alcances y limitaciones de la evidencia')
       .replace('Leer artículo completo y ver infografía','Leer el análisis completo y explorar la infografía');
   }
-  function radarPublic027(){return `<section class="m27-header"><div class="eyebrow">INVESTIGACIONES · CONTEXTO · EVIDENCIA</div><h1>Radar científico</h1>
+  // Radar científico (26/11/2026): lecturas como tarjetas; cada una abre su página en articulos/.
+function radarReadings034(){return '<div class="eyebrow rd-label">LECTURAS PUBLICADAS</div><div class="me033-grid rd-grid">'
+  + '<a class="me033-card" href="articulos/valor-p-utilidad-interpretacion.html"><span class="me033-small">NUEVO · LECTURA 02 · ESTADÍSTICA Y SUS USOS</span><strong>¿Debemos abandonar el valor p o aprender a utilizarlo correctamente?</strong><p>Una revisión sistemática de 55 estudios y más de 15.000 participantes documenta dificultades persistentes al interpretar la significancia estadística y los intervalos de confianza. Se contrasta con el pronunciamiento metodológico de la ASA de 2021.</p><span class="me033-meta">PLOS ONE · 11 nov 2026 · Revisión sistemática</span><span class="me033-link">Leer el artículo ↗</span></a>'
+  + '<a class="me033-card" href="articulos/agentes-ia-investigacion-verificabilidad.html"><span class="me033-small">LECTURA 01 · IA EN LA INVESTIGACIÓN</span><strong>¿Puede una IA investigar sola? Lo que la evidencia dice sobre los agentes científicos</strong><p>Análisis crítico de una revisión de agentes basados en modelos de lenguaje: automatización de tareas científicas, verificación de fuentes, reproducibilidad y supervisión humana.</p><span class="me033-meta">Journal of Superintelligence · 17 oct 2026 · Revisión de literatura</span><span class="me033-link">Leer el artículo ↗</span></a>'
+  + '</div>';}
+function radarPublic027(){return `<section class="m27-header"><div class="eyebrow">INVESTIGACIONES · CONTEXTO · EVIDENCIA</div><h1>Radar científico</h1>
     <p>Se exploran investigaciones relevantes a partir de sus preguntas, resultados, fuentes originales y limitaciones. Cada lectura diferencia lo que reporta el estudio de las interpretaciones que pueden hacerse.</p></section>`
-    + areas027() + `<section class="a026-callout" aria-labelledby="radar-valor-p"><div class="a026-kicker">RADAR CIENTÍFICO · ESTADÍSTICA Y SUS USOS · LECTURA 02</div><p><span class="a026-badge">Nueva lectura · 25 nov 2026</span></p><h2 id="radar-valor-p">¿Debemos abandonar el valor p o aprender a utilizarlo correctamente?</h2><p>Una revisión sistemática de 55 estudios y más de 15.000 participantes documenta dificultades persistentes al interpretar la significancia estadística y los intervalos de confianza. Se contrasta esta evidencia con el pronunciamiento metodológico de la ASA de 2021.</p><p class="small muted">PLOS ONE · 11 nov 2026 · Revisión sistemática</p><p><a class="btn" href="articulos/valor-p-utilidad-interpretacion.html">Leer el artículo completo ↗</a> <a class="btn outline" href="https://doi.org/10.1371/journal.pone.0362071" target="_blank" rel="noopener noreferrer">Fuente original ↗</a></p></section>` + publishedReading027() + `<div class="m27-note"><strong>¿Cómo se interpretan estas lecturas?</strong> Se indican las fuentes bibliográficas, la naturaleza del estudio y las limitaciones que deben considerarse antes de generalizar sus conclusiones.</div>`;}
+    + areas027() + radarReadings034() + `<div class="m27-note"><strong>¿Cómo se interpretan estas lecturas?</strong> Se indican las fuentes bibliográficas, la naturaleza del estudio y las limitaciones que deben considerarse antes de generalizar sus conclusiones.</div>`;}
   function resourcesPublic027(){return resources()
      .replace(/<section class="card resource"><div class="resource-icon">✉<\/div>[\s\S]*?<\/section>/,'')
      .replace('y un espacio para solicitar orientación metodológica','para ampliar la comprensión de los temas presentados')
