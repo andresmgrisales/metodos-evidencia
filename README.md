@@ -34,3 +34,20 @@ Antes de publicar un cambio, comprobar los seis nombres y su orden en navegació
 - Recursos pasa a llamarse **Contacto** en el menú (escritorio y móvil), en su tarjeta de Inicio y en su encabezado. Su ícono pasa a ser un sobre (✉) en el menú y en la tarjeta. Conserva su posición en el menú y su identificador interno (`?seccion=recursos`), para que los enlaces existentes sigan funcionando. La sección queda con «Sobre el autor y editor», el recuadro de servicios y «Sobre Métodos & Evidencia». Se retiran las tarjetas «Series oficiales del IPC», «Bibliografía y DOI», «Experimentos didácticos» y «Lecturas de inferencia estadística», porque esas fuentes ya se citan en cada artículo y en cada publicación.
 - Experimenta: los experimentos se presentan como tarjetas cliqueables, con el mismo formato de «Datos bajo análisis». Cada tarjeta abre una vista propia (`?seccion=laboratorio&experimento=muestra`, `ipc` o `significancia`) con un botón para volver, una presentación de 100 a 150 palabras que desarrolla el tema y explica lo que se observa en el simulador, y el simulador correspondiente. Los simuladores, sus cálculos y sus notas metodológicas no cambian.
 - Radar científico: las lecturas publicadas se presentan como tarjetas cliqueables, con el mismo formato de «Datos bajo análisis», bajo el rótulo «Lecturas publicadas». Cada tarjeta abre la página propia del artículo en `articulos/`. La lectura sobre agentes de IA incorpora el enlace «← Volver al Radar científico», como ya lo tenía la lectura del valor p. Se conservan las tres áreas editoriales y la nota sobre cómo se interpretan las lecturas.
+
+### Auditoría de uniformidad y navegación · 26 de noviembre de 2026
+
+Criterios adoptados para todo el sitio:
+
+- **Rótulos:** cada publicación indica su colección, su número y su tema: «Datos bajo análisis · Análisis 01 · IPC», «Radar científico · Lectura 02 · Estadística y sus usos», «Experimenta · Experimento #001 · Muestreo». Los análisis se numeran 01 (IPC), 02 (Inferencia) y 03 (GEIH), y las lecturas del Radar 01 y 02.
+- **Navegación de las publicaciones:** arriba, el nombre del portal y «← Volver a [colección]»; las páginas independientes repiten el regreso al final. Inflación y Significancia conservan además el menú del sitio.
+- **Flechas:** → para páginas del sitio y ↗ solo para sitios externos.
+- **Cierre de los análisis:** una caja «Para seguir explorando» con enlaces a contenidos relacionados que existen y están visibles.
+
+Cambios aplicados:
+
+- Se retiran los botones que llevaban a «Estadística sin mitos», que está oculta, y los sustituyen enlaces al experimento correspondiente y a la lectura del valor p.
+- Se retiran el aviso «Nueva publicación» y los enlaces «Inflación · Significancia · Desempleo» de las páginas de análisis, y en la lectura de agentes de IA los enlaces «Inicio», «Lectura completa», «Explorar la lectura y la infografía» y «Conocer el observatorio», que repetían destinos o confundían.
+- «Datos bajo análisis» usa el nombre de la sección como título, igual que las demás, y sus tarjetas describen cada análisis para el lector, en lugar de notas internas como «Contenido existente».
+- La lectura de agentes de IA deja «Lectura inaugural» y «Laboratorio Académico de IA» y se alinea con los rótulos del Radar. El análisis de desempleo agrega el nombre del portal arriba y el regreso al final.
+- El mapa del sitio actualiza sus fechas.
